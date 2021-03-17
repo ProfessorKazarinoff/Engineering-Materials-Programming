@@ -276,5 +276,5 @@ Thumbs.db #thumbnail cache on Windows
 .vscode/
 .idea/
 _build/
-Engineering-Materials-Programming-Book/_build
 venv/
+Engineering-Materials-Programming-Book/_build/
