@@ -278,3 +278,4 @@ Thumbs.db #thumbnail cache on Windows
 _build/
 venv/
 Engineering-Materials-Programming-Book/_build/
+main/
