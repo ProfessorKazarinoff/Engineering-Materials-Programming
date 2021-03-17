@@ -275,3 +275,4 @@ Thumbs.db #thumbnail cache on Windows
 
 .vscode/
 .idea/
+_build/
