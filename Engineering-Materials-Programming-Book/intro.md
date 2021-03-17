@@ -1,7 +1,6 @@
-Welcome to your Jupyter Book
+Engineering Materials Programming Book
 ============================
 
-This is a small sample book to give you a feel for how book content is
-structured.
+This is a small collection of resources for using computer programming in a college Introduction to Materials Science and Engineering course. This type of course is often part of the second year of a Mechancial Engineering college program.
 
-Check out the content pages bundled with this sample book to get started.
+Each chapter corresponds to one of the general topics covered in an intro to materials course.

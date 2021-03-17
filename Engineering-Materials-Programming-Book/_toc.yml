@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
 - file: intro
-- file: content
-  sections:
-    - file: markdown
-    - file: notebooks
+- file: 01-Introduction/introduction
+- file: 02-Atomic-Structure-and-Bonding/atomic-structure-and-bonding
+- file: 03-Crystal-Structure/crystal-structure
+- file: 07-Mechanical-Properties/stress-strain-curves
