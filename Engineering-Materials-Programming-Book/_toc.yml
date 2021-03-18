@@ -3,6 +3,8 @@
 #
 - file: intro
 - file: 01-Introduction/introduction
+- file: 01-Introduction/why_python.md
+- file: 01-Introduction/installing_anaconda_on_windows.md
 - file: 02-Atomic-Structure-and-Bonding/atomic-structure-and-bonding
 - file: 02-Atomic-Structure-and-Bonding/CTE_calc
 - file: 02-Atomic-Structure-and-Bonding/bar_charts_with_error_bars
