@@ -1,17 +1,23 @@
 # Table of content
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
-- file: intro
-- file: 01-Introduction/introduction
-- file: 01-Introduction/why_python.md
-- file: 01-Introduction/installing_anaconda_on_windows.md
-- file: 01-Introduction/unit_conversions.ipynb
-- file: 02-Atomic-Structure-and-Bonding/atomic-structure-and-bonding
-- file: 02-Atomic-Structure-and-Bonding/CTE_calc
-- file: 02-Atomic-Structure-and-Bonding/bar_charts_with_error_bars
-- file: 03-Crystal-Structure/crystal-structure
-- file: 04-Polymers/polymer-density-problem
-- file: 06-Diffusion/diffusion_calculation
-- file: 07-Mechanical-Properties/stress-strain-curves
-- file: 07-Mechanical-Properties/bar_plot_with_error_bars
-- file: 08-Cold-Working/cold_work_problem.ipynb
+- file: welcome
+- part: Chapters
+  chapters:
+  - file: 01-Introduction/introduction
+  - file: 01-Introduction/why_python.md
+  - file: 01-Introduction/installing_anaconda_on_windows.md
+  - file: 01-Introduction/unit_conversions.ipynb
+  - file: 02-Atomic-Structure-and-Bonding/atomic-structure-and-bonding
+  - file: 02-Atomic-Structure-and-Bonding/CTE_calc
+  - file: 02-Atomic-Structure-and-Bonding/bar_charts_with_error_bars
+  - file: 03-Crystal-Structure/crystal-structure
+  - file: 04-Polymers/polymer-density-problem
+  - file: 06-Diffusion/diffusion_calculation
+  - file: 07-Mechanical-Properties/stress-strain-curves
+  - file: 07-Mechanical-Properties/bar_plot_with_error_bars
+  - file: 08-Cold-Working/cold_work_problem.ipynb
+- part: Appendix
+  chapters:
+  - file: 99-Appendix/appendix.md
+  - file: 99-Appendix/about_the_author.md
