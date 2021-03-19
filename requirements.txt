@@ -6,3 +6,5 @@ jupyter==1.0.0
 scipy==1.6.1
 sympy==1.7.1
 pint==0.16.1
+xlrd
+openpyxl
