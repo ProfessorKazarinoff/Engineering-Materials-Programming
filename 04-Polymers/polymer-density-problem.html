@@ -1,0 +1,572 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Polymer Crystallinity &#8212; Engineering Materials Programming</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Diffusion Calculation" href="../06-Diffusion/diffusion_calculation.html" />
+    <link rel="prev" title="Crystal Structure" href="../03-Crystal-Structure/crystal-structure.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Engineering Materials Programming</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../welcome.html">
+   Engineering Materials Programming Book
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../01-Introduction/introduction.html">
+   Introduction
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/why_python.html">
+     Why Python?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/installing_anaconda_on_windows.html">
+     Installing Anaconda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/unit_conversions.html">
+     Unit Conversions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/atomic-structure-and-bonding.html">
+   Atomic Structure and Bonding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/CTE_calc.html">
+   CTE Calculation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/bar_charts_with_error_bars.html">
+   CTE in a bar chart with error bars
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Crystal-Structure/crystal-structure.html">
+   Crystal Structure
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Polymer Crystallinity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-Diffusion/diffusion_calculation.html">
+   Diffusion Calculation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-Mechanical-Properties/stress-strain-curves.html">
+   Mechanical Properties
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-Mechanical-Properties/bar_plot_with_error_bars.html">
+   Visuallizing Measurement Error
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08-Cold-Working/cold_work_problem.html">
+   Cold Work Problem
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../99-Appendix/appendix.html">
+   Appendix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../99-Appendix/about_the_author.html">
+   About the Author
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/04-Polymers/polymer-density-problem.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F04-Polymers/polymer-density-problem.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ProfessorKazarinoff/Engineering-Materials-Programming/main?urlpath=tree/Engineering-Materials-Programming-Book/04-Polymers/polymer-density-problem.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#given">
+   Given:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#find">
+   Find:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solution">
+   Solution:
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="polymer-crystallinity">
+<h1>Polymer Crystallinity<a class="headerlink" href="#polymer-crystallinity" title="Permalink to this headline">¶</a></h1>
+<p><strong>Sympy</strong> is a <strong>Python</strong> package used for solving equations using symbolic math.</p>
+<p>Sympy can be installed with the Anaconda Prompt or a terminal using the command below:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>conda install sympy
+</pre></div>
+</div>
+<p>Let’s solve the following problem with <strong>SymPy</strong>.</p>
+<div class="section" id="given">
+<h2>Given:<a class="headerlink" href="#given" title="Permalink to this headline">¶</a></h2>
+<p>The density of two different polymer samples <span class="math notranslate nohighlight">\(\rho_1\)</span> and <span class="math notranslate nohighlight">\(\rho_2\)</span> are measured.</p>
+<div class="math notranslate nohighlight">
+\[ \rho_1 = 0.904 \ g/cm^3 \]</div>
+<div class="math notranslate nohighlight">
+\[ \rho_2 = 0.895 \ g/cm^3 \]</div>
+<p>The percent crystalinity of the two samples (<span class="math notranslate nohighlight">\(\%c_1 \)</span> and <span class="math notranslate nohighlight">\(\%c_2\)</span>) is known.</p>
+<div class="math notranslate nohighlight">
+\[ \%c_1 = 62.8 \% \]</div>
+<div class="math notranslate nohighlight">
+\[ \%c_2 = 54.4 \% \]</div>
+<p>The percent crystalinity of a polymer sample is related to the density of 100% amorphus regions (<span class="math notranslate nohighlight">\(\rho_a\)</span>) and 100% crystaline regions (<span class="math notranslate nohighlight">\(\rho_c\)</span>) according to:</p>
+<div class="math notranslate nohighlight">
+\[ \%crystallinity = \frac{ \rho_c(\rho_s - \rho_a)   }{\rho_s(\rho_c - \rho_a)   } \times 100 \% \]</div>
+</div>
+<div class="section" id="find">
+<h2>Find:<a class="headerlink" href="#find" title="Permalink to this headline">¶</a></h2>
+<p>Find the density of 100% amorphus regions (<span class="math notranslate nohighlight">\(\rho_a\)</span>) and the density of 100% crystaline regions (<span class="math notranslate nohighlight">\(\rho_c\)</span>) for this polymer.</p>
+</div>
+<div class="section" id="solution">
+<h2>Solution:<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p>There are a couple functions we need from <strong>Sympy</strong>. We’ll need the <code class="docutils literal notranslate"><span class="pre">symbols</span></code> function to create our symbolic math variables and we need the <code class="docutils literal notranslate"><span class="pre">nonlinsolve</span></code> function to solve a system of non-linear equations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">nonlinsolve</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We need to define six different symbols: $<span class="math notranslate nohighlight">\(\rho_c, \rho_a, \rho_1, \rho_2, c_1, c_2\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc</span><span class="p">,</span> <span class="n">pa</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;pc pa p1 p2 c1 c2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we’ll create two expressions for our two equations. We can subtract the %crystallinity from the left side of the equation to set the equation to zero.</p>
+<div class="math notranslate nohighlight">
+\[ \%crystallinity = \frac{ \rho_c(\rho_s - \rho_a)   }{\rho_s(\rho_c - \rho_a)   } \times 100 \% \]</div>
+<div class="math notranslate nohighlight">
+\[ \frac{ \rho_c(\rho_s - \rho_a)   }{\rho_s(\rho_c - \rho_a)   } \times 100 \% - \%crystallinity = 0 \]</div>
+<p>Sub in <span class="math notranslate nohighlight">\(\rho_s = \rho_1\)</span> and <span class="math notranslate nohighlight">\(\rho_s = \rho_2\)</span> to each of the expressions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">expr1</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span><span class="n">pc</span><span class="o">*</span><span class="p">(</span><span class="n">p1</span><span class="o">-</span><span class="n">pa</span><span class="p">)</span>   <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">p1</span><span class="o">*</span><span class="p">(</span><span class="n">pc</span><span class="o">-</span><span class="n">pa</span><span class="p">))</span> <span class="o">-</span> <span class="n">c1</span><span class="p">)</span>
+<span class="n">expr2</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span><span class="n">pc</span><span class="o">*</span><span class="p">(</span><span class="n">p2</span><span class="o">-</span><span class="n">pa</span><span class="p">)</span>   <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">p2</span><span class="o">*</span><span class="p">(</span><span class="n">pc</span><span class="o">-</span><span class="n">pa</span><span class="p">))</span> <span class="o">-</span> <span class="n">c2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we’ll substitue in the values of <span class="math notranslate nohighlight">\(\rho_1 = 0.904\)</span> and <span class="math notranslate nohighlight">\(c_1 = 0.628\)</span> into our first expression.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">expr1</span> <span class="o">=</span> <span class="n">expr1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="mf">0.904</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">expr1</span> <span class="o">=</span> <span class="n">expr1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="mf">0.628</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">expr1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{1.10619469026549 pc \left(0.904 - pa\right)}{- pa + pc} - 0.628\]</div>
+</div>
+</div>
+<p>Now we’ll substitue our the values of <span class="math notranslate nohighlight">\(\rho_2 = 0.895\)</span> and <span class="math notranslate nohighlight">\(c_2 = 0.544\)</span> into our second expression.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">expr2</span> <span class="o">=</span> <span class="n">expr2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span> <span class="mf">0.895</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">expr2</span> <span class="o">=</span> <span class="n">expr2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="mf">0.544</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">expr2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{1.11731843575419 pc \left(0.895 - pa\right)}{- pa + pc} - 0.544\]</div>
+</div>
+</div>
+<p>To solve the two equations for the to unknows <span class="math notranslate nohighlight">\(\rho_a\)</span> and <span class="math notranslate nohighlight">\(\rho_b\)</span>, use SymPy’s <code class="docutils literal notranslate"><span class="pre">nonlinsolve()</span></code> function. Pass in a list of the two expressions and followed by a list of the two variables to solve for.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nonlinsolve</span><span class="p">([</span><span class="n">expr1</span><span class="p">,</span><span class="n">expr2</span><span class="p">],[</span><span class="n">pa</span><span class="p">,</span><span class="n">pc</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \left\{\left( 0.840789786223278, \  0.946134313397928\right)\right\}\]</div>
+</div>
+</div>
+<p>We see that the value of <span class="math notranslate nohighlight">\(\rho_a = 0.840789\)</span> and <span class="math notranslate nohighlight">\(\rho_c = 0.94613431\)</span>.</p>
+<p>The solution is a SymPy <code class="docutils literal notranslate"><span class="pre">FiniteSet</span></code> object. To pull the values of <span class="math notranslate nohighlight">\(\rho_a\)</span> and <span class="math notranslate nohighlight">\(\rho_c\)</span> out of the <code class="docutils literal notranslate"><span class="pre">FiniteSet</span></code>, use the syntax <code class="docutils literal notranslate"><span class="pre">sol.args[0][&lt;var</span> <span class="pre">num&gt;]</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span> <span class="o">=</span> <span class="n">nonlinsolve</span><span class="p">([</span><span class="n">expr1</span><span class="p">,</span><span class="n">expr2</span><span class="p">],[</span><span class="n">pa</span><span class="p">,</span><span class="n">pc</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sympy.sets.sets.FiniteSet
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span><span class="o">.</span><span class="n">args</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((0.840789786223278, 0.946134313397928),)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \left( 0.840789786223278, \  0.946134313397928\right)\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 0.840789786223278\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pa</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">pc</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; Density of 100% amorphous polymer, pa = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">pa</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1"> g/cm3&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; Density of 100% crystaline polymer, pc = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">pc</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1"> g/cm3&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Density of 100% amorphous polymer, pa = 0.84 g/cm3
+ Density of 100% crystaline polymer, pc = 0.95 g/cm3
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./04-Polymers"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../03-Crystal-Structure/crystal-structure.html" title="previous page">Crystal Structure</a>
+    <a class='right-next' id="next-link" href="../06-Diffusion/diffusion_calculation.html" title="next page">Diffusion Calculation</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Peter D. Kazarinoff<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

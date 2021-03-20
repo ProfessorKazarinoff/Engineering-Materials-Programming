@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Installing Anaconda &#8212; Engineering Materials Programming</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Unit Conversions" href="unit_conversions.html" />
+    <link rel="prev" title="Why Python?" href="why_python.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Engineering Materials Programming</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../welcome.html">
+   Engineering Materials Programming Book
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="introduction.html">
+   Introduction
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="why_python.html">
+     Why Python?
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Installing Anaconda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="unit_conversions.html">
+     Unit Conversions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/atomic-structure-and-bonding.html">
+   Atomic Structure and Bonding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/CTE_calc.html">
+   CTE Calculation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/bar_charts_with_error_bars.html">
+   CTE in a bar chart with error bars
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Crystal-Structure/crystal-structure.html">
+   Crystal Structure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-Polymers/polymer-density-problem.html">
+   Polymer Crystallinity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-Diffusion/diffusion_calculation.html">
+   Diffusion Calculation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-Mechanical-Properties/stress-strain-curves.html">
+   Mechanical Properties
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-Mechanical-Properties/bar_plot_with_error_bars.html">
+   Visuallizing Measurement Error
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08-Cold-Working/cold_work_problem.html">
+   Cold Work Problem
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../99-Appendix/appendix.html">
+   Appendix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../99-Appendix/about_the_author.html">
+   About the Author
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/01-Introduction/installing_anaconda_on_windows.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F01-Introduction/installing_anaconda_on_windows.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#steps">
+   Steps:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visit-the-anaconda-downloads-page">
+   1. Visit the Anaconda downloads page
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#select-the-windows">
+   2. Select the Windows
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download">
+   3. Download
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#open-and-run-the-installer">
+   4. Open and run the installer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#open-the-anaconda-prompt-from-the-windows-start-menu">
+   5. Open the Anaconda Prompt from the Windows start menu
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#congratulations-you-installed-the-anaconda-distribution-on-your-windows-computer">
+   Congratulations! You installed the Anaconda distribution on your Windows computer!
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="installing-anaconda">
+<h1>Installing Anaconda<a class="headerlink" href="#installing-anaconda" title="Permalink to this headline">¶</a></h1>
+<p>In this section, we will run through how to install the <a class="reference external" href="https://www.anaconda.com/what-is-anaconda/">Anaconda distribution</a> of Python on Windows 10. I think the Anaconda distribution of Python is the the best option for undergraduate engineers who want to use Python. Anaconda is free (although the download is large which can take time) and can be installed on school or work computers where you don’t have administrator access or the ability to install new programs.</p>
+<div class="section" id="steps">
+<h2>Steps:<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Visit <a class="reference external" href="https://www.anaconda.com/distribution/">Anaconda.com/distribution</a></p></li>
+<li><p>Select Windows</p></li>
+<li><p>Download the <strong><em>.exe</em></strong> installer</p></li>
+<li><p>Open and run the <strong><em>.exe</em></strong> installer</p></li>
+<li><p>Open the <strong>Anaconda Prompt</strong> and run some Python code</p></li>
+</ol>
+<br>
+</div>
+<div class="section" id="visit-the-anaconda-downloads-page">
+<h2>1. Visit the Anaconda downloads page<a class="headerlink" href="#visit-the-anaconda-downloads-page" title="Permalink to this headline">¶</a></h2>
+<p>Go to the following link: <a class="reference external" href="https://www.anaconda.com/distribution/">Anaconda.com/distribution</a></p>
+<p>The Anaconda Downloads Page will look something like this:</p>
+<p><img alt="anaconda download page" src="../_images/anaconda_download_page.png" /></p>
+<br>
+</div>
+<div class="section" id="select-the-windows">
+<h2>2. Select the Windows<a class="headerlink" href="#select-the-windows" title="Permalink to this headline">¶</a></h2>
+<p>Select Windows where the three operating systems are listed.</p>
+<p><img alt="anaconda select Windows" src="../_images/anaconda_select_windows.png" /></p>
+<br>
+</div>
+<div class="section" id="download">
+<h2>3. Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h2>
+<p>Download the Python 3.8 version. Python 2.7 is legacy Python. For undergraduate engineers, select the Python 3.8 version. If you are unsure about installing the 32-bit version vs the 64-bit version, most Windows installations are 64-bit.</p>
+<p><img alt="anaconda select python 3.8" src="../_images/anaconda_python3_or_python2.png" /></p>
+<p>You may be prompted to enter your email. You can still download Anaconda if you click <strong>[No Thanks]</strong> and don’t enter your Work Email address.</p>
+<p><img alt="anaconda" src="../_images/anaconda_enter_email.png" /></p>
+<p>The download is quite large (over 500 MB) so it may take a while for the download to complete.</p>
+<p><img alt="anaconda downloading" src="../_images/anaconda_downloading.png" /></p>
+<br>
+</div>
+<div class="section" id="open-and-run-the-installer">
+<h2>4. Open and run the installer<a class="headerlink" href="#open-and-run-the-installer" title="Permalink to this headline">¶</a></h2>
+<p>Once the download completes, open and run the <strong><em>.exe</em></strong> installer</p>
+<p><img alt="anaconda installer" src="../_images/anaconda_run_installer.png" /></p>
+<p>At the beginning of the install, you will need to click <strong>[Next]</strong> to confirm the installation,</p>
+<p><img alt="anaconda installer click next" src="../_images/anaconda_installer_click_next.png" /></p>
+<p>and agree to the license.</p>
+<p><img alt="anaconda license" src="../_images/anaconda_agree_to_license.png" /></p>
+<p>At the Advanced Installation Options screen, I recommend:</p>
+<ul class="simple">
+<li><p><strong>do not check</strong> “Add Anaconda to my PATH environment variable”</p></li>
+<li><p>Keep “Register Anaconda as my default Python” 3.7 checked</p></li>
+</ul>
+<p><img alt="anaconda path variable" src="../_images/anaconda_path2.png" /></p>
+<br>
+</div>
+<div class="section" id="open-the-anaconda-prompt-from-the-windows-start-menu">
+<h2>5. Open the Anaconda Prompt from the Windows start menu<a class="headerlink" href="#open-the-anaconda-prompt-from-the-windows-start-menu" title="Permalink to this headline">¶</a></h2>
+<p>After the Anaconda install is complete, you can go to the Windows start menu and select the Anaconda Prompt.</p>
+<p><img alt="anaconda in start menu" src="../_images/anaconda_from_start_menu.png" /></p>
+<p>This will open up the Anaconda Prompt. Anaconda is the Python distribution and the Anaconda Prompt is a command line tool (a program where you type in your commands instead of using a mouse). It doesn’t look like much, but it is really helpful for an undergraduate engineer using Python.</p>
+<p><img alt="anaconda prompt" src="../_images/anaconda_window.png" /></p>
+<p>At the Anaconda Prompt, type <code class="docutils literal notranslate"><span class="pre">python</span></code>. The <code class="docutils literal notranslate"><span class="pre">python</span></code> command starts the Python interpreter.</p>
+<p><img alt="conda prompt type python" src="../_images/conda_prompt_type_python.png" /></p>
+<p>Note the Python version. You should see something like <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3.7.0</span></code>.  With the interperter running, you will see a set of greater-than symbols <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> before the cursor.</p>
+<p><img alt="anaconda prompt" src="../_images/conda_type_python.png" /></p>
+<p>Now you can type Python commands. Try typing <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">this</span></code>. You should see the <strong><em>Zen of Python</em></strong> by Tim Peters</p>
+<p><img alt="anaconda_import_this" src="../_images/conda_import_this_output.png" /></p>
+<p>To close the Python interpreter, type <code class="docutils literal notranslate"><span class="pre">exit()</span></code> at the interpreter prompt <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code>.  Note the double parenthesis at the end of the command. The <code class="docutils literal notranslate"><span class="pre">()</span></code> is needed to stop the Python interpreter and get back out to the Anaconda Prompt.</p>
+<p>To close the Anaconda Prompt, you can either close the window with the mouse, or type <code class="docutils literal notranslate"><span class="pre">exit</span></code>.</p>
+<br>
+</div>
+<div class="section" id="congratulations-you-installed-the-anaconda-distribution-on-your-windows-computer">
+<h2>Congratulations! You installed the Anaconda distribution on your Windows computer!<a class="headerlink" href="#congratulations-you-installed-the-anaconda-distribution-on-your-windows-computer" title="Permalink to this headline">¶</a></h2>
+<p>When you want to use the Python interpreter again, just click the Windows Start button and select the <strong>Anaconda Prompt</strong> and type <code class="docutils literal notranslate"><span class="pre">python</span></code>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./01-Introduction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="why_python.html" title="previous page">Why Python?</a>
+    <a class='right-next' id="next-link" href="unit_conversions.html" title="next page">Unit Conversions</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Peter D. Kazarinoff<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

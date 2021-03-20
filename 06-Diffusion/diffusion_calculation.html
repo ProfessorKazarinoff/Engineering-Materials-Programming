@@ -1,0 +1,592 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diffusion Calculation &#8212; Engineering Materials Programming</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mechanical Properties" href="../07-Mechanical-Properties/stress-strain-curves.html" />
+    <link rel="prev" title="Polymer Crystallinity" href="../04-Polymers/polymer-density-problem.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Engineering Materials Programming</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../welcome.html">
+   Engineering Materials Programming Book
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../01-Introduction/introduction.html">
+   Introduction
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/why_python.html">
+     Why Python?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/installing_anaconda_on_windows.html">
+     Installing Anaconda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/unit_conversions.html">
+     Unit Conversions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/atomic-structure-and-bonding.html">
+   Atomic Structure and Bonding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/CTE_calc.html">
+   CTE Calculation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/bar_charts_with_error_bars.html">
+   CTE in a bar chart with error bars
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Crystal-Structure/crystal-structure.html">
+   Crystal Structure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-Polymers/polymer-density-problem.html">
+   Polymer Crystallinity
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Diffusion Calculation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-Mechanical-Properties/stress-strain-curves.html">
+   Mechanical Properties
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-Mechanical-Properties/bar_plot_with_error_bars.html">
+   Visuallizing Measurement Error
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08-Cold-Working/cold_work_problem.html">
+   Cold Work Problem
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../99-Appendix/appendix.html">
+   Appendix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../99-Appendix/about_the_author.html">
+   About the Author
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/06-Diffusion/diffusion_calculation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F06-Diffusion/diffusion_calculation.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ProfessorKazarinoff/Engineering-Materials-Programming/main?urlpath=tree/Engineering-Materials-Programming-Book/06-Diffusion/diffusion_calculation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#given">
+   Given:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#find">
+   Find:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solution">
+   Solution:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#final-answer">
+   Final Answer:
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="diffusion-calculation">
+<h1>Diffusion Calculation<a class="headerlink" href="#diffusion-calculation" title="Permalink to this headline">¶</a></h1>
+<p>Programming can be useful to solve complex diffusion calculations. The calculation below is completed with Python and a package  called <a class="reference external" href="https://pint.readthedocs.io/en/latest/"><strong>pint</strong></a>. Pint is a package for dealing with units and unit conversion.</p>
+<p>The <a class="reference external" href="https://www.anaconda.com/download/"><strong>Anaconda</strong></a> distribution of <strong>Python</strong>, which comes with the <strong>Anaconda Prompt</strong> already installed. For help installing Anaconda, see the blog post: <a class="reference external" href="http://pythonforundergradengineers.com/installing-anaconda-on-windows.html">Installing Anaconda on Windows 10</a>.</p>
+<p>To use the <strong>pint</strong> package, you need to install <strong>pint</strong> using the <strong>Anaconda Prompt</strong>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&gt; pip install pint
+</pre></div>
+</div>
+<p>The problem involes the diffusion of nitrogen gas (N<sub>2</sub>) into a thin plate of iron.</p>
+<div class="section" id="given">
+<h2>Given:<a class="headerlink" href="#given" title="Permalink to this headline">¶</a></h2>
+<p>When α-iron is put in a nitrogen atmosphere, the concentration of nitrogen in the α-iron, <span class="math notranslate nohighlight">\(C_{N}\)</span> (in units of wt%) is a function of the nitrogen pressure <span class="math notranslate nohighlight">\(P_{N_2}\)</span> and temperature <span class="math notranslate nohighlight">\(T\)</span> accoding to the relationship:</p>
+<div class="math notranslate nohighlight">
+\[C_{N} = 4.9 \times 10^{-6} \sqrt{P_{N_2}} exp{\frac{Q_n}{RT}} \]</div>
+<p>Where:</p>
+<p><span class="math notranslate nohighlight">\(Q_n = 37,600 \frac{J}{mol}\)</span></p>
+<p><span class="math notranslate nohighlight">\(R=8.31 \frac{J}{mol-K}\)</span></p>
+<p><span class="math notranslate nohighlight">\(T\)</span> is the temperature in Kelvin.</p>
+<p>At 300 °C the nitrogen gas pressure on one side of an iron plate is 0.10 MPa. On the other side of the iron plate, the nitrogen gas pressure is 5.0 MPa. The iron plate is a 1.5 mm thick.  Assume the pre-exponential term <span class="math notranslate nohighlight">\(D_0\)</span> and the activation energy of diffusion of nitrogen in carbon, <span class="math notranslate nohighlight">\(Q_d\)</span> are equal to the values below:</p>
+<p><span class="math notranslate nohighlight">\(D_0 = 5 \times 10^{-7} \frac{m^2}{s}\)</span></p>
+<p><span class="math notranslate nohighlight">\(Q_d = 77,000 \frac{J}{mol} \)</span></p>
+</div>
+<div class="section" id="find">
+<h2>Find:<a class="headerlink" href="#find" title="Permalink to this headline">¶</a></h2>
+<p>Calculate the diffusion flux, <em>J</em> through the plate using Fick’s First Law of Diffusion:</p>
+<div class="math notranslate nohighlight">
+\[ J = -D \frac{dC}{dx} \]</div>
+</div>
+<div class="section" id="solution">
+<h2>Solution:<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p>We have a couple different quantities and a couple of different units to handle to solve this problem. We’ll start out importing <strong>pint</strong> and creating a <code class="docutils literal notranslate"><span class="pre">UnitRegistry</span></code> object. We’ll also need the <code class="docutils literal notranslate"><span class="pre">exp</span></code> (e raised to a power) and <code class="docutils literal notranslate"><span class="pre">sqrt</span></code> (square root) functions from the <a class="reference external" href="http://python.readthedocs.io/en/latest/library/math.html">math module</a>, part of the <strong>Python</strong> standard library.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pint</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">sqrt</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">pint</span><span class="o">.</span><span class="n">UnitRegistry</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s start with the temperature, T = 300 °C.</p>
+<p>Temperature units in °F and °C are relative units with an <a class="reference external" href="http://pint.readthedocs.io/en/latest/nonmult.html">off-set scale</a>. °C and °F are not <em>multiplicative units</em>.  <em>Non-multiplicatve units</em> are handled by <strong>pint</strong> a little differently compared to regular <em>multiplicative</em> units.</p>
+<p>To create a variable including a unit of degrees C, we instantiate a <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> object and pass in the temperature in °C along with the unit (<code class="docutils literal notranslate"><span class="pre">u.degC</span></code>). We can convert the temperature to Kelvin (K) using the <code class="docutils literal notranslate"><span class="pre">.ito</span></code> method.</p>
+<p>Since we want to do some mulipication, division and exponentiation with our temperature, we need to convert the temperature to a <em>multiplicative</em> unit. <strong>Pint</strong> has two versions of the temperature unit in Kelvin (K). There is the <em>non-multiplicative</em> type <code class="docutils literal notranslate"><span class="pre">degK</span></code> and the <em>multiplicative</em> type <code class="docutils literal notranslate"><span class="pre">kelvin</span></code>.</p>
+<p>We convert the temperature variable <code class="docutils literal notranslate"><span class="pre">T</span></code> to the <em>multiplicative</em> type <code class="docutils literal notranslate"><span class="pre">kelvin</span></code> by pulling out the magnitude (the number part without the <code class="docutils literal notranslate"><span class="pre">degK</span></code> unit) from the <code class="docutils literal notranslate"><span class="pre">T</span></code> variable and multiplying it by the <code class="docutils literal notranslate"><span class="pre">kevlin</span></code> unit from <strong>pint</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Q_</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">Q_</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">degC</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;T = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
+<span class="n">T</span><span class="o">.</span><span class="n">ito</span><span class="p">(</span><span class="s1">&#39;degK&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;T = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">magnitude</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">kelvin</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>T = 300 degree_Celsius
+T = 573.15 kelvin
+573.15 kelvin
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we’ll create variables for <span class="math notranslate nohighlight">\(Q_n = 37,600 \frac{J}{mol}\)</span> and the universal gas contant <span class="math notranslate nohighlight">\(R=8.31 \frac{J}{mol-K}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Qn</span> <span class="o">=</span> <span class="mi">37600</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">J</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">mol</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">8.31</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">J</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">mol</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">kelvin</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our first nitrogen pressure is 0.10 MPa and our second nitrogen pressure is 5.0 MPa, we’ll make variables for both:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PN1</span> <span class="o">=</span> <span class="mf">0.10</span>
+<span class="n">PN2</span> <span class="o">=</span> <span class="mf">5.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can calculate the two nitrogren concentrations in wt% using the equation:</p>
+<div class="math notranslate nohighlight">
+\[C_{N} = 4.9 \times 10^{-6} \sqrt{P_{N_2}} exp{\frac{Q_n}{RT}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(P_{N_2}\)</span> = 0.10 for one side of the iron plate and <span class="math notranslate nohighlight">\(P_{N_2}\)</span> = 5.0 for the other side of the iron plate</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CN1</span> <span class="o">=</span> <span class="p">(</span><span class="mf">4.9e-3</span><span class="p">)</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">PN1</span><span class="p">)</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Qn</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">T</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">CN1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.777054779474043e-07
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CN2</span> <span class="o">=</span> <span class="p">(</span><span class="mf">4.9e-3</span><span class="p">)</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">PN2</span><span class="p">)</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Qn</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">T</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">CN2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.084994609852251e-06
+</pre></div>
+</div>
+</div>
+</div>
+<p>These values <code class="docutils literal notranslate"><span class="pre">CN1</span></code> and <code class="docutils literal notranslate"><span class="pre">CN2</span></code> are in units of wt% N in an iron-nitrogen “alloy” where almost all of the alloy is iron with only a small amount of nitrogen. To use Fick’s First Law of Diffusion:</p>
+<div class="math notranslate nohighlight">
+\[ J = -D \frac{dC}{dx} \]</div>
+<p>We need a concentration gradient <span class="math notranslate nohighlight">\(dC\)</span> in units of mass per unit volume like kg/m<sup>3</sup> or g/cm<sup>3</sup> not in units of wt %. Therefore we need to convert the two concentrations of nitrogen in iron, <code class="docutils literal notranslate"><span class="pre">CN1</span></code> and <code class="docutils literal notranslate"><span class="pre">CN2</span></code> from units of wt% to units of kg/m<sup>3</sup>.</p>
+<p>To make the conversion between wt% and mass per unit volume we have to pick a sample mass of iron. This mass of iron will contain a mass of nitrogen (based on wt%). We can divide this mass of nitrogen by the volume of iron that corresponds to the mass of iron we picked. As long as we divide the mass of nitrogen by the volume of iron that contains that mass of nitrogen, we will end up with a unit conversion from wt% to kg/m<sup>3</sup> that works. So let’s pick 1 kilogram of iron, and use the density of iron as 7.874 g/cm<sup>3</sup>.</p>
+<p>We set a variable <code class="docutils literal notranslate"><span class="pre">p</span></code> to equal the density of iron in g/cm<sup>3</sup> and use the <code class="docutils literal notranslate"><span class="pre">.ito()</span></code> method to convert the density to units of kg/m<sup>3</sup>. Then we divide the mass of iron that we picked (1 kg) and convert it to volume of iron using the density <code class="docutils literal notranslate"><span class="pre">p</span></code>. This will give use the volume of 1kg of iron in units of m<sup>3</sup>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">=</span><span class="mf">7.874</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">g</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="o">**</span><span class="mi">3</span>
+<span class="n">p</span><span class="o">.</span><span class="n">ito</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">kg</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">mFe</span> <span class="o">=</span> <span class="mi">1</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">kg</span>
+<span class="n">vFe</span> <span class="o">=</span> <span class="n">mFe</span><span class="o">/</span><span class="n">p</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we’ll determine how many kg of nitrogen there are in 1 kg of iron given our concentrations <code class="docutils literal notranslate"><span class="pre">CN1</span></code> and <code class="docutils literal notranslate"><span class="pre">CN2</span></code> in wt%.  Note that we have to multiply <code class="docutils literal notranslate"><span class="pre">CN1</span></code> and <code class="docutils literal notranslate"><span class="pre">CN2</span></code> by <code class="docutils literal notranslate"><span class="pre">0.01</span></code> because <code class="docutils literal notranslate"><span class="pre">CN1</span></code> and <code class="docutils literal notranslate"><span class="pre">CN2</span></code> are in units of %.</p>
+<p>When we divide the mass of nitrogen by the volume of iron, we get a concentration of nitrogen in iron in units of kg/m<sup>3</sup>, which is the concentration units we need to use the Fick’s First Law of Diffusion.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mN1</span> <span class="o">=</span> <span class="n">mFe</span><span class="o">*</span><span class="n">CN1</span><span class="o">*</span><span class="mf">0.01</span>
+<span class="n">CN1</span> <span class="o">=</span> <span class="n">mN1</span><span class="o">/</span><span class="n">vFe</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">CN1</span><span class="p">)</span>
+
+<span class="n">mN2</span> <span class="o">=</span> <span class="n">mFe</span><span class="o">*</span><span class="n">CN2</span><span class="o">*</span><span class="mf">0.01</span>
+<span class="n">CN2</span> <span class="o">=</span> <span class="n">mN2</span><span class="o">/</span><span class="n">vFe</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">CN2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.5488529333578606e-05 kilogram / meter ** 3
+0.0003216524755797662 kilogram / meter ** 3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Back to Fick’s Fist Law of Diffusion:</p>
+<div class="math notranslate nohighlight">
+\[ J = -D \frac{dC}{dx} \]</div>
+<p>The difference in concentration <span class="math notranslate nohighlight">\(dC\)</span>, is just the difference between the two concentrations <code class="docutils literal notranslate"><span class="pre">CN1</span></code> and <code class="docutils literal notranslate"><span class="pre">CN2</span></code> now that they are both in units of kg/m<sup>3</sup>. <span class="math notranslate nohighlight">\(dx\)</span>, the change in distance is the thickness of the plate, 1.5 mm. We’ll convert the change in distance, <span class="math notranslate nohighlight">\(dx\)</span> to units of meters using the <code class="docutils literal notranslate"><span class="pre">ito()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dC</span> <span class="o">=</span> <span class="n">CN2</span><span class="o">-</span><span class="n">CN1</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">mm</span>
+<span class="n">dx</span><span class="o">.</span><span class="n">ito</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we need to find the diffusion coefficient <span class="math notranslate nohighlight">\(D\)</span>. To do this, we need the pre-exponential term <span class="math notranslate nohighlight">\(D_0\)</span> and the activating envery of diffusion <span class="math notranslate nohighlight">\(Q_d\)</span>.</p>
+<p>From the beginning of the problem:</p>
+<p><span class="math notranslate nohighlight">\(D_0 = 5 \times 10^{-7} \frac{m^2}{s}\)</span></p>
+<p><span class="math notranslate nohighlight">\(Q_d = 77,000 \frac{J}{mol} \)</span></p>
+<p>Let’s assign these to variables with the applicable units.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D0</span> <span class="o">=</span> <span class="mf">5e-7</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">s</span>
+<span class="n">Qd</span> <span class="o">=</span> <span class="mi">77000</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">J</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">mol</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To calculate diffusion constant <span class="math notranslate nohighlight">\(D\)</span>, we use the equation which relates diffusion coefficient, <span class="math notranslate nohighlight">\(D\)</span> to temperature, <span class="math notranslate nohighlight">\(T\)</span> according to:</p>
+<div class="math notranslate nohighlight">
+\[ D = D_0e^{\frac{-Q_d}{RT}} \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="n">D0</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Qd</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">T</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.7627851906932175e-14 meter ** 2 / second
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have <span class="math notranslate nohighlight">\(D\)</span>, <span class="math notranslate nohighlight">\(dC\)</span> and <span class="math notranslate nohighlight">\(dx\)</span>, we can finally calculate diffusion flux, <span class="math notranslate nohighlight">\(J\)</span> through the plate using Fick’s First Law of Diffusion:</p>
+<div class="math notranslate nohighlight">
+\[ J = -D \frac{dC}{dx} \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="o">=</span> <span class="o">-</span><span class="n">D</span><span class="o">*</span><span class="p">(</span><span class="n">dC</span><span class="o">/</span><span class="n">dx</span><span class="p">)</span>
+<span class="n">J</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">-8.768730355898267e-15 kilogram/(meter<sup>2</sup> second)</div></div>
+</div>
+</div>
+<div class="section" id="final-answer">
+<h2>Final Answer:<a class="headerlink" href="#final-answer" title="Permalink to this headline">¶</a></h2>
+<p>So the final answer rounded to 3 sig figs is:</p>
+<p><span class="math notranslate nohighlight">\(J = -8.77 \times 10^{-15} \frac{kg}{m^{2}s}\)</span></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./06-Diffusion"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../04-Polymers/polymer-density-problem.html" title="previous page">Polymer Crystallinity</a>
+    <a class='right-next' id="next-link" href="../07-Mechanical-Properties/stress-strain-curves.html" title="next page">Mechanical Properties</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Peter D. Kazarinoff<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,941 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mechanical Properties &#8212; Engineering Materials Programming</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Visuallizing Measurement Error" href="bar_plot_with_error_bars.html" />
+    <link rel="prev" title="Diffusion Calculation" href="../06-Diffusion/diffusion_calculation.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Engineering Materials Programming</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../welcome.html">
+   Engineering Materials Programming Book
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../01-Introduction/introduction.html">
+   Introduction
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/why_python.html">
+     Why Python?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/installing_anaconda_on_windows.html">
+     Installing Anaconda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/unit_conversions.html">
+     Unit Conversions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/atomic-structure-and-bonding.html">
+   Atomic Structure and Bonding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/CTE_calc.html">
+   CTE Calculation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/bar_charts_with_error_bars.html">
+   CTE in a bar chart with error bars
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Crystal-Structure/crystal-structure.html">
+   Crystal Structure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-Polymers/polymer-density-problem.html">
+   Polymer Crystallinity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-Diffusion/diffusion_calculation.html">
+   Diffusion Calculation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Mechanical Properties
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bar_plot_with_error_bars.html">
+   Visuallizing Measurement Error
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08-Cold-Working/cold_work_problem.html">
+   Cold Work Problem
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../99-Appendix/appendix.html">
+   Appendix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../99-Appendix/about_the_author.html">
+   About the Author
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/07-Mechanical-Properties/stress-strain-curves.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F07-Mechanical-Properties/stress-strain-curves.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ProfessorKazarinoff/Engineering-Materials-Programming/main?urlpath=tree/Engineering-Materials-Programming-Book/07-Mechanical-Properties/stress-strain-curves.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-calculate-the-yield-strength-programatically">
+   Bonus: Calculate the yield strength programatically
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="mechanical-properties">
+<h1>Mechanical Properties<a class="headerlink" href="#mechanical-properties" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">ls</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Magenta">ABS_HIPS_plot_with_error_bars.png</span>  Steel1018_raw_data.xls
+Al60601_raw_data.xls               stress-strain-curves.ipynb
+bar_plot_with_error_bars.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_al</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;Al60601_raw_data.xls&#39;</span><span class="p">)</span>
+<span class="n">df_al</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING *** OLE2 inconsistency: SSCS size is 0 but SSAT size is non-zero
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TESTNUM</th>
+      <th>POINTNUM</th>
+      <th>TIME</th>
+      <th>POSIT</th>
+      <th>FORCE</th>
+      <th>EXT</th>
+      <th>CH5</th>
+      <th>CH6</th>
+      <th>CH7</th>
+      <th>CH8</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>542</td>
+      <td>1</td>
+      <td>8.470</td>
+      <td>0.02256</td>
+      <td>201.146011</td>
+      <td>-0.001444</td>
+      <td>0.007552</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>542</td>
+      <td>2</td>
+      <td>8.632</td>
+      <td>0.02330</td>
+      <td>206.599442</td>
+      <td>0.000302</td>
+      <td>0.007552</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>542</td>
+      <td>3</td>
+      <td>10.027</td>
+      <td>0.02846</td>
+      <td>287.512573</td>
+      <td>0.003044</td>
+      <td>0.018898</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>542</td>
+      <td>4</td>
+      <td>11.031</td>
+      <td>0.03232</td>
+      <td>365.380981</td>
+      <td>0.009881</td>
+      <td>0.022061</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>542</td>
+      <td>5</td>
+      <td>11.928</td>
+      <td>0.03616</td>
+      <td>447.813965</td>
+      <td>0.014085</td>
+      <td>0.033652</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_steel</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;Steel1018_raw_data.xls&#39;</span><span class="p">)</span>
+<span class="n">df_steel</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING *** OLE2 inconsistency: SSCS size is 0 but SSAT size is non-zero
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TESTNUM</th>
+      <th>POINTNUM</th>
+      <th>TIME</th>
+      <th>POSIT</th>
+      <th>FORCE</th>
+      <th>EXT</th>
+      <th>CH5</th>
+      <th>CH6</th>
+      <th>CH7</th>
+      <th>CH8</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>523</td>
+      <td>1</td>
+      <td>6.189</td>
+      <td>0.07302</td>
+      <td>202.924728</td>
+      <td>0.000402</td>
+      <td>-0.028272</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>523</td>
+      <td>2</td>
+      <td>6.549</td>
+      <td>0.07396</td>
+      <td>205.714890</td>
+      <td>-0.000238</td>
+      <td>-0.034549</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>523</td>
+      <td>3</td>
+      <td>7.148</td>
+      <td>0.07624</td>
+      <td>217.763336</td>
+      <td>-0.000713</td>
+      <td>-0.030140</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>523</td>
+      <td>4</td>
+      <td>9.146</td>
+      <td>0.08438</td>
+      <td>316.306122</td>
+      <td>0.002377</td>
+      <td>-0.025968</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>523</td>
+      <td>5</td>
+      <td>10.041</td>
+      <td>0.08822</td>
+      <td>417.003357</td>
+      <td>0.003089</td>
+      <td>-0.024100</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="mf">0.506</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">d</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">stress_al</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_al</span><span class="p">[</span><span class="s1">&#39;FORCE&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">*</span><span class="mf">0.001</span>
+<span class="n">strain_al</span> <span class="o">=</span> <span class="n">df_al</span><span class="p">[</span><span class="s1">&#39;CH5&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">0.01</span>
+
+<span class="n">stress_steel</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_steel</span><span class="p">[</span><span class="s1">&#39;FORCE&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">*</span><span class="mf">0.001</span>
+<span class="n">strain_steel</span> <span class="o">=</span> <span class="n">df_steel</span><span class="p">[</span><span class="s1">&#39;CH5&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">0.01</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_al</span><span class="p">,</span> <span class="n">stress_al</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel</span><span class="p">,</span> <span class="n">stress_steel</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Strain (in/in)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Stress (ksi)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Stress-Strain Curve of Al6061 and Steel1018 in Tension&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Al6061&#39;</span><span class="p">,</span><span class="s1">&#39;Steel1018&#39;</span><span class="p">])</span>
+<span class="c1">#plt.savefig(&#39;stress-strain_curve.png&#39;, dpi=300)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/stress-strain-curves_6_0.png" src="../_images/stress-strain-curves_6_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the tensile strength</span>
+<span class="n">ts_al</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">stress_al</span><span class="p">)</span>
+<span class="n">ts_steel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">stress_steel</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The tensile strength of Al6061 is: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">ts_al</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1"> ksi&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The tensile strength of Steel1018 is: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">ts_steel</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1"> ksi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The tensile strength of Al6061 is: 47.3 ksi
+The tensile strength of Steel1018 is: 95.5 ksi
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the elastic modulus of Al6061</span>
+<span class="c1"># use stress and strain values from stress=0 to stress=35 ksi</span>
+<span class="n">linear_stress_al_mask</span> <span class="o">=</span> <span class="n">stress_al</span> <span class="o">&lt;</span> <span class="mi">35</span>
+<span class="n">linear_stress_al</span> <span class="o">=</span> <span class="n">stress_al</span><span class="p">[</span><span class="n">linear_stress_al_mask</span><span class="p">]</span>
+<span class="n">linear_strain_al</span> <span class="o">=</span> <span class="n">strain_al</span><span class="p">[</span><span class="n">linear_stress_al_mask</span><span class="p">]</span>
+<span class="n">linear_regression_output</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">linear_strain_al</span><span class="p">,</span> <span class="n">linear_stress_al</span><span class="p">)</span>
+<span class="n">E_al</span> <span class="o">=</span> <span class="n">linear_regression_output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The elastic modulus of Al6061 is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">E_al</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1"> ksi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The elastic modulus of Al6061 is 9909.4 ksi
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the elastic modulus of Steel1018</span>
+<span class="c1"># use stress and strain values from stress=0 to stress=55 ksi</span>
+<span class="n">linear_stress_steel_mask</span> <span class="o">=</span> <span class="n">stress_steel</span> <span class="o">&lt;</span> <span class="mi">55</span>
+<span class="n">linear_stress_steel</span> <span class="o">=</span> <span class="n">stress_steel</span><span class="p">[</span><span class="n">linear_stress_steel_mask</span><span class="p">]</span>
+<span class="n">linear_strain_steel</span> <span class="o">=</span> <span class="n">strain_steel</span><span class="p">[</span><span class="n">linear_stress_steel_mask</span><span class="p">]</span>
+<span class="n">linear_regression_output_steel</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">linear_strain_steel</span><span class="p">,</span> <span class="n">linear_stress_steel</span><span class="p">)</span>
+<span class="n">E_steel</span> <span class="o">=</span> <span class="n">linear_regression_output_steel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The elastic modulus of Steel1018 is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">E_steel</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1"> ksi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The elastic modulus of Steel1018 is 40125.4 ksi
+</pre></div>
+</div>
+</div>
+</div>
+<p>The ductility of a metal is calculated from a stress strain curve by drawing a line down from the fracture point on the curve, parallel to the linear elastic region. Where that line crosses the strain axis is the ductility.</p>
+<p>Point-Slope Formula for a line:</p>
+<div class="math notranslate nohighlight">
+\[ y - y_1 = m(x-x_1) \]</div>
+<p>Where <span class="math notranslate nohighlight">\(m=\)</span> slope in the linear elastic region (elastic modulus), <span class="math notranslate nohighlight">\(x_1=\)</span> last strain point on the stress strain curve, <span class="math notranslate nohighlight">\(y_1 =\)</span> last stress point on the stress strain curve.</p>
+<p>Solve the equation above for <span class="math notranslate nohighlight">\(x\)</span>, when <span class="math notranslate nohighlight">\(y=0\)</span> in terms of <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span> and <span class="math notranslate nohighlight">\(m\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[ x = \frac{-y_1}{m}+x_1 \]</div>
+<p>Substitue in ductility, elastic modulus <span class="math notranslate nohighlight">\(E\)</span>, and the last stress and strain points.</p>
+<div class="math notranslate nohighlight">
+\[ \%EL = \frac{-stress_{last}}{E}+strain_{last} \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the ductility for Al6061</span>
+<span class="n">stress_al_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">stress_al</span><span class="p">)</span>
+<span class="n">stress_al_last</span> <span class="o">=</span> <span class="n">stress_al_array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">strain_al_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">strain_al</span><span class="p">)</span>
+<span class="n">strain_al_last</span> <span class="o">=</span> <span class="n">strain_al_array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">EL_al</span> <span class="o">=</span> <span class="o">-</span><span class="n">stress_al_last</span><span class="o">/</span><span class="n">E_al</span> <span class="o">+</span> <span class="n">strain_al_last</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The ductility of Al6061 is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">EL_al</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The ductility of Al6061 is 20.4%
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the ductility of Steel1018</span>
+<span class="n">stress_steel_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">stress_steel</span><span class="p">)</span>
+<span class="n">stress_steel_last</span> <span class="o">=</span> <span class="n">stress_steel_array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">strain_steel_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">strain_steel</span><span class="p">)</span>
+<span class="n">strain_steel_last</span> <span class="o">=</span> <span class="n">strain_steel_array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">EL_steel</span> <span class="o">=</span> <span class="o">-</span><span class="n">stress_steel_last</span><span class="o">/</span><span class="n">E_steel</span> <span class="o">+</span> <span class="n">strain_steel_last</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The ductility of Steel1018 is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">EL_steel</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The ductility of Steel1018 is 25.0%
+</pre></div>
+</div>
+</div>
+</div>
+<p>The yield strength of a metal is calculated from a stress strain curve by drawing a line parallel to the elastic modulus that goes through the point strain=0.002. Where that line crosses the stress strain curve, that amount of stress is the yield strength</p>
+<p>Point-Slope Formula for a line:</p>
+<div class="math notranslate nohighlight">
+\[ y - y_1 = m(x-x_1) \]</div>
+<p>Where <span class="math notranslate nohighlight">\(m=\)</span> slope in the linear elastic region (elastic modulus, E), <span class="math notranslate nohighlight">\(x_1=0.002\)</span>, and <span class="math notranslate nohighlight">\(y_1 = 0\)</span></p>
+<p>Rewrite the equation, where <span class="math notranslate nohighlight">\(y=stress_{offset}\)</span> and the elastic modulus and value of <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(y_1\)</span> are included.</p>
+<div class="math notranslate nohighlight">
+\[ stress_{offset} = E(strain-0.002) \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate the yield strength of Al6061</span>
+<span class="n">stress_offset_al</span> <span class="o">=</span> <span class="n">E_al</span><span class="o">*</span><span class="p">(</span><span class="n">strain_al_array</span><span class="o">-</span><span class="mf">0.002</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_al</span><span class="p">,</span><span class="n">stress_al</span><span class="p">,</span><span class="n">strain_al</span><span class="p">,</span><span class="n">stress_offset_al</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/stress-strain-curves_14_0.png" src="../_images/stress-strain-curves_14_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">YS_al</span> <span class="o">=</span> <span class="mf">41.3653</span> <span class="c1"># by zooming into the plot that contains the stress strain curve of Al6061 and the offset stress</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The yield strength of Al6061 is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">YS_al</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1"> ksi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The yield strength of Al6061 is 41.4 ksi
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the yield strength of Steel1018</span>
+<span class="n">stress_offset_steel</span> <span class="o">=</span> <span class="n">E_steel</span><span class="o">*</span><span class="p">(</span><span class="n">strain_steel_array</span><span class="o">-</span><span class="mf">0.002</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel</span><span class="p">,</span><span class="n">stress_steel</span><span class="p">,</span><span class="n">strain_steel</span><span class="p">,</span><span class="n">stress_offset_steel</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/stress-strain-curves_16_0.png" src="../_images/stress-strain-curves_16_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">YS_steel</span> <span class="o">=</span> <span class="mf">57.4495</span> <span class="c1"># by zooming into a plot showing the stress strain curve of steel1018 and the offset stress</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;the yield strength of steel1018 is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">YS_steel</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1"> ksi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the yield strength of steel1018 is 57.4 ksi
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="bonus-calculate-the-yield-strength-programatically">
+<h2>Bonus: Calculate the yield strength programatically<a class="headerlink" href="#bonus-calculate-the-yield-strength-programatically" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">stress_al_array</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">stress_offset_al</span>
+<span class="n">yield_stress_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">f</span> <span class="o">-</span> <span class="n">g</span><span class="p">)))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">yield_strength_al</span> <span class="o">=</span> <span class="n">stress_al_array</span><span class="p">[</span><span class="n">yield_stress_index</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_al_array</span><span class="p">,</span><span class="n">stress_al_array</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_al_array</span><span class="p">,</span> <span class="n">stress_offset_al</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_al_array</span><span class="p">[</span><span class="n">yield_stress_index</span><span class="p">],</span><span class="n">yield_strength_al</span><span class="p">,</span><span class="s1">&#39;go&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/stress-strain-curves_19_0.png" src="../_images/stress-strain-curves_19_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The yield strength of Al6061 found programatically is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">yield_strength_al</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1"> ksi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The yield strength of Al6061 found programatically is 41.3 ksi
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the yield strength of steel programatically</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">stress_steel_array</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">stress_offset_steel</span>
+
+<span class="n">yield_strength_steel_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">f</span> <span class="o">-</span> <span class="n">g</span><span class="p">)))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">yield_strength_steel</span> <span class="o">=</span> <span class="n">stress_steel_array</span><span class="p">[</span><span class="n">yield_strength_steel_index</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel_array</span><span class="p">,</span><span class="n">stress_steel_array</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel_array</span><span class="p">,</span><span class="n">stress_offset_steel</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel_array</span><span class="p">[</span><span class="n">yield_strength_steel_index</span><span class="p">],</span><span class="n">yield_strength_steel</span><span class="p">,</span><span class="s1">&#39;go&#39;</span><span class="p">)</span>
+<span class="n">yield_strength_steel</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>57.57449033272721
+</pre></div>
+</div>
+<img alt="../_images/stress-strain-curves_21_1.png" src="../_images/stress-strain-curves_21_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write a function to calculate the intersection of two lines defined by 4 points</span>
+
+<span class="k">def</span> <span class="nf">intersection_point</span><span class="p">(</span><span class="n">Ax1</span><span class="p">,</span> <span class="n">Ay1</span><span class="p">,</span> <span class="n">Ax2</span><span class="p">,</span> <span class="n">Ay2</span><span class="p">,</span> <span class="n">Bx1</span><span class="p">,</span> <span class="n">By1</span><span class="p">,</span> <span class="n">Bx2</span><span class="p">,</span> <span class="n">By2</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">By2</span><span class="o">-</span><span class="n">By1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Ax2</span><span class="o">-</span><span class="n">Ax1</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">Bx2</span><span class="o">-</span><span class="n">Bx1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Ay2</span><span class="o">-</span><span class="n">Ay1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">d</span><span class="p">:</span>
+        <span class="n">uA</span> <span class="o">=</span> <span class="p">((</span><span class="n">Bx2</span><span class="o">-</span><span class="n">Bx1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Ay1</span><span class="o">-</span><span class="n">By1</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">By2</span><span class="o">-</span><span class="n">By1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Ax1</span><span class="o">-</span><span class="n">Bx1</span><span class="p">))</span><span class="o">/</span><span class="n">d</span>
+        <span class="n">uB</span> <span class="o">=</span> <span class="p">((</span><span class="n">Ax2</span><span class="o">-</span><span class="n">Ax1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Ay1</span><span class="o">-</span><span class="n">By1</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">Ay2</span><span class="o">-</span><span class="n">Ay1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Ax1</span><span class="o">-</span><span class="n">Bx1</span><span class="p">))</span><span class="o">/</span><span class="n">d</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">uA</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">uB</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">Ax1</span> <span class="o">+</span> <span class="n">uA</span> <span class="o">*</span> <span class="p">(</span><span class="n">Ax2</span> <span class="o">-</span> <span class="n">Ax1</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">Ay1</span> <span class="o">+</span> <span class="n">uA</span> <span class="o">*</span> <span class="p">(</span><span class="n">Ay2</span> <span class="o">-</span> <span class="n">Ay1</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="n">yield_strength_steel_index</span>
+<span class="n">second</span> <span class="o">=</span> <span class="n">first</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="c1"># A points from the stress strain curve</span>
+<span class="n">Ax1</span> <span class="o">=</span> <span class="n">strain_steel_array</span><span class="p">[</span><span class="n">first</span><span class="p">]</span>
+<span class="n">Ay1</span> <span class="o">=</span> <span class="n">stress_steel_array</span><span class="p">[</span><span class="n">first</span><span class="p">]</span>
+<span class="n">Ax2</span> <span class="o">=</span> <span class="n">strain_steel_array</span><span class="p">[</span><span class="n">second</span><span class="p">]</span>
+<span class="n">Ay2</span> <span class="o">=</span> <span class="n">stress_steel_array</span><span class="p">[</span><span class="n">second</span><span class="p">]</span>
+<span class="c1"># B points from the offset line</span>
+<span class="n">Bx1</span> <span class="o">=</span> <span class="n">strain_steel_array</span><span class="p">[</span><span class="n">first</span><span class="p">]</span>
+<span class="n">By1</span> <span class="o">=</span> <span class="n">stress_offset_steel</span><span class="p">[</span><span class="n">first</span><span class="p">]</span>
+<span class="n">Bx2</span> <span class="o">=</span> <span class="n">strain_steel_array</span><span class="p">[</span><span class="n">second</span><span class="p">]</span>
+<span class="n">By2</span> <span class="o">=</span> <span class="n">stress_offset_steel</span><span class="p">[</span><span class="n">second</span><span class="p">]</span>
+
+<span class="c1"># run our function that finds the intersection point</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">intersection_point</span><span class="p">(</span><span class="n">Ax1</span><span class="p">,</span><span class="n">Ay1</span><span class="p">,</span><span class="n">Ax2</span><span class="p">,</span><span class="n">Ay2</span><span class="p">,</span><span class="n">Bx1</span><span class="p">,</span><span class="n">By1</span><span class="p">,</span><span class="n">Bx2</span><span class="p">,</span><span class="n">By2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0034317318641272137 57.448780022628426
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel_array</span><span class="p">,</span><span class="n">stress_steel_array</span><span class="p">,</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel_array</span><span class="p">,</span><span class="n">stress_offset_steel</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;go&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/stress-strain-curves_24_0.png" src="../_images/stress-strain-curves_24_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The yield strength of Steel1018 calculated programmatically is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1"> ksi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The yield strength of Steel1018 calculated programmatically is 57.4 ksi
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./07-Mechanical-Properties"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../06-Diffusion/diffusion_calculation.html" title="previous page">Diffusion Calculation</a>
+    <a class='right-next' id="next-link" href="bar_plot_with_error_bars.html" title="next page">Visuallizing Measurement Error</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Peter D. Kazarinoff<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

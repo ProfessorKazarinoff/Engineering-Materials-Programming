@@ -1,0 +1,603 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visuallizing Measurement Error &#8212; Engineering Materials Programming</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Cold Work Problem" href="../08-Cold-Working/cold_work_problem.html" />
+    <link rel="prev" title="Mechanical Properties" href="stress-strain-curves.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Engineering Materials Programming</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../welcome.html">
+   Engineering Materials Programming Book
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../01-Introduction/introduction.html">
+   Introduction
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/why_python.html">
+     Why Python?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/installing_anaconda_on_windows.html">
+     Installing Anaconda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/unit_conversions.html">
+     Unit Conversions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/atomic-structure-and-bonding.html">
+   Atomic Structure and Bonding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/CTE_calc.html">
+   CTE Calculation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/bar_charts_with_error_bars.html">
+   CTE in a bar chart with error bars
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Crystal-Structure/crystal-structure.html">
+   Crystal Structure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-Polymers/polymer-density-problem.html">
+   Polymer Crystallinity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-Diffusion/diffusion_calculation.html">
+   Diffusion Calculation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stress-strain-curves.html">
+   Mechanical Properties
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Visuallizing Measurement Error
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08-Cold-Working/cold_work_problem.html">
+   Cold Work Problem
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../99-Appendix/appendix.html">
+   Appendix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../99-Appendix/about_the_author.html">
+   About the Author
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/07-Mechanical-Properties/bar_plot_with_error_bars.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F07-Mechanical-Properties/bar_plot_with_error_bars.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ProfessorKazarinoff/Engineering-Materials-Programming/main?urlpath=tree/Engineering-Materials-Programming-Book/07-Mechanical-Properties/bar_plot_with_error_bars.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="visuallizing-measurement-error">
+<h1>Visuallizing Measurement Error<a class="headerlink" href="#visuallizing-measurement-error" title="Permalink to this headline">¶</a></h1>
+<p>Engineers collect data and make conclusions based on the results. An important way to view results is with statistical charts. In this exampe we will build a bar chart that compares the tensile strength of 3D-printed ABS plastic under different printing conditions.</p>
+<p>We will add error bars to the chart to show the amount of uncertainty in the data. For this plot, the hieght of the bars represent the mean or average of the measured tensile stength in the sample of data. The error bars on the plot will represent +1/-1 standard deviation about the mean.</p>
+<p>The data we are going to plot is stored in an Microsoft Excel File. You can download the sample data here (clicking link will start the download):</p>
+<p><a class="reference external" href="https://github.com/ProfessorKazarinoff/staticsite/raw/master/content/code/matplotlib_plots/3D-printed_tensile_test_data.xlsx">3D-printed-tensile-bar-data.xlsx</a></p>
+<p>We’ll use <strong>pandas</strong> to load the data into the notebook. The <strong>Anaconda</strong> distribution of Python comes with the <strong>pandas</strong> library already installed. If <strong>pandas</strong> is not available, open a terminal or the <strong>Anaconda Prompt</strong> and type:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>pip install pandas
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>conda install pandas
+</pre></div>
+</div>
+<p>Note that when I first tried to run the <code class="docutils literal notranslate"><span class="pre">pd.read_excel()</span></code> function, I was returned an error:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ne">ImportError</span><span class="p">:</span> <span class="n">Install</span> <span class="n">xlrd</span> <span class="o">&gt;=</span> <span class="mf">0.9</span><span class="o">.</span><span class="mi">0</span> <span class="k">for</span> <span class="n">Excel</span> <span class="n">support</span>
+</pre></div>
+</div>
+<p>To solve this, I went to the <strong>Anaconda Prompt</strong> and typed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">xlrd</span>
+</pre></div>
+</div>
+<p>Once the <strong>xlrd</strong> module was installed, the <code class="docutils literal notranslate"><span class="pre">pd.read_excel()</span></code> function worked just fine.</p>
+<p>To start the jupyter notebook, we need to import the required packages:</p>
+<p><strong>pandas</strong>
+<strong>numpy</strong>
+<strong>matplotlib</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code> magic command is add so that we can see our plots right in the <strong>jupyter notebook</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_url</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/ProfessorKazarinoff/staticsite/raw/master/content/code/matplotlib_plots/3D-printed_tensile_test_data.xlsx&#39;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">data_url</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Material</th>
+      <th>Width (mm)</th>
+      <th>Thickness (mm)</th>
+      <th>Cross-sectional Area (mm^2)</th>
+      <th>Maximum Force (N)</th>
+      <th>Tensile Strength (Mpa)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ABS</td>
+      <td>6.33</td>
+      <td>3.61</td>
+      <td>22.8513</td>
+      <td>426</td>
+      <td>18.642265</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ABS</td>
+      <td>6.27</td>
+      <td>3.80</td>
+      <td>23.8260</td>
+      <td>514</td>
+      <td>21.573071</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ABS</td>
+      <td>6.29</td>
+      <td>3.61</td>
+      <td>22.7069</td>
+      <td>499</td>
+      <td>21.975699</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ABS</td>
+      <td>6.28</td>
+      <td>3.50</td>
+      <td>21.9800</td>
+      <td>461</td>
+      <td>20.973612</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ABS</td>
+      <td>6.25</td>
+      <td>3.72</td>
+      <td>23.2500</td>
+      <td>418</td>
+      <td>17.978495</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Pandas</strong> has a nice little method to view the staticstics for column in our datafram called <code class="docutils literal notranslate"><span class="pre">describe()</span></code>. We’ll use the <code class="docutils literal notranslate"><span class="pre">describe()</span></code> method to get a look at our basic statistics. The tensile strength column is the one we are interested in. Note the <code class="docutils literal notranslate"><span class="pre">describe()</span></code> method needs to include the <code class="docutils literal notranslate"><span class="pre">()</span></code> parenthesis at the end.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tensile Strength (Mpa)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    36.000000
+mean     14.881000
+std       4.983496
+min       4.931429
+25%      10.695890
+50%      13.420756
+75%      19.429057
+max      23.825110
+Name: Tensile Strength (Mpa), dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>This gives us the mean for the whole tensile strength column, but we are intrested in comparing the two materials, ABS and HIPS. HIPS stands for High-Impact PolyStyrene and is a common 3-D printing fillament material like ABS and PLA. We need a way to only group the ABS data together and group the HIPS data seperatly. We can view the statistics for the rows that are ABS data and the rows that are HIPS data seperatly using <strong>pandas</strong> <code class="docutils literal notranslate"><span class="pre">groupby</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tensile Strength (Mpa)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Material&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>Material</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ABS</th>
+      <td>16.0</td>
+      <td>19.935392</td>
+      <td>1.796473</td>
+      <td>16.022111</td>
+      <td>19.166825</td>
+      <td>19.618907</td>
+      <td>20.978060</td>
+      <td>23.825110</td>
+    </tr>
+    <tr>
+      <th>HIPS</th>
+      <td>20.0</td>
+      <td>10.837486</td>
+      <td>2.116019</td>
+      <td>4.931429</td>
+      <td>10.182108</td>
+      <td>10.762229</td>
+      <td>11.982909</td>
+      <td>14.759169</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ABS_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Material&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ABS&#39;</span><span class="p">]</span>
+<span class="n">HIPS_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Material&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;HIPS&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s save the <code class="docutils literal notranslate"><span class="pre">mean</span></code> (the average) and the <code class="docutils literal notranslate"><span class="pre">std</span></code> (standard deviation) to new variables</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ABS_mean</span> <span class="o">=</span> <span class="n">ABS_df</span><span class="p">[</span><span class="s1">&#39;Tensile Strength (Mpa)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">ABS_stdev</span> <span class="o">=</span> <span class="n">ABS_df</span><span class="p">[</span><span class="s1">&#39;Tensile Strength (Mpa)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="n">HIPS_mean</span> <span class="o">=</span> <span class="n">HIPS_df</span><span class="p">[</span><span class="s1">&#39;Tensile Strength (Mpa)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">HIPS_stdev</span> <span class="o">=</span> <span class="n">HIPS_df</span><span class="p">[</span><span class="s1">&#39;Tensile Strength (Mpa)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Time to fire up the plot. We will build a plot using <strong>matplotlib</strong>.</p>
+<p>We’ll use <strong>matplotlibs</strong> <code class="docutils literal notranslate"><span class="pre">plt.bar</span></code> method to build the plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="s1">&#39;ABS&#39;</span><span class="p">,</span> <span class="s1">&#39;HIPS&#39;</span><span class="p">],</span> <span class="p">[</span><span class="n">ABS_mean</span><span class="p">,</span> <span class="n">HIPS_mean</span><span class="p">],</span> <span class="n">yerr</span><span class="o">=</span><span class="p">[</span><span class="n">ABS_stdev</span><span class="p">,</span> <span class="n">HIPS_stdev</span><span class="p">],</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Tensile Strength (MPa)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Tensile Strength of 3-D Printed ABS Tensile Bars&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;ABS_HIPS_plot_with_error_bars.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bar_plot_with_error_bars_13_0.png" src="../_images/bar_plot_with_error_bars_13_0.png" />
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./07-Mechanical-Properties"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="stress-strain-curves.html" title="previous page">Mechanical Properties</a>
+    <a class='right-next' id="next-link" href="../08-Cold-Working/cold_work_problem.html" title="next page">Cold Work Problem</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Peter D. Kazarinoff<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
