@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6. Mechanical Properties &#8212; Engineering Materials Programming</title>
+    <title>6.1. Stress-Strain Curves &#8212; Engineering Materials Programming</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -56,8 +56,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. Visuallizing Measurement Error" href="bar_plot_with_error_bars.html" />
-    <link rel="prev" title="5. Diffusion Calculation" href="../06-Diffusion/diffusion_calculation.html" />
+    <link rel="next" title="6.2. Visuallizing Measurement Error" href="bar_plot_with_error_bars.html" />
+    <link rel="prev" title="6. Mechanical Properties" href="mechanical-properties-intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -181,19 +181,28 @@
    5. Diffusion Calculation
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="mechanical-properties-intro.html">
    6. Mechanical Properties
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="bar_plot_with_error_bars.html">
-   7. Visuallizing Measurement Error
-  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.1. Stress-Strain Curves
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bar_plot_with_error_bars.html">
+     6.2. Visuallizing Measurement Error
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../08-Cold-Working/cold_work_problem.html">
-   8. Cold Work Problem
+   7. Cold Work Problem
   </a>
  </li>
 </ul>
@@ -313,8 +322,8 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bonus-calculate-the-yield-strength-programatically">
-   6.1. Bonus: Calculate the yield strength programatically
+  <a class="reference internal nav-link" href="#bonus-calculate-yield-strength-programatically">
+   Bonus: Calculate yield strength programatically
   </a>
  </li>
 </ul>
@@ -329,8 +338,8 @@
         
               <div>
                 
-  <div class="section" id="mechanical-properties">
-<h1><span class="section-number">6. </span>Mechanical Properties<a class="headerlink" href="#mechanical-properties" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="stress-strain-curves">
+<h1><span class="section-number">6.1. </span>Stress-Strain Curves<a class="headerlink" href="#stress-strain-curves" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># imports</span>
@@ -351,8 +360,8 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ABS_HIPS_plot_with_error_bars.png  bar_plot_with_error_bars.ipynb
-Al60601_raw_data.xls               stress-strain-curves.ipynb
-Steel1018_raw_data.xls
+Al60601_raw_data.xls               mechanical-properties-intro.md
+Steel1018_raw_data.xls             stress-strain-curves.ipynb
 </pre></div>
 </div>
 </div>
@@ -774,8 +783,8 @@ The tensile strength of Steel1018 is: 95.5 ksi
 </div>
 </div>
 </div>
-<div class="section" id="bonus-calculate-the-yield-strength-programatically">
-<h2><span class="section-number">6.1. </span>Bonus: Calculate the yield strength programatically<a class="headerlink" href="#bonus-calculate-the-yield-strength-programatically" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bonus-calculate-yield-strength-programatically">
+<h2>Bonus: Calculate yield strength programatically<a class="headerlink" href="#bonus-calculate-yield-strength-programatically" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">stress_al_array</span>
@@ -931,8 +940,8 @@ The tensile strength of Steel1018 is: 95.5 ksi
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../06-Diffusion/diffusion_calculation.html" title="previous page"><span class="section-number">5. </span>Diffusion Calculation</a>
-    <a class='right-next' id="next-link" href="bar_plot_with_error_bars.html" title="next page"><span class="section-number">7. </span>Visuallizing Measurement Error</a>
+    <a class='left-prev' id="prev-link" href="mechanical-properties-intro.html" title="previous page"><span class="section-number">6. </span>Mechanical Properties</a>
+    <a class='right-next' id="next-link" href="bar_plot_with_error_bars.html" title="next page"><span class="section-number">6.2. </span>Visuallizing Measurement Error</a>
 
         </div>
         

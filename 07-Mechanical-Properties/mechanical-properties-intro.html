@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3. Crystal Structure &#8212; Engineering Materials Programming</title>
+    <title>6. Mechanical Properties &#8212; Engineering Materials Programming</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -54,8 +54,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.1. Unit Cells" href="unit-cells.html" />
-    <link rel="prev" title="2.3. CTE Calculation" href="../02-Atomic-Structure-and-Bonding/CTE_calc.html" />
+    <link rel="next" title="6.1. Stress-Strain Curves" href="stress-strain-curves.html" />
+    <link rel="prev" title="5. Diffusion Calculation" href="../06-Diffusion/diffusion_calculation.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -146,13 +146,13 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../03-Crystal-Structure/crystal-structure-intro.html">
    3. Crystal Structure
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="unit-cells.html">
+    <a class="reference internal" href="../03-Crystal-Structure/unit-cells.html">
      3.1. Unit Cells
     </a>
    </li>
@@ -179,18 +179,18 @@
    5. Diffusion Calculation
   </a>
  </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../07-Mechanical-Properties/mechanical-properties-intro.html">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="current reference internal" href="#">
    6. Mechanical Properties
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Mechanical-Properties/stress-strain-curves.html">
+    <a class="reference internal" href="stress-strain-curves.html">
      6.1. Stress-Strain Curves
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Mechanical-Properties/bar_plot_with_error_bars.html">
+    <a class="reference internal" href="bar_plot_with_error_bars.html">
      6.2. Visuallizing Measurement Error
     </a>
    </li>
@@ -255,9 +255,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/03-Crystal-Structure/crystal-structure-intro.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/07-Mechanical-Properties/mechanical-properties-intro.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -275,7 +275,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F03-Crystal-Structure/crystal-structure-intro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F07-Mechanical-Properties/mechanical-properties-intro.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -291,23 +291,6 @@
 
             <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/ProfessorKazarinoff/Engineering-Materials-Programming/main?urlpath=tree/Engineering-Materials-Programming-Book/03-Crystal-Structure/crystal-structure-intro.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
         </div>
 
         <!-- Table of contents -->
@@ -321,9 +304,18 @@
         
               <div>
                 
-  <div class="section" id="crystal-structure">
-<h1><span class="section-number">3. </span>Crystal Structure<a class="headerlink" href="#crystal-structure" title="Permalink to this headline">¶</a></h1>
-<p>Crystal structure refers to the short and long range order of atoms in materials. These crystalline structures are present in metals and ceramics. The treatment of polymer structure is detailed in the next chapter.</p>
+  <div class="section" id="mechanical-properties">
+<h1><span class="section-number">6. </span>Mechanical Properties<a class="headerlink" href="#mechanical-properties" title="Permalink to this headline">¶</a></h1>
+<p>The examples in this chapter revolve around the mechanical properties of materials. These properties include:</p>
+<ul class="simple">
+<li><p>tensile strength</p></li>
+<li><p>yield strength</p></li>
+<li><p>elastic modulus</p></li>
+<li><p>ductility</p></li>
+<li><p>toughness</p></li>
+<li><p>hardness</p></li>
+</ul>
+<p>Building stres-strain curves using data from a mechanical test frame will be a major part of examples in this chapter.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -341,7 +333,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./03-Crystal-Structure"
+            path: "./07-Mechanical-Properties"
         },
         predefinedOutput: true
     }
@@ -353,8 +345,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../02-Atomic-Structure-and-Bonding/CTE_calc.html" title="previous page"><span class="section-number">2.3. </span>CTE Calculation</a>
-    <a class='right-next' id="next-link" href="unit-cells.html" title="next page"><span class="section-number">3.1. </span>Unit Cells</a>
+    <a class='left-prev' id="prev-link" href="../06-Diffusion/diffusion_calculation.html" title="previous page"><span class="section-number">5. </span>Diffusion Calculation</a>
+    <a class='right-next' id="next-link" href="stress-strain-curves.html" title="next page"><span class="section-number">6.1. </span>Stress-Strain Curves</a>
 
         </div>
         
