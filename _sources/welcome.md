@@ -5,4 +5,4 @@ This is a small collection of resources for using computer programming in a coll
 
 Each chapter corresponds to one of the general topics covered in the course. Within each chapter are example problems in materials science and solutions to those problems using compter programming.
 
-!! This is still a work in progress !!
+**!! This is still a work in progress !!**

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1.1. Why Python? &#8212; Engineering Materials Programming</title>
+    <title>3. Crystal Structure &#8212; Engineering Materials Programming</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -54,8 +54,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.2. Installing Anaconda" href="installing_anaconda_on_windows.html" />
-    <link rel="prev" title="1. Introduction" href="introduction.html" />
+    <link rel="next" title="3.1. Unit Cells" href="unit-cells.html" />
+    <link rel="prev" title="2.3. CTE Calculation" href="../02-Atomic-Structure-and-Bonding/CTE_calc.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -98,23 +98,23 @@
  </span>
 </p>
 <ul class="current nav sidenav_l1">
- <li class="toctree-l1 current active collapsible-parent">
-  <a class="reference internal" href="introduction.html">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../01-Introduction/introduction.html">
    1. Introduction
   </a>
-  <ul class="current collapse-ul">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/why_python.html">
      1.1. Why Python?
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="installing_anaconda_on_windows.html">
+    <a class="reference internal" href="../01-Introduction/installing_anaconda_on_windows.html">
      1.2. Installing Anaconda
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="unit_conversions.html">
+    <a class="reference internal" href="../01-Introduction/unit_conversions.html">
      1.3. Unit Conversions
     </a>
    </li>
@@ -146,13 +146,13 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../03-Crystal-Structure/crystal-structure-intro.html">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="current reference internal" href="#">
    3. Crystal Structure
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../03-Crystal-Structure/unit-cells.html">
+    <a class="reference internal" href="unit-cells.html">
      3.1. Unit Cells
     </a>
    </li>
@@ -246,9 +246,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/01-Introduction/why_python.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/03-Crystal-Structure/crystal-structure-intro.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -266,7 +266,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F01-Introduction/why_python.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F03-Crystal-Structure/crystal-structure-intro.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -282,46 +282,28 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ProfessorKazarinoff/Engineering-Materials-Programming/main?urlpath=tree/Engineering-Materials-Programming-Book/03-Crystal-Structure/crystal-structure-intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i>
-            Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-is-a-powerful-programming-language">
-   Python is a powerful programming language
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-is-easy-to-learn-and-use">
-   Python is easy to learn and use
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-is-transportable">
-   Python is transportable
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-is-free">
-   Python is free
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-is-growing">
-   Python is growing
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
         </div>
     </div>
 </div>
@@ -330,30 +312,10 @@
         
               <div>
                 
-  <div class="section" id="why-python">
-<h1><span class="section-number">1.1. </span>Why Python?<a class="headerlink" href="#why-python" title="Permalink to this headline">¶</a></h1>
-<p>You might be wondering “why should an engineer learn Python?” There are other programming languages in the engineering world such as MATLAB, LabView, C, Java. What makes Python useful for engineers?</p>
-<div class="section" id="python-is-a-powerful-programming-language">
-<h2>Python is a powerful programming language<a class="headerlink" href="#python-is-a-powerful-programming-language" title="Permalink to this headline">¶</a></h2>
-<p>Python defines the types of objects you build into your code. Unlike some other languages such as C, you do not need to declare the object type. The object type is also mutable, you can change the type of object easily and on the fly. There is a wide array of object types built into Python. Objects can change in size. Python objects can also contain mixed data types. Strings and floating-point numbers can be part of the same list.</p>
-<p>Python has an extensive standard library. A huge number of object types, functions, and methods are available for use without importing any external modules. These include math functions, list methods, and calls to a computer’s system. There is a lot that can be done with the standard library. The first couple chapters of this book will just use the standard library. It can do a lot.</p>
-<p>Python has over 100,000 external packages available for download and use. They are easy to install off of the Python package index, commonly called PyPI (“pie pee eye”). There is a Python package for just about everything. Some packages can: interact with the web, make complex computations, do unit conversions, plot data, work with .csv, .xls, and .pdf files, manipulate images and video, read data from sensors and test equipment, train machine learning algorithms, design web apps, work with GIS data, work with astronautical data, and many more added every day. In this book, we will use some of the more useful Python packages for engineers such as numpy, matplotlib, pandas, and scipy.</p>
-</div>
-<div class="section" id="python-is-easy-to-learn-and-use">
-<h2>Python is easy to learn and use<a class="headerlink" href="#python-is-easy-to-learn-and-use" title="Permalink to this headline">¶</a></h2>
-<p>Engineers solve the world’s problems in teams. One way Python helps solve these problems faster than other programming languages is that it is easy to learn and use. Python programs tend to be shorter and quicker to write than a program that does a similar function in other languages. In the rapid design, prototype, test, iterate cycle programming solutions can be spun up quickly. Python is also an easy language for fellow engineers on your team to learn. It is also quite human-readable. While programmers can become preoccupied with a program’s run time, it is development time that takes the longest.</p>
-</div>
-<div class="section" id="python-is-transportable">
-<h2>Python is transportable<a class="headerlink" href="#python-is-transportable" title="Permalink to this headline">¶</a></h2>
-<p>Python can be installed and run on each of the three major operating systems: Windows, MacOS, and Linux. On Mac and Linux Python comes installed out of the box. Just open up a terminal in Mac OSX or Linux machine and type <code class="docutils literal notranslate"><span class="pre">python</span></code>. That’s it, you are now using Python. On Windows 10, I recommend downloading and using the Anaconda distribution.</p>
-</div>
-<div class="section" id="python-is-free">
-<h2>Python is free<a class="headerlink" href="#python-is-free" title="Permalink to this headline">¶</a></h2>
-<p>MATLAB and LabView cost students and colleges to use and cost companies even more. Python is free to download and use. It is open source. Anyone is free to modify, contribute to, and propose improvements.</p>
-</div>
-<div class="section" id="python-is-growing">
-<h2>Python is growing<a class="headerlink" href="#python-is-growing" title="Permalink to this headline">¶</a></h2>
-<p>Python is growing in popularity. It is particularly growing in the data sciences and in use with GIS systems, physical modeling, machine learning, and computer vision. These are growing team problem-solving areas for engineers.</p>
+  <div class="section" id="crystal-structure">
+<h1><span class="section-number">3. </span>Crystal Structure<a class="headerlink" href="#crystal-structure" title="Permalink to this headline">¶</a></h1>
+<p>Crystal structure refers to the short and long range order of atoms in materials. These crystalline structures are present in metals and ceramics. The treatment of polymer structure is detailed in the next chapter.</p>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 
@@ -370,7 +332,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./01-Introduction"
+            path: "./03-Crystal-Structure"
         },
         predefinedOutput: true
     }
@@ -382,8 +344,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="introduction.html" title="previous page"><span class="section-number">1. </span>Introduction</a>
-    <a class='right-next' id="next-link" href="installing_anaconda_on_windows.html" title="next page"><span class="section-number">1.2. </span>Installing Anaconda</a>
+    <a class='left-prev' id="prev-link" href="../02-Atomic-Structure-and-Bonding/CTE_calc.html" title="previous page"><span class="section-number">2.3. </span>CTE Calculation</a>
+    <a class='right-next' id="next-link" href="unit-cells.html" title="next page"><span class="section-number">3.1. </span>Unit Cells</a>
 
         </div>
         

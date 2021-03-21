@@ -1,4 +1,4 @@
-# CTE in a bar chart with error bars
+## CTE in a bar chart with error bars
 
 Bar charts with error bars are useful in engineering to show the confidence or precision in a set of measurements or calculated values. Bar charts without error bars give the illusion that a measured or calculated value is known to high precision or high confidence.
 
@@ -7,6 +7,7 @@ In this example, we will build a bar plot using Python and [matplotlib](https://
 A bar chart with error bars is shown below. Note the labels on the x-axis and the error bars at the top of each bar.
 
 ![plot with error bars](images/bar_plot_with_error_bars.png)
+
 
 In order to build this plot, we need a couple of things:
 
@@ -89,9 +90,9 @@ Now we need to calculate the mean (or average) for each of the three material's 
 
 ```python
 # Calculate the average
-Aluminum_mean = np.mean(aluminum)
-Copper_mean = np.mean(copper)
-Steel_mean = np.mean(steel)
+aluminum_mean = np.mean(aluminum)
+copper_mean = np.mean(copper)
+steel_mean = np.mean(steel)
 ```
 
 Next we'll calculate the standard deviation for each metal using numpy's ```np.std()``` function. On the plot, we will use the standard deviation as the height of our error bars. The positive error will be show as +1 standard deviation above the mean, and the negative error will be shown as -1 standard deviation below the mean.
@@ -132,7 +133,7 @@ Finally, we we'll save the figure to a file called **_bar_plot_with_error_bars.p
 
 ```python
 # Build the plot
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(9,6))
 ax.bar(x_pos, CTEs, yerr=error, align='center', alpha=0.5, ecolor='black', capsize=10)
 ax.set_ylabel('Coefficient of Thermal Expansion ($\degree C^{-1}$)')
 ax.set_xticks(x_pos)
