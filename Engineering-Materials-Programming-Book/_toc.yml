@@ -3,22 +3,29 @@
 #
 - file: welcome
 - part: Chapters
+  numbered: 2
   chapters:
   - file: 01-Introduction/introduction
     sections:
       - file: 01-Introduction/why_python.md
       - file: 01-Introduction/installing_anaconda_on_windows.md
       - file: 01-Introduction/unit_conversions.ipynb
-  - file: 02-Atomic-Structure-and-Bonding/atomic-structure-and-bonding
-  - file: 02-Atomic-Structure-and-Bonding/CTE_calc
-  - file: 02-Atomic-Structure-and-Bonding/bar_charts_with_error_bars
-  - file: 03-Crystal-Structure/crystal-structure
-  - file: 04-Polymers/polymer-density-problem
+  - file: 02-Atomic-Structure-and-Bonding/introduction-atomic-structure-and-bonding.ipynb
+    sections:
+      - file: 02-Atomic-Structure-and-Bonding/bond-energy-vs-distance.ipynb
+      - file: 02-Atomic-Structure-and-Bonding/bar_charts_with_error_bars.md
+      - file: 02-Atomic-Structure-and-Bonding/CTE_calc.ipynb
+  - file: 03-Crystal-Structure/crystal-structure-intro.ipynb
+    sections:
+      - file: 03-Crystal-Structure/unit-cells.md
+  - file: 04-Polymers/polymer-intro.md
+    sections:
+      - file: 04-Polymers/polymer-density-problem.ipynb
   - file: 06-Diffusion/diffusion_calculation
   - file: 07-Mechanical-Properties/stress-strain-curves
   - file: 07-Mechanical-Properties/bar_plot_with_error_bars
   - file: 08-Cold-Working/cold_work_problem.ipynb
 - part: Appendix
+  numbered: false
   chapters:
-  - file: 99-Appendix/appendix.md
   - file: 99-Appendix/about_the_author.md
