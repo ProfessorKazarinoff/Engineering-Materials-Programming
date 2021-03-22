@@ -25,6 +25,7 @@
   - file: 07-Mechanical-Properties/mechanical-properties-intro.md
     sections:
       - file: 07-Mechanical-Properties/stress-strain-curves
+      - file: 07-Mechanical-Properties\stress_strain_curve_with_inset_elastic_region.ipynb
       - file: 07-Mechanical-Properties/bar_plot_with_error_bars
   - file: 08-Cold-Working/cold_work_problem.ipynb
 - part: Appendix
