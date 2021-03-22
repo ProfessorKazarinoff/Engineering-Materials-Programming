@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2.3. CTE Calculation &#8212; Engineering Materials Programming</title>
+    <title>8. Cold Working &#8212; Engineering Materials Programming</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -54,8 +54,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. Crystal Structure" href="../03-Crystal-Structure/crystal-structure-intro.html" />
-    <link rel="prev" title="2.2. CTE in a bar chart with error bars" href="bar_charts_with_error_bars.html" />
+    <link rel="next" title="8.1. Cold Work Problem" href="cold_work_problem.html" />
+    <link rel="prev" title="7.3. Visuallizing Measurement Error" href="../07-Mechanical-Properties/bar_plot_with_error_bars.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -132,23 +132,23 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
-  <a class="reference internal" href="introduction-atomic-structure-and-bonding.html">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/introduction-atomic-structure-and-bonding.html">
    2. Atomic Structure and Bonding
   </a>
-  <ul class="current collapse-ul">
+  <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="bond-energy-vs-distance.html">
+    <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/bond-energy-vs-distance.html">
      2.1. Bond Energy vs. Distance
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="bar_charts_with_error_bars.html">
+    <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/bar_charts_with_error_bars.html">
      2.2. CTE in a bar chart with error bars
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Atomic-Structure-and-Bonding/CTE_calc.html">
      2.3. CTE Calculation
     </a>
    </li>
@@ -236,13 +236,13 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../08-Cold-Working/cold-work-intro.html">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="current reference internal" href="#">
    8. Cold Working
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Cold-Working/cold_work_problem.html">
+    <a class="reference internal" href="cold_work_problem.html">
      8.1. Cold Work Problem
     </a>
    </li>
@@ -302,9 +302,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/02-Atomic-Structure-and-Bonding/CTE_calc.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/08-Cold-Working/cold-work-intro.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -322,7 +322,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F02-Atomic-Structure-and-Bonding/CTE_calc.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F08-Cold-Working/cold-work-intro.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -338,82 +338,11 @@
 
             <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/ProfessorKazarinoff/Engineering-Materials-Programming/main?urlpath=tree/Engineering-Materials-Programming-Book/02-Atomic-Structure-and-Bonding/CTE_calc.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i>
-            Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#problem-1-cooling-a-copper-bearing">
-   Problem 1: Cooling a Copper Bearing
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#given">
-     Given:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#find">
-     Find:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution">
-     Solution:
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#problem-2-heating-an-aluminum-case">
-   Problem 2: Heating an aluminum case
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Given:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     Find:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#assumptions">
-     Assumptions:
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-        </nav>
-        
         </div>
     </div>
 </div>
@@ -422,133 +351,11 @@
         
               <div>
                 
-  <div class="section" id="cte-calculation">
-<h1><span class="section-number">2.3. </span>CTE Calculation<a class="headerlink" href="#cte-calculation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="problem-1-cooling-a-copper-bearing">
-<h2>Problem 1: Cooling a Copper Bearing<a class="headerlink" href="#problem-1-cooling-a-copper-bearing" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="given">
-<h3>Given:<a class="headerlink" href="#given" title="Permalink to this headline">¶</a></h3>
-<p>A Copper bearing 80.10 mm at 20 *C needs to fit into a hole 80.00 mm. Assume alpha for copper is 17 x 10^-6 /*C.</p>
-</div>
-<div class="section" id="find">
-<h3>Find:<a class="headerlink" href="#find" title="Permalink to this headline">¶</a></h3>
-<p>What temperature does the copper bearing need be cooled down to in order to it inside the hole?  If clearence is included, note it.</p>
-</div>
-<div class="section" id="solution">
-<h3>Solution:<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h3>
-<p>Create a function called <code class="docutils literal notranslate"><span class="pre">cl()</span></code>. If 0.02 mm of clearence is assumed, then running <code class="docutils literal notranslate"><span class="pre">cl(0.02)</span></code> will calculate the temperature the copper bearing needs to be cooled to in order to fit in the 80.00 mm hole with 0.02 mm of clearence.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cl</span><span class="p">(</span><span class="n">clnc</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="n">L0</span> <span class="o">=</span> <span class="mi">80</span>
-    <span class="n">T2</span> <span class="o">=</span> <span class="mi">20</span>
-    <span class="n">dL</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="n">clnc</span>
-    <span class="n">alpha</span> <span class="o">=</span> <span class="mf">17e-6</span>
-    <span class="n">T1</span> <span class="o">=</span> <span class="n">T2</span> <span class="o">-</span> <span class="p">(</span> <span class="p">(</span><span class="n">dL</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="n">L0</span><span class="p">))</span>
-    <span class="n">T1</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-    <span class="k">return</span><span class="p">(</span><span class="n">T1</span><span class="p">)</span>
-    
-</pre></div>
-</div>
-</div>
-</div>
-<p>Assuming no clearance, the copper bearing needs to be cooled to:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cl</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-53.53
-</pre></div>
-</div>
-</div>
-</div>
-<p>Assuming 0.02 mm of clearance, the copper bearing needs to be cooled to:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cl</span><span class="p">(</span><span class="mf">0.02</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-68.24
-</pre></div>
-</div>
-</div>
-</div>
-<p>Assuming 0.01 mm of clearance, the copper bearing needs to be cooled to:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cl</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-60.88
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="problem-2-heating-an-aluminum-case">
-<h2>Problem 2: Heating an aluminum case<a class="headerlink" href="#problem-2-heating-an-aluminum-case" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3>Given:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>At room temperature (20 °C), copper bearing with an outside diameter of 80.10 mm does not fit into an aluminum case with a hole diameter of 80.00 mm.  In order for this to be accomplished, a furnace or hotplate can be used to heat the case.</p>
-</div>
-<div class="section" id="id2">
-<h3>Find:<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>What temperature must the case be heated up to in order for the bearing to fit in the case?</p>
-</div>
-<div class="section" id="assumptions">
-<h3>Assumptions:<a class="headerlink" href="#assumptions" title="Permalink to this headline">¶</a></h3>
-<p>Assume the bearing stays at room temperature. If assuming a clearance, note the clearance amount as part of your solution on your answer sheet below the answer.</p>
-<p>Assume the coefficient of thermal expansion of aluminum is 24 × 10-6 °C<sup>-1</sup> and the coefficient of thermal expasion of copper is 17 × 10-6 °C<sup>-1</sup>)</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cl</span><span class="p">(</span><span class="n">clnc</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="n">L0</span> <span class="o">=</span> <span class="mi">80</span>
-    <span class="c1">#T2 = ?</span>
-    <span class="n">T1</span> <span class="o">=</span> <span class="mi">20</span>
-    <span class="n">dL</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="n">clnc</span>
-    <span class="n">alpha</span> <span class="o">=</span> <span class="mf">24e-6</span>
-    <span class="n">T2</span> <span class="o">=</span> <span class="n">T1</span> <span class="o">+</span> <span class="p">(</span> <span class="p">(</span><span class="n">dL</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="n">L0</span><span class="p">))</span>
-    <span class="n">T2</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">T2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-    <span class="k">return</span><span class="p">(</span><span class="n">T2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Assuming no clearence, the case needs to be heated up to:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cl</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>72.08
-</pre></div>
-</div>
-</div>
-</div>
-<p>Assuming 0.05 mm of clearence, the case needs to be heated up to:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cl</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>98.13
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+  <div class="section" id="cold-working">
+<h1><span class="section-number">8. </span>Cold Working<a class="headerlink" href="#cold-working" title="Permalink to this headline">¶</a></h1>
+<p>Cold working is the process of plastically deforming a material in order to increase it’s strength. Many materails can be cold worked including most metal alloys and some thermoplastic polymers.</p>
+<p>This chapter contains examples of cold work problems solved with programming.</p>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 
@@ -565,7 +372,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./02-Atomic-Structure-and-Bonding"
+            path: "./08-Cold-Working"
         },
         predefinedOutput: true
     }
@@ -577,8 +384,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="bar_charts_with_error_bars.html" title="previous page"><span class="section-number">2.2. </span>CTE in a bar chart with error bars</a>
-    <a class='right-next' id="next-link" href="../03-Crystal-Structure/crystal-structure-intro.html" title="next page"><span class="section-number">3. </span>Crystal Structure</a>
+    <a class='left-prev' id="prev-link" href="../07-Mechanical-Properties/bar_plot_with_error_bars.html" title="previous page"><span class="section-number">7.3. </span>Visuallizing Measurement Error</a>
+    <a class='right-next' id="next-link" href="cold_work_problem.html" title="next page"><span class="section-number">8.1. </span>Cold Work Problem</a>
 
         </div>
         
