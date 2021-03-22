@@ -1,0 +1,89 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbclient/client.py", line 1112, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbclient/client.py", line 554, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbclient/client.py", line 857, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+steel_df = pd.read_excel("aluminum6061.xls")
+al_df = pd.read_excel("steel1045.xls")
+
+strain_al = al_df['CH5']*0.01
+d_al = 0.506
+stress_al = (al_df['FORCE']*0.001)/(np.pi*((d_al/2)**2))
+strain_steel = steel_df['CH5']*0.01
+d_steel = 0.506
+stress_steel = (steel_df['FORCE']*0.001)/(np.pi*((d_steel/2)**2))
+
+plt.plot(strain_al,stress_al,strain_steel,stress_steel)
+plt.xlabel('strain (in/in)')
+plt.ylabel('stress (ksi)')
+plt.title('Stress Strain Curve of Aluminum 6061 and Steel 1045 in tension')
+plt.legend(['Aluminum 6061','Steel 1045'])
+plt.show()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+[0;32m<ipython-input-1-e2607c0ef3c1>[0m in [0;36m<module>[0;34m[0m
+[1;32m      4[0m [0mget_ipython[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0mrun_line_magic[0m[0;34m([0m[0;34m'matplotlib'[0m[0;34m,[0m [0;34m'inline'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;34m[0m[0m
+[0;32m----> 6[0;31m [0msteel_df[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mread_excel[0m[0;34m([0m[0;34m"aluminum6061.xls"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      7[0m [0mal_df[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mread_excel[0m[0;34m([0m[0;34m"steel1045.xls"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      8[0m [0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/pandas/util/_decorators.py[0m in [0;36mwrapper[0;34m(*args, **kwargs)[0m
+[1;32m    297[0m                 )
+[1;32m    298[0m                 [0mwarnings[0m[0;34m.[0m[0mwarn[0m[0;34m([0m[0mmsg[0m[0;34m,[0m [0mFutureWarning[0m[0;34m,[0m [0mstacklevel[0m[0;34m=[0m[0mstacklevel[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 299[0;31m             [0;32mreturn[0m [0mfunc[0m[0;34m([0m[0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    300[0m [0;34m[0m[0m
+[1;32m    301[0m         [0;32mreturn[0m [0mwrapper[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/pandas/io/excel/_base.py[0m in [0;36mread_excel[0;34m(io, sheet_name, header, names, index_col, usecols, squeeze, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, thousands, comment, skipfooter, convert_float, mangle_dupe_cols, storage_options)[0m
+[1;32m    334[0m     [0;32mif[0m [0;32mnot[0m [0misinstance[0m[0;34m([0m[0mio[0m[0;34m,[0m [0mExcelFile[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    335[0m         [0mshould_close[0m [0;34m=[0m [0;32mTrue[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 336[0;31m         [0mio[0m [0;34m=[0m [0mExcelFile[0m[0;34m([0m[0mio[0m[0;34m,[0m [0mstorage_options[0m[0;34m=[0m[0mstorage_options[0m[0;34m,[0m [0mengine[0m[0;34m=[0m[0mengine[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    337[0m     [0;32melif[0m [0mengine[0m [0;32mand[0m [0mengine[0m [0;34m!=[0m [0mio[0m[0;34m.[0m[0mengine[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    338[0m         raise ValueError(
+
+[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/pandas/io/excel/_base.py[0m in [0;36m__init__[0;34m(self, path_or_buffer, engine, storage_options)[0m
+[1;32m   1070[0m             [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1071[0m                 ext = inspect_excel_format(
+[0;32m-> 1072[0;31m                     [0mcontent[0m[0;34m=[0m[0mpath_or_buffer[0m[0;34m,[0m [0mstorage_options[0m[0;34m=[0m[0mstorage_options[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1073[0m                 )
+[1;32m   1074[0m [0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/pandas/io/excel/_base.py[0m in [0;36minspect_excel_format[0;34m(path, content, storage_options)[0m
+[1;32m    948[0m [0;34m[0m[0m
+[1;32m    949[0m     with get_handle(
+[0;32m--> 950[0;31m         [0mcontent_or_path[0m[0;34m,[0m [0;34m"rb"[0m[0;34m,[0m [0mstorage_options[0m[0;34m=[0m[0mstorage_options[0m[0;34m,[0m [0mis_text[0m[0;34m=[0m[0;32mFalse[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    951[0m     ) as handle:
+[1;32m    952[0m         [0mstream[0m [0;34m=[0m [0mhandle[0m[0;34m.[0m[0mhandle[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/pandas/io/common.py[0m in [0;36mget_handle[0;34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)[0m
+[1;32m    649[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    650[0m             [0;31m# Binary mode[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 651[0;31m             [0mhandle[0m [0;34m=[0m [0mopen[0m[0;34m([0m[0mhandle[0m[0;34m,[0m [0mioargs[0m[0;34m.[0m[0mmode[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    652[0m         [0mhandles[0m[0;34m.[0m[0mappend[0m[0;34m([0m[0mhandle[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    653[0m [0;34m[0m[0m
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'aluminum6061.xls'
+FileNotFoundError: [Errno 2] No such file or directory: 'aluminum6061.xls'
+
