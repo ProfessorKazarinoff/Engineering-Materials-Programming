@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Summary &#8212; Engineering Materials Programming</title>
+    <title>7.2. Inset of Elastic Region &#8212; Engineering Materials Programming</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -56,6 +56,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.3. Visuallizing Measurement Error" href="bar_plot_with_error_bars.html" />
+    <link rel="prev" title="7.1. Stress-Strain Curves" href="stress-strain-curves.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -97,7 +99,7 @@
   Chapters
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../01-Introduction/introduction.html">
    1. Introduction
@@ -174,24 +176,52 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-Diffusion/diffusion_calculation.html">
-   5. Diffusion Calculation
-  </a>
- </li>
  <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="mechanical-properties-intro.html">
-   6. Mechanical Properties
+  <a class="reference internal" href="../05-Defects/defects-intro.html">
+   5. Defects
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="../05-Defects/vacancy-concentration.html">
+     5.1. Vacancy Concentration
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../06-Diffusion/diffusion-intro.html">
+   6. Diffusion
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Diffusion/diffusion_calculation.html">
+     6.1. Diffusion Calculation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="mechanical-properties-intro.html">
+   7. Mechanical Properties
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
     <a class="reference internal" href="stress-strain-curves.html">
-     6.1. Stress-Strain Curves
+     7.1. Stress-Strain Curves
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.2. Inset of Elastic Region
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="bar_plot_with_error_bars.html">
-     6.2. Visuallizing Measurement Error
+     7.3. Visuallizing Measurement Error
     </a>
    </li>
   </ul>
@@ -200,7 +230,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../08-Cold-Working/cold_work_problem.html">
-   7. Cold Work Problem
+   8. Cold Work Problem
   </a>
  </li>
 </ul>
@@ -313,6 +343,21 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
         </div>
     </div>
 </div>
@@ -321,8 +366,10 @@
         
               <div>
                 
-  <p>This post is the second post in a series of posts on how to plot stress strain curves with Python and Matplotlib. In the <span class="xref myst">previous post in the series</span> we built a stress strain curve from the data in two .xls data files. The plot built in the previous post included two lines, axes labels, a title and legend. The data in the plot came from two .xls excel files and was from a tensile test of two metal samples.</p>
-<p>The code below builds the plot in the previous post.</p>
+  <div class="section" id="inset-of-elastic-region">
+<h1><span class="section-number">7.2. </span>Inset of Elastic Region<a class="headerlink" href="#inset-of-elastic-region" title="Permalink to this headline">¶</a></h1>
+<p>This is the second section on how to plot stress strain curves with Python and Matplotlib. In the previous section we built a stress strain curve from the data in two .xls data files. The plot built in the previous section included two lines, axes labels, a title and legend. The data in the plot came from two .xls excel files and was from a tensile test of two metal samples.</p>
+<p>The code below builds the plot in the previous section.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -330,8 +377,8 @@
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 
-<span class="n">steel_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;aluminum6061.xls&quot;</span><span class="p">)</span>
-<span class="n">al_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;steel1045.xls&quot;</span><span class="p">)</span>
+<span class="n">steel_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Al60601_raw_data.xls&quot;</span><span class="p">)</span>
+<span class="n">al_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Steel1018_raw_data.xls&quot;</span><span class="p">)</span>
 
 <span class="n">strain_al</span> <span class="o">=</span> <span class="n">al_df</span><span class="p">[</span><span class="s1">&#39;CH5&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">0.01</span>
 <span class="n">d_al</span> <span class="o">=</span> <span class="mf">0.506</span>
@@ -350,57 +397,15 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">e2607c0ef3c1</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">steel_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;aluminum6061.xls&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">al_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;steel1045.xls&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> 
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/pandas/util/_decorators.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">297</span>                 <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">298</span>                 <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="ne">FutureWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">299</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">300</span> 
-<span class="g g-Whitespace">    </span><span class="mi">301</span>         <span class="k">return</span> <span class="n">wrapper</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/pandas/io/excel/_base.py</span> in <span class="ni">read_excel</span><span class="nt">(io, sheet_name, header, names, index_col, usecols, squeeze, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, thousands, comment, skipfooter, convert_float, mangle_dupe_cols, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">334</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">ExcelFile</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">335</span>         <span class="n">should_close</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="ne">--&gt; </span><span class="mi">336</span>         <span class="n">io</span> <span class="o">=</span> <span class="n">ExcelFile</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">337</span>     <span class="k">elif</span> <span class="n">engine</span> <span class="ow">and</span> <span class="n">engine</span> <span class="o">!=</span> <span class="n">io</span><span class="o">.</span><span class="n">engine</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">338</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/pandas/io/excel/_base.py</span> in <span class="ni">__init__</span><span class="nt">(self, path_or_buffer, engine, storage_options)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1070</span>             <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1071</span>                 <span class="n">ext</span> <span class="o">=</span> <span class="n">inspect_excel_format</span><span class="p">(</span>
-<span class="ne">-&gt; </span><span class="mi">1072</span>                     <span class="n">content</span><span class="o">=</span><span class="n">path_or_buffer</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span>
-<span class="g g-Whitespace">   </span><span class="mi">1073</span>                 <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1074</span> 
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/pandas/io/excel/_base.py</span> in <span class="ni">inspect_excel_format</span><span class="nt">(path, content, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">948</span> 
-<span class="g g-Whitespace">    </span><span class="mi">949</span>     <span class="k">with</span> <span class="n">get_handle</span><span class="p">(</span>
-<span class="ne">--&gt; </span><span class="mi">950</span>         <span class="n">content_or_path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span> <span class="n">is_text</span><span class="o">=</span><span class="kc">False</span>
-<span class="g g-Whitespace">    </span><span class="mi">951</span>     <span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">952</span>         <span class="n">stream</span> <span class="o">=</span> <span class="n">handle</span><span class="o">.</span><span class="n">handle</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/pandas/io/common.py</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">649</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">650</span>             <span class="c1"># Binary mode</span>
-<span class="ne">--&gt; </span><span class="mi">651</span>             <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">652</span>         <span class="n">handles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">653</span> 
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;aluminum6061.xls&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING *** OLE2 inconsistency: SSCS size is 0 but SSAT size is non-zero
+WARNING *** OLE2 inconsistency: SSCS size is 0 but SSAT size is non-zero
 </pre></div>
 </div>
+<img alt="../_images/stress_strain_curve_with_inset_elastic_region_2_1.png" src="../_images/stress_strain_curve_with_inset_elastic_region_2_1.png" />
 </div>
 </div>
-<p>In this post, we are going to add an inset curve to the plot that shows the linear elastic region. An inset curve is a small plot that is placed within a plot that shows a zoomed-in view of the larger plot. On a stress-strain cuve, an inset curve is used to zoom-in on the linear elastic region on the plot.</p>
-<p>To build our inset curve, we will use Python and Matplotlib’s object-oriented interface. The plot above, from the previous post, was constructed using the pyplot interface. For a simple plot, the pyplot interface above is sufficient.</p>
+<p>In this section, we are going to add an inset curve to the plot that shows the linear elastic region. An inset curve is a small plot that is placed within a plot that shows a zoomed-in view of the larger plot. On a stress-strain cuve, an inset curve is used to zoom-in on the linear elastic region on the plot.</p>
+<p>To build our inset curve, we will use Python and Matplotlib’s object-oriented interface. The plot above was constructed using the Matplotlib’s <strong>pyplot</strong> interface. For a simple plot, the pyplot interface above is sufficient.</p>
 <p>But our plot with an inset curve is more complicated than the plot above. Matplotlib’s object-oriented interface allows us to access individual components of the plot, like axes, and set specific attributes on these components. This added versitility means we can include an inset curve within another plot.</p>
 <p>To build the plot with an inset curve, first we need to import a couple modules: NumPy, Pandas, and Matplotlib. These three modules have common import aliases <code class="docutils literal notranslate"><span class="pre">np</span></code>, <code class="docutils literal notranslate"><span class="pre">pd</span></code>, and <code class="docutils literal notranslate"><span class="pre">plt</span></code>. The line <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code> is a Jupyter notebook magic command that will show plots directly in a Jupyter notebook. If you are coding your inset curve in a .py file, leave <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code> out, as it is not valid Python code.</p>
 <div class="cell docutils container">
@@ -414,8 +419,8 @@
 </div>
 </div>
 <p>Next we need to bring in the data from two external files into variables in our script. The two external files that contain the data we are going to plot are linked below:</p>
-<p><a class="reference external" href="https://github.com/ProfessorKazarinoff/staticsite/raw/master/content/code/matplotlib_plots/stress_strain_curves/aluminum6061.xls">aluminum6061.xls</a></p>
-<p><a class="reference external" href="https://github.com/ProfessorKazarinoff/staticsite/raw/master/content/code/matplotlib_plots/stress_strain_curves/steel1045.xls">steel1045.xls</a></p>
+<p><a class="reference external" href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming/raw/main/Engineering-Materials-Programming-Book/07-Mechanical-Properties/Al60601_raw_data.xls">Al60601_raw_data.xls</a></p>
+<p><a class="reference external" href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming/raw/main/Engineering-Materials-Programming-Book/07-Mechanical-Properties/Steel1018_raw_data.xls">Steel1018_raw_data.xls</a></p>
 <p>If you are following along and building an inset curve yourself, make sure to download the .xls data files and place these data files in the same directory as you Jupyter notebook or Python script.</p>
 <p>A conveniant Jupyter notebook magic command, <code class="docutils literal notranslate"><span class="pre">%ls</span></code>, lists the contents of the current directory (the directory where the notebook is saved). Make sure you can see the two .xls data files in this directory.</p>
 <div class="cell docutils container">
@@ -425,33 +430,24 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Volume in drive C is OS
- Volume Serial Number is 1236-A93E
-
- Directory of C:\Users\peter.kazarinoff\Documents\staticsite\content\code\matplotlib_plots\stress_strain_curves
-
-03/21/2021  06:54 PM    &lt;DIR&gt;          .
-03/21/2021  06:54 PM    &lt;DIR&gt;          ..
-03/21/2021  06:54 PM    &lt;DIR&gt;          .ipynb_checkpoints
-12/28/2020  01:47 PM            36,864 aluminum6061.xls
-12/28/2020  01:47 PM    &lt;DIR&gt;          images
-12/28/2020  01:47 PM            38,912 steel1045.xls
-12/28/2020  01:47 PM            44,972 stress_strain_curve_with_inset.png
-12/28/2020  01:47 PM           148,175 stress_strain_curve_with_inset_elastic_region.ipynb
-12/28/2020  01:47 PM            88,263 stress_strain_curve_with_python.ipynb
-12/28/2020  01:47 PM           113,352 stress-strain_curve.png
-               6 File(s)        470,538 bytes
-               4 Dir(s)  36,953,825,280 bytes free
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ABS_HIPS_plot_with_error_bars.png
+Al60601_raw_data.xls
+Steel1018_raw_data.xls
+bar_plot_with_error_bars.ipynb
+mechanical-properties-intro.md
+stress-strain-curves.ipynb
+stress_strain_curve_with_inset.png
+stress_strain_curve_with_inset_elastic_region.ipynb
 </pre></div>
 </div>
 </div>
 </div>
-<p>We can see the two data files <code class="docutils literal notranslate"><span class="pre">aluminum6061.xls</span></code> and <code class="docutils literal notranslate"><span class="pre">steel1045.xls</span></code> in the same folder as our Jupyter notebook <code class="docutils literal notranslate"><span class="pre">stress_strain_curve_with_inset_elastic_region.ipynb</span></code></p>
+<p>We can see the two data files <code class="docutils literal notranslate"><span class="pre">Al60601_raw_data.xls</span></code> and <code class="docutils literal notranslate"><span class="pre">Steel1018_raw_data.xls</span></code> in the same folder as our Jupyter notebook <code class="docutils literal notranslate"><span class="pre">stress_strain_curve_with_inset_elastic_region.ipynb</span></code></p>
 <p>Next, we will read in the two .xls data files using Pandas <code class="docutils literal notranslate"><span class="pre">pd.read_excel()</span></code> function. The result is two Pandas dataframes <code class="docutils literal notranslate"><span class="pre">steel_df</span></code> and <code class="docutils literal notranslate"><span class="pre">al_df</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">steel_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;aluminum6061.xls&quot;</span><span class="p">)</span>
-<span class="n">al_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;steel1045.xls&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">steel_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Al60601_raw_data.xls&quot;</span><span class="p">)</span>
+<span class="n">al_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Steel1018_raw_data.xls&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -503,65 +499,65 @@ WARNING *** OLE2 inconsistency: SSCS size is 0 but SSAT size is non-zero
   <tbody>
     <tr>
       <th>0</th>
-      <td>761</td>
+      <td>542</td>
       <td>1</td>
-      <td>6.532</td>
-      <td>0.01524</td>
-      <td>201.158508</td>
-      <td>0.018893</td>
-      <td>-0.023081</td>
+      <td>8.470</td>
+      <td>0.02256</td>
+      <td>201.146011</td>
+      <td>-0.001444</td>
+      <td>0.007552</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>761</td>
+      <td>542</td>
       <td>2</td>
-      <td>6.702</td>
-      <td>0.01600</td>
-      <td>205.978119</td>
-      <td>0.000265</td>
-      <td>-0.013024</td>
+      <td>8.632</td>
+      <td>0.02330</td>
+      <td>206.599442</td>
+      <td>0.000302</td>
+      <td>0.007552</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>761</td>
+      <td>542</td>
       <td>3</td>
-      <td>7.098</td>
-      <td>0.01720</td>
-      <td>219.295441</td>
-      <td>-0.000877</td>
-      <td>-0.024879</td>
+      <td>10.027</td>
+      <td>0.02846</td>
+      <td>287.512573</td>
+      <td>0.003044</td>
+      <td>0.018898</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>761</td>
+      <td>542</td>
       <td>4</td>
-      <td>8.697</td>
-      <td>0.02350</td>
-      <td>268.505890</td>
-      <td>0.001453</td>
-      <td>-0.006798</td>
+      <td>11.031</td>
+      <td>0.03232</td>
+      <td>365.380981</td>
+      <td>0.009881</td>
+      <td>0.022061</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>761</td>
+      <td>542</td>
       <td>5</td>
-      <td>10.196</td>
-      <td>0.03004</td>
-      <td>322.028168</td>
-      <td>0.001865</td>
-      <td>0.012563</td>
+      <td>11.928</td>
+      <td>0.03616</td>
+      <td>447.813965</td>
+      <td>0.014085</td>
+      <td>0.033652</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -610,65 +606,65 @@ WARNING *** OLE2 inconsistency: SSCS size is 0 but SSAT size is non-zero
   <tbody>
     <tr>
       <th>0</th>
-      <td>762</td>
+      <td>523</td>
       <td>1</td>
-      <td>5.969</td>
-      <td>0.01284</td>
-      <td>201.030792</td>
-      <td>0.001572</td>
-      <td>-0.007133</td>
+      <td>6.189</td>
+      <td>0.07302</td>
+      <td>202.924728</td>
+      <td>0.000402</td>
+      <td>-0.028272</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>762</td>
+      <td>523</td>
       <td>2</td>
-      <td>6.242</td>
-      <td>0.01392</td>
-      <td>215.235886</td>
-      <td>0.000009</td>
-      <td>-0.014581</td>
+      <td>6.549</td>
+      <td>0.07396</td>
+      <td>205.714890</td>
+      <td>-0.000238</td>
+      <td>-0.034549</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>762</td>
+      <td>523</td>
       <td>3</td>
-      <td>6.936</td>
-      <td>0.01646</td>
-      <td>246.816742</td>
-      <td>-0.000832</td>
-      <td>0.006942</td>
+      <td>7.148</td>
+      <td>0.07624</td>
+      <td>217.763336</td>
+      <td>-0.000713</td>
+      <td>-0.030140</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>762</td>
+      <td>523</td>
       <td>4</td>
-      <td>8.632</td>
-      <td>0.02340</td>
-      <td>371.870361</td>
-      <td>0.002203</td>
-      <td>0.000776</td>
+      <td>9.146</td>
+      <td>0.08438</td>
+      <td>316.306122</td>
+      <td>0.002377</td>
+      <td>-0.025968</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>762</td>
+      <td>523</td>
       <td>5</td>
-      <td>10.533</td>
-      <td>0.03110</td>
-      <td>502.501862</td>
-      <td>0.001481</td>
-      <td>0.018102</td>
+      <td>10.041</td>
+      <td>0.08822</td>
+      <td>417.003357</td>
+      <td>0.003089</td>
+      <td>-0.024100</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -724,7 +720,7 @@ WARNING *** OLE2 inconsistency: SSCS size is 0 but SSAT size is non-zero
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/stress_strain_curve_with_inset_elastic_region_14_0.png" src="../_images/stress_strain_curve_with_inset_elastic_region_14_0.png" />
+<img alt="../_images/stress_strain_curve_with_inset_elastic_region_16_0.png" src="../_images/stress_strain_curve_with_inset_elastic_region_16_0.png" />
 </div>
 </div>
 <p>We see a plot that contains two lines.</p>
@@ -770,7 +766,7 @@ WARNING *** OLE2 inconsistency: SSCS size is 0 but SSAT size is non-zero
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/stress_strain_curve_with_inset_elastic_region_16_0.png" src="../_images/stress_strain_curve_with_inset_elastic_region_16_0.png" />
+<img alt="../_images/stress_strain_curve_with_inset_elastic_region_18_0.png" src="../_images/stress_strain_curve_with_inset_elastic_region_18_0.png" />
 </div>
 </div>
 <p>Next, let’s  add the inset curve. Our inset curve is a zoomed-in view of the linear elastic region. We’ll use Matplotlib’s <code class="docutils literal notranslate"><span class="pre">ax.add_axes([</span> <span class="pre">])</span></code> method. This method outputs a new axis object <code class="docutils literal notranslate"><span class="pre">ax2</span></code>. <code class="docutils literal notranslate"><span class="pre">ax2</span></code> will be the axes that we plot the inset curve on. We can set attributes like <code class="docutils literal notranslate"><span class="pre">.set_xlabel()</span></code> on our <code class="docutils literal notranslate"><span class="pre">ax2</span></code> object to add labels to the axis, add a title, and limit the x and y axis.</p>
@@ -785,14 +781,14 @@ WARNING *** OLE2 inconsistency: SSCS size is 0 but SSAT size is non-zero
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Stress (ksi)&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Stress Strain Curve of Al6061 and Steel1045 in Tension </span><span class="se">\n</span><span class="s1"> with inset curve of elastic region&#39;</span><span class="p">)</span>
 
-<span class="n">left</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">]</span>
+<span class="n">left</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">]</span>
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="n">left</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">])</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_al_elastic</span><span class="p">,</span><span class="n">stress_al</span><span class="p">,</span><span class="n">strain_steel_elastic</span><span class="p">,</span> <span class="n">stress_steel</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Strain (in/in)&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Stress (ksi)&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Inset of Elastic Region&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.008</span><span class="p">])</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.006</span><span class="p">])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">75</span><span class="p">])</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;stress_strain_curve_with_inset.png&#39;</span><span class="p">)</span>
 
@@ -801,13 +797,14 @@ WARNING *** OLE2 inconsistency: SSCS size is 0 but SSAT size is non-zero
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/stress_strain_curve_with_inset_elastic_region_18_0.png" src="../_images/stress_strain_curve_with_inset_elastic_region_18_0.png" />
+<img alt="../_images/stress_strain_curve_with_inset_elastic_region_20_0.png" src="../_images/stress_strain_curve_with_inset_elastic_region_20_0.png" />
 </div>
 </div>
 <p>We see a plot that contains an inset curve. The inset curve has two lines, just like the large plot. The inset curve has axis labels and a title. The same colors in the main plot is used in the inset plot.</p>
 <div class="section" id="summary">
-<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
-<p>In this post, we plotted a stress strain curve with Python and Matplotlib. We used Matplotlib’s object oriented interface to build the inset curve. Our inset curve was added on top of our main plot.</p>
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this section, we plotted a stress strain curve with Python and Matplotlib. We used Matplotlib’s object oriented interface to build the inset curve. Our inset curve was added on top of our main plot.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -835,6 +832,8 @@ WARNING *** OLE2 inconsistency: SSCS size is 0 but SSAT size is non-zero
         
         <div class='prev-next-bottom'>
             
+    <a class='left-prev' id="prev-link" href="stress-strain-curves.html" title="previous page"><span class="section-number">7.1. </span>Stress-Strain Curves</a>
+    <a class='right-next' id="next-link" href="bar_plot_with_error_bars.html" title="next page"><span class="section-number">7.3. </span>Visuallizing Measurement Error</a>
 
         </div>
         

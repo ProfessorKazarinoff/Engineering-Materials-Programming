@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6.2. Visuallizing Measurement Error &#8212; Engineering Materials Programming</title>
+    <title>7.3. Visuallizing Measurement Error &#8212; Engineering Materials Programming</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -54,8 +54,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. Cold Work Problem" href="../08-Cold-Working/cold_work_problem.html" />
-    <link rel="prev" title="6.1. Stress-Strain Curves" href="stress-strain-curves.html" />
+    <link rel="next" title="8. Cold Work Problem" href="../08-Cold-Working/cold_work_problem.html" />
+    <link rel="prev" title="7.2. Inset of Elastic Region" href="stress_strain_curve_with_inset_elastic_region.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -174,24 +174,52 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-Diffusion/diffusion_calculation.html">
-   5. Diffusion Calculation
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../05-Defects/defects-intro.html">
+   5. Defects
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Defects/vacancy-concentration.html">
+     5.1. Vacancy Concentration
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../06-Diffusion/diffusion-intro.html">
+   6. Diffusion
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Diffusion/diffusion_calculation.html">
+     6.1. Diffusion Calculation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="mechanical-properties-intro.html">
-   6. Mechanical Properties
+   7. Mechanical Properties
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="stress-strain-curves.html">
-     6.1. Stress-Strain Curves
+     7.1. Stress-Strain Curves
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="stress_strain_curve_with_inset_elastic_region.html">
+     7.2. Inset of Elastic Region
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     6.2. Visuallizing Measurement Error
+     7.3. Visuallizing Measurement Error
     </a>
    </li>
   </ul>
@@ -200,7 +228,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../08-Cold-Working/cold_work_problem.html">
-   7. Cold Work Problem
+   8. Cold Work Problem
   </a>
  </li>
 </ul>
@@ -322,7 +350,7 @@
               <div>
                 
   <div class="section" id="visuallizing-measurement-error">
-<h1><span class="section-number">6.2. </span>Visuallizing Measurement Error<a class="headerlink" href="#visuallizing-measurement-error" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">7.3. </span>Visuallizing Measurement Error<a class="headerlink" href="#visuallizing-measurement-error" title="Permalink to this headline">¶</a></h1>
 <p>Engineers collect data and make conclusions based on the results. An important way to view results is with statistical charts. In this exampe we will build a bar chart that compares the tensile strength of 3D-printed ABS plastic under different printing conditions.</p>
 <p>We will add error bars to the chart to show the amount of uncertainty in the data. For this plot, the hieght of the bars represent the mean or average of the measured tensile stength in the sample of data. The error bars on the plot will represent +1/-1 standard deviation about the mean.</p>
 <p>The data we are going to plot is stored in an Microsoft Excel File. You can download the sample data here (clicking link will start the download):</p>
@@ -602,8 +630,8 @@ Name: Tensile Strength (Mpa), dtype: float64
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="stress-strain-curves.html" title="previous page"><span class="section-number">6.1. </span>Stress-Strain Curves</a>
-    <a class='right-next' id="next-link" href="../08-Cold-Working/cold_work_problem.html" title="next page"><span class="section-number">7. </span>Cold Work Problem</a>
+    <a class='left-prev' id="prev-link" href="stress_strain_curve_with_inset_elastic_region.html" title="previous page"><span class="section-number">7.2. </span>Inset of Elastic Region</a>
+    <a class='right-next' id="next-link" href="../08-Cold-Working/cold_work_problem.html" title="next page"><span class="section-number">8. </span>Cold Work Problem</a>
 
         </div>
         

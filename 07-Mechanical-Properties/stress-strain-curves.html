@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6.1. Stress-Strain Curves &#8212; Engineering Materials Programming</title>
+    <title>7.1. Stress-Strain Curves &#8212; Engineering Materials Programming</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -56,8 +56,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.2. Visuallizing Measurement Error" href="bar_plot_with_error_bars.html" />
-    <link rel="prev" title="6. Mechanical Properties" href="mechanical-properties-intro.html" />
+    <link rel="next" title="7.2. Inset of Elastic Region" href="stress_strain_curve_with_inset_elastic_region.html" />
+    <link rel="prev" title="7. Mechanical Properties" href="mechanical-properties-intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -176,24 +176,52 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-Diffusion/diffusion_calculation.html">
-   5. Diffusion Calculation
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../05-Defects/defects-intro.html">
+   5. Defects
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Defects/vacancy-concentration.html">
+     5.1. Vacancy Concentration
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../06-Diffusion/diffusion-intro.html">
+   6. Diffusion
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Diffusion/diffusion_calculation.html">
+     6.1. Diffusion Calculation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="mechanical-properties-intro.html">
-   6. Mechanical Properties
+   7. Mechanical Properties
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     6.1. Stress-Strain Curves
+     7.1. Stress-Strain Curves
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="stress_strain_curve_with_inset_elastic_region.html">
+     7.2. Inset of Elastic Region
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="bar_plot_with_error_bars.html">
-     6.2. Visuallizing Measurement Error
+     7.3. Visuallizing Measurement Error
     </a>
    </li>
   </ul>
@@ -202,7 +230,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../08-Cold-Working/cold_work_problem.html">
-   7. Cold Work Problem
+   8. Cold Work Problem
   </a>
  </li>
 </ul>
@@ -339,7 +367,7 @@
               <div>
                 
   <div class="section" id="stress-strain-curves">
-<h1><span class="section-number">6.1. </span>Stress-Strain Curves<a class="headerlink" href="#stress-strain-curves" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">7.1. </span>Stress-Strain Curves<a class="headerlink" href="#stress-strain-curves" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># imports</span>
@@ -365,6 +393,7 @@ Steel1018_raw_data.xls
 bar_plot_with_error_bars.ipynb
 mechanical-properties-intro.md
 stress-strain-curves.ipynb
+stress_strain_curve_with_inset.png
 stress_strain_curve_with_inset_elastic_region.ipynb
 </pre></div>
 </div>
@@ -944,8 +973,8 @@ The tensile strength of Steel1018 is: 95.5 ksi
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="mechanical-properties-intro.html" title="previous page"><span class="section-number">6. </span>Mechanical Properties</a>
-    <a class='right-next' id="next-link" href="bar_plot_with_error_bars.html" title="next page"><span class="section-number">6.2. </span>Visuallizing Measurement Error</a>
+    <a class='left-prev' id="prev-link" href="mechanical-properties-intro.html" title="previous page"><span class="section-number">7. </span>Mechanical Properties</a>
+    <a class='right-next' id="next-link" href="stress_strain_curve_with_inset_elastic_region.html" title="next page"><span class="section-number">7.2. </span>Inset of Elastic Region</a>
 
         </div>
         

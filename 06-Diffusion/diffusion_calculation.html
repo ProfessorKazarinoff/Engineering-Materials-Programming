@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5. Diffusion Calculation &#8212; Engineering Materials Programming</title>
+    <title>6.1. Diffusion Calculation &#8212; Engineering Materials Programming</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -56,8 +56,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6. Mechanical Properties" href="../07-Mechanical-Properties/mechanical-properties-intro.html" />
-    <link rel="prev" title="4.1. Polymer Crystallinity" href="../04-Polymers/polymer-density-problem.html" />
+    <link rel="next" title="7. Mechanical Properties" href="../07-Mechanical-Properties/mechanical-properties-intro.html" />
+    <link rel="prev" title="6. Diffusion" href="diffusion-intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -176,24 +176,52 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   5. Diffusion Calculation
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../05-Defects/defects-intro.html">
+   5. Defects
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Defects/vacancy-concentration.html">
+     5.1. Vacancy Concentration
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="diffusion-intro.html">
+   6. Diffusion
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.1. Diffusion Calculation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../07-Mechanical-Properties/mechanical-properties-intro.html">
-   6. Mechanical Properties
+   7. Mechanical Properties
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Mechanical-Properties/stress-strain-curves.html">
-     6.1. Stress-Strain Curves
+     7.1. Stress-Strain Curves
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Mechanical-Properties/stress_strain_curve_with_inset_elastic_region.html">
+     7.2. Inset of Elastic Region
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Mechanical-Properties/bar_plot_with_error_bars.html">
-     6.2. Visuallizing Measurement Error
+     7.3. Visuallizing Measurement Error
     </a>
    </li>
   </ul>
@@ -202,7 +230,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../08-Cold-Working/cold_work_problem.html">
-   7. Cold Work Problem
+   8. Cold Work Problem
   </a>
  </li>
 </ul>
@@ -323,22 +351,22 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#given">
-   5.1. Given:
+   Given:
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#find">
-   5.2. Find:
+   Find:
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solution">
-   5.3. Solution:
+   Solution:
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#final-answer">
-   5.4. Final Answer:
+   Final Answer:
   </a>
  </li>
 </ul>
@@ -354,16 +382,16 @@
               <div>
                 
   <div class="section" id="diffusion-calculation">
-<h1><span class="section-number">5. </span>Diffusion Calculation<a class="headerlink" href="#diffusion-calculation" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6.1. </span>Diffusion Calculation<a class="headerlink" href="#diffusion-calculation" title="Permalink to this headline">¶</a></h1>
 <p>Programming can be useful to solve complex diffusion calculations. The calculation below is completed with Python and a package  called <a class="reference external" href="https://pint.readthedocs.io/en/latest/"><strong>pint</strong></a>. Pint is a package for dealing with units and unit conversion.</p>
 <p>The <a class="reference external" href="https://www.anaconda.com/download/"><strong>Anaconda</strong></a> distribution of <strong>Python</strong>, which comes with the <strong>Anaconda Prompt</strong> already installed. For help installing Anaconda, see the blog post: <a class="reference external" href="http://pythonforundergradengineers.com/installing-anaconda-on-windows.html">Installing Anaconda on Windows 10</a>.</p>
 <p>To use the <strong>pint</strong> package, you need to install <strong>pint</strong> using the <strong>Anaconda Prompt</strong>:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&gt; pip install pint
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&gt; conda install -c conda-forge pint
 </pre></div>
 </div>
 <p>The problem involes the diffusion of nitrogen gas (N<sub>2</sub>) into a thin plate of iron.</p>
 <div class="section" id="given">
-<h2><span class="section-number">5.1. </span>Given:<a class="headerlink" href="#given" title="Permalink to this headline">¶</a></h2>
+<h2>Given:<a class="headerlink" href="#given" title="Permalink to this headline">¶</a></h2>
 <p>When α-iron is put in a nitrogen atmosphere, the concentration of nitrogen in the α-iron, <span class="math notranslate nohighlight">\(C_{N}\)</span> (in units of wt%) is a function of the nitrogen pressure <span class="math notranslate nohighlight">\(P_{N_2}\)</span> and temperature <span class="math notranslate nohighlight">\(T\)</span> accoding to the relationship:</p>
 <div class="math notranslate nohighlight">
 \[C_{N} = 4.9 \times 10^{-6} \sqrt{P_{N_2}} exp{\frac{Q_n}{RT}} \]</div>
@@ -376,14 +404,14 @@
 <p><span class="math notranslate nohighlight">\(Q_d = 77,000 \frac{J}{mol} \)</span></p>
 </div>
 <div class="section" id="find">
-<h2><span class="section-number">5.2. </span>Find:<a class="headerlink" href="#find" title="Permalink to this headline">¶</a></h2>
+<h2>Find:<a class="headerlink" href="#find" title="Permalink to this headline">¶</a></h2>
 <p>Calculate the diffusion flux, <em>J</em> through the plate using Fick’s First Law of Diffusion:</p>
 <div class="math notranslate nohighlight">
 \[ J = -D \frac{dC}{dx} \]</div>
 </div>
 <div class="section" id="solution">
-<h2><span class="section-number">5.3. </span>Solution:<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
-<p>We have a couple different quantities and a couple of different units to handle to solve this problem. We’ll start out importing <strong>pint</strong> and creating a <code class="docutils literal notranslate"><span class="pre">UnitRegistry</span></code> object. We’ll also need the <code class="docutils literal notranslate"><span class="pre">exp</span></code> (e raised to a power) and <code class="docutils literal notranslate"><span class="pre">sqrt</span></code> (square root) functions from the <a class="reference external" href="http://python.readthedocs.io/en/latest/library/math.html">math module</a>, part of the <strong>Python</strong> standard library.</p>
+<h2>Solution:<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p>We have a couple different quantities and a couple of different units to handle to solve this problem. We’ll start out importing <strong>pint</strong> and creating a <code class="docutils literal notranslate"><span class="pre">UnitRegistry</span></code> object. We’ll also need the <code class="docutils literal notranslate"><span class="pre">exp</span></code> (e raised to a power) and <code class="docutils literal notranslate"><span class="pre">sqrt</span></code> (square root) functions from the <a class="reference external" href="http://python.readthedocs.io/en/latest/library/math.html">math module</a>, part of the <strong>Python</strong> Standard Library.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pint</span>
@@ -402,9 +430,9 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Q_</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span>
 <span class="n">T</span> <span class="o">=</span> <span class="n">Q_</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">degC</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;T = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;T = </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">T</span><span class="o">.</span><span class="n">ito</span><span class="p">(</span><span class="s1">&#39;degK&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;T = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;T = </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">T</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">magnitude</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">kelvin</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
@@ -560,7 +588,7 @@ T = 573.15 kelvin
 </div>
 </div>
 <div class="section" id="final-answer">
-<h2><span class="section-number">5.4. </span>Final Answer:<a class="headerlink" href="#final-answer" title="Permalink to this headline">¶</a></h2>
+<h2>Final Answer:<a class="headerlink" href="#final-answer" title="Permalink to this headline">¶</a></h2>
 <p>So the final answer rounded to 3 sig figs is:</p>
 <p><span class="math notranslate nohighlight">\(J = -8.77 \times 10^{-15} \frac{kg}{m^{2}s}\)</span></p>
 </div>
@@ -591,8 +619,8 @@ T = 573.15 kelvin
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../04-Polymers/polymer-density-problem.html" title="previous page"><span class="section-number">4.1. </span>Polymer Crystallinity</a>
-    <a class='right-next' id="next-link" href="../07-Mechanical-Properties/mechanical-properties-intro.html" title="next page"><span class="section-number">6. </span>Mechanical Properties</a>
+    <a class='left-prev' id="prev-link" href="diffusion-intro.html" title="previous page"><span class="section-number">6. </span>Diffusion</a>
+    <a class='right-next' id="next-link" href="../07-Mechanical-Properties/mechanical-properties-intro.html" title="next page"><span class="section-number">7. </span>Mechanical Properties</a>
 
         </div>
         
