@@ -9,6 +9,8 @@
     sections:
       - file: 01-Introduction/why_python.md
       - file: 01-Introduction/installing_anaconda_on_windows.md
+      - file: 01-Introduction/how-to-open-a-jupyter-notebook.md
+      - file: 01-Introduction/python-free-online.md
       - file: 01-Introduction/unit_conversions.ipynb
   - file: 02-Atomic-Structure-and-Bonding/introduction-atomic-structure-and-bonding.ipynb
     sections:
@@ -32,7 +34,9 @@
       - file: 07-Mechanical-Properties/stress-strain-curves
       - file: 07-Mechanical-Properties/stress_strain_curve_with_inset_elastic_region.ipynb
       - file: 07-Mechanical-Properties/bar_plot_with_error_bars
-  - file: 08-Cold-Working/cold_work_problem.ipynb
+  - file: 08-Cold-Working/cold-work-intro.md
+    sections:
+      - file: 08-Cold-Working/cold_work_problem.ipynb
 - part: Appendix
   numbered: false
   chapters:
