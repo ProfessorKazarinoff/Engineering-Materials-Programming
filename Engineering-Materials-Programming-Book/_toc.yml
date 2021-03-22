@@ -21,11 +21,16 @@
   - file: 04-Polymers/polymer-intro.md
     sections:
       - file: 04-Polymers/polymer-density-problem.ipynb
-  - file: 06-Diffusion/diffusion_calculation
+  - file: 05-Defects/defects-intro.md
+    sections:
+      - file: 05-Defects/vacancy-concentration.ipynb
+  - file: 06-Diffusion/diffusion-intro.md
+    sections:
+      - file: 06-Diffusion/diffusion_calculation.ipynb
   - file: 07-Mechanical-Properties/mechanical-properties-intro.md
     sections:
       - file: 07-Mechanical-Properties/stress-strain-curves
-      - file: 07-Mechanical-Properties\stress_strain_curve_with_inset_elastic_region.ipynb
+      - file: 07-Mechanical-Properties/stress_strain_curve_with_inset_elastic_region.ipynb
       - file: 07-Mechanical-Properties/bar_plot_with_error_bars
   - file: 08-Cold-Working/cold_work_problem.ipynb
 - part: Appendix
