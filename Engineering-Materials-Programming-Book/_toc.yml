@@ -5,7 +5,7 @@
 - part: Chapters
   numbered: 2
   chapters:
-  - file: 01-Introduction/introduction
+  - file: 01-Introduction/ch01-intro.md
     sections:
       - file: 01-Introduction/why_python.md
       - file: 01-Introduction/installing_anaconda_on_windows.md
