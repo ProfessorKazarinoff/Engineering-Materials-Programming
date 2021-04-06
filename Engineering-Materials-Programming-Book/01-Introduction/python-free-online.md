@@ -11,7 +11,7 @@ If you can't install Anaconda, you can still use Python for free with a couple d
  * **Google CoLab**
  * **Datalore** (from JetBrains)
 
-Both of these options require a username and password for the particular service and all both are free.
+Both of these options require a username and password for the particular service and both are free.
 
 ### Google CoLab
 
@@ -19,7 +19,7 @@ If you have access to the Google suite of online tools such as Gmail, Google Cal
 
 ![colab welcome screen](images/colab_welcome_screen.jpg)
 
-When you write Python code in Google CoLab, your code is saved in your Google Drive onlong side you Google Docs and Google Sheets.
+When you write Python code in Google CoLab, your code is saved in your Google Drive alongside your Google Docs and Google Sheets.
 
 ![colab notebook](images/colab_notebook.jpg)
 
@@ -27,11 +27,11 @@ You can access Google CoLab using the web address below:
 
  > [https://colab.google.com](https://colab.google.com)
 
-This will create a new notebook that you can write Python code in and provides you with the ability to run that Python code as well. 
+After you log in, you can create a new notebook by clicking the [NEW NOTEBOOK] link at the bottom right of the file browser. This brings up a new notebook that you can write Python code in and provides you with the ability to run that Python code as well. 
 
 ### Datalore
 
-Datalore was created by Jet Brains, the company that makes PyCharm. PyCharm is an IDE (Integrated Development Environment) for Python. Datalore is only free online option to write and run Python code.
+Datalore was created by Jet Brains, the company that makes PyCharm. PyCharm is an IDE (Integrated Development Environment) for Python. Datalore is a free online option to write and run Python code.
 
 ![datalore file browser](images/datalore_file_browser.jpg)
 
