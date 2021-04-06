@@ -2,7 +2,7 @@
 
 Bar charts with error bars are useful in engineering to show the confidence or precision in a set of measurements or calculated values. Bar charts without error bars give the illusion that a measured or calculated value is known to high precision or high confidence.
 
-In this example, we will build a bar plot using Python and [matplotlib](https://matplotlib.org/index.html). The plot will show the coefficient of thermal expansion (CTE) of three different materials based on a small data set. Then we'll add error bars to this chart based on the standard deviation of the data.
+In this example, we will build a bar plot using Python and [Matplotlib](https://matplotlib.org/index.html). The plot will show the coefficient of thermal expansion (CTE) of three different materials based on a small data set. Then we'll add error bars to this chart based on the standard deviation of the data.
 
 A bar chart with error bars is shown below. Note the labels on the x-axis and the error bars at the top of each bar.
 
@@ -13,7 +13,7 @@ In order to build this plot, we need a couple of things:
 
 | Asset | Description |
 |---|---|
-| Python | Run the program |
+| Python | run the program |
 | Anaconda Prompt	| create the virtual environment and install packages |
 | NumPy	| calculate the mean and standard deviation	|
 | Matplotlib	| build the plot	|
@@ -21,7 +21,7 @@ In order to build this plot, we need a couple of things:
 
 Before you can build the plot, make sure you have the Anaconda Distribution of Python installed on your computer.
 
-To get going, we'll use the **Anaconda Prompt** to create a new virtual environment. Select **Anaconda Prompt** from the Windows Start Menu. (If using OSX or Linux, the terminal could also be used)
+To get going, we'll use the **Anaconda Prompt** to create a new virtual environment. Select **Anaconda Prompt** from the Windows Start Menu. (If using MacOS or Linux, the terminal could also be used)
 
 ![conda prompt on windows start menu](images/conda_in_windows_start_menu.png)
 
@@ -45,7 +45,7 @@ Now we'll install ```matplotlib``` and ```numpy``` using ```conda```. (pip will 
 conda install matplotlib numpy
 ```
 
-To confirm our ```(errorbars)``` virtual environment has matplotlib and numpy installed, run the command:
+To confirm our ```(errorbars)``` virtual environment has Matplotlib and NumPy installed, run the command:
 
 ```text
 conda list
@@ -77,7 +77,7 @@ Next, we need to read in our data. The chart below shows the measured coefficien
  9 | 2.62e-5  | 1.85e-5  | 1.32e-5  
  10 | 3.6e-5  | 3.3e-5  | 2.1e-5  
 
-We'll put this data into three different **numpy** arrays, one array for each metal. Notice the syntax ```np.array([ ... ])``` has a parenthesis ```(``` followed by a square bracket ```[```. We are passing a Python list, \[ denoted with square brackets \] into the numpy array function (argument enclosed in parenthesis).
+We'll put this data into three different **numpy** arrays, one array for each metal. Notice the syntax ```np.array([ ... ])``` has a parenthesis ```(``` followed by a square bracket ```[```. We are passing a Python list, \[ denoted with square brackets \] into the NumPy array function (argument enclosed in parenthesis).
 
 ```python
 # Enter raw data
@@ -86,7 +86,7 @@ copper = np.array([4.5e-5 , 1.97e-5 , 1.6e-5, 1.97e-5, 4.0e-5, 2.4e-5, 1.9e-5, 2
 steel = np.array([3.3e-5 , 1.2e-5 , 0.9e-5, 1.2e-5, 1.3e-5, 1.6e-5, 1.4e-5, 1.58e-5, 1.32e-5 , 2.1e-5])
 ```
 
-Now we need to calculate the mean (or average) for each of the three material's CTE using numpy's ```np.mean()``` function. The means will be the height of each bar in our chart.
+Now we need to calculate the mean (or average) for each of the three material's CTE using NumPy's ```np.mean()``` function. The means will be the height of each bar in our chart.
 
 ```python
 # Calculate the average
@@ -118,7 +118,7 @@ error = [aluminum_std, copper_std, steel_std]
 
 OK. Now it's time to build the plot. We are going to build a bar chart with three different bars, one bar for each material: Aluminum, Copper and Steel.
 
-First we will create a figure object called ```fig``` and an axis object in that figure called ```ax``` using **matplotlib's** ```plt.subplots()``` function. Everything in our plot will be added to the ```ax``` (axis) object.  Next we put a bar chart on our ```ax``` (axis) with the ```ax.bar()``` method.
+First we will create a figure object called ```fig``` and an axis object in that figure called ```ax``` using **Matplotlib's** ```plt.subplots()``` function. Everything in our plot will be added to the ```ax``` (axis) object.  Next we put a bar chart on our ```ax``` (axis) with the ```ax.bar()``` method.
 
 Note the arguments passed into the ```ax.bar()``` method:
 
@@ -129,7 +129,7 @@ Note the arguments passed into the ```ax.bar()``` method:
 
 We'll put a label on the y-axis with the title "Coefficient of thermal expansion (&#176;C<sup>-1</sup>)" using ```ax.set_ylabel```. We use ```ax.set_xticks()``` to feed in our number list to set the bars as numbers 1, 2, 3.  Then we add labels to these numbered bars with ```ax.set_ticklabels()```. ```ax.set_title()``` and ```ax.yaxis.grid(True)``` adds a title and horizontal grid lines.
 
-Finally, we we'll save the figure to a file called **_bar_plot_with_error_bars.png_** using matplotlib's ```plt.savefig()``` function. The ```plt.thight_layout()``` method ensures our axis and labels don't get cut off and are visible.
+Finally, we we'll save the figure to a file called **_bar_plot_with_error_bars.png_** using Matplotlib's ```plt.savefig()``` function. The ```plt.thight_layout()``` method ensures our axis and labels don't get cut off and are visible.
 
 ```python
 # Build the plot

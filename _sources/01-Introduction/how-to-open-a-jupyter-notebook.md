@@ -18,9 +18,9 @@ Go to the Windows start menu and select **[Anaconda Prompt]** under **[Anaconda3
 
 ![anaconda in start menu](images/anaconda_start_menu.png)
 
-If you don't see the **Anaconda Prompt** in the Windows Start Menu, then you need to install **Anaconda**. Download **Anaconda** at the following link: [Anaconda.com/downloads](https://www.anaconda.com/download/)
+If you don't see the **Anaconda Prompt** in the Windows Start Menu, then you need to install **Anaconda**. Download **Anaconda** at the following link: [Anaconda.com/distribution](https://www.anaconda.com/distribution/)
 
-The **Anaconda Prompt** window should look something like:
+The **Anaconda Prompt** window should look something like the image below:
 
 ![anaconda prompt](images/jupyter_notebook_anaconda_prompt.png)
 
@@ -30,7 +30,7 @@ At the **Anaconda Prompt** type:
 > jupyter notebook
 ```
 
-This will start a **Jupyter notebook**. The output in the terminal will look something like below:
+This command starts a **Jupyter notebook**. The output in the terminal will look something like the output shown below:
 
 ```text
 Copy/paste this URL into your browser when you connect for the first time,
@@ -45,7 +45,7 @@ A web browser should open and you should be able to see the **Jupyter file brows
 
 In the upper right select **[New]** --> **[Python 3]**
 
-You will see a new tab open in your web browser. This new browser tab contains a **Jupyter notebook**.
+You will see a new tab open in your web browser. This new browser tab is a **Jupyter notebook**.
 
 ![jupyter file browswer](images/new_notebook.png)
 
@@ -91,7 +91,7 @@ The last way to open a **Jupyter notebook** is by using the **Anaconda Navigator
 
 ![jupyter file browswer](images/windows_start_anaconda_navigator.png)
 
-This will open the **Anaconda Navigator**.  In the middle of the page, in the **Jupyter notebook** tile, click **[Launch]**
+This opens the **Anaconda Navigator** application.  In the middle of the page, in the **Jupyter notebook** tile, click **[Launch]**
 
 ![jupyter file browswer](images/anaconda_navigator_jupyter_notebook_launch.png)
 

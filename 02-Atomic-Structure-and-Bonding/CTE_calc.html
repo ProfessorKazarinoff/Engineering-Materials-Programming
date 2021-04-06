@@ -52,6 +52,8 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2.2. Bond Energy vs. Distance" href="bond-energy-vs-distance.html" />
@@ -408,6 +410,11 @@
      Assumptions:
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Solution
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -424,19 +431,26 @@
                 
   <div class="section" id="cte-calculation">
 <h1><span class="section-number">2.1. </span>CTE Calculation<a class="headerlink" href="#cte-calculation" title="Permalink to this headline">¶</a></h1>
+<p>The coefficient of thermal expansion is a material property that describes how much a material’s length changes when it’s temperature changes. The abreviation for coefficient of thermal expansion is CTE and the greek symbol alpha <span class="math notranslate nohighlight">\(\alpha\)</span> is often used for CTE in equations.</p>
+<p>The formal definition of CTE is below:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\Delta L}{L} = \alpha \Delta T
+\]</div>
+<p>Below are two problems involving the coefficient of thermal expansion that are solved with code.</p>
 <div class="section" id="problem-1-cooling-a-copper-bearing">
 <h2>Problem 1: Cooling a Copper Bearing<a class="headerlink" href="#problem-1-cooling-a-copper-bearing" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="given">
 <h3>Given:<a class="headerlink" href="#given" title="Permalink to this headline">¶</a></h3>
-<p>A Copper bearing 80.10 mm at 20 *C needs to fit into a hole 80.00 mm. Assume alpha for copper is 17 x 10^-6 /*C.</p>
+<p>A Copper bearing 80.10 mm at 20 *C needs to fit into a hole 80.00 mm. Assume the coefficient of thermal expansion of copper is 17 x 10^-6 /*C.</p>
 </div>
 <div class="section" id="find">
 <h3>Find:<a class="headerlink" href="#find" title="Permalink to this headline">¶</a></h3>
-<p>What temperature does the copper bearing need be cooled down to in order to it inside the hole?  If clearence is included, note it.</p>
+<p>What temperature does the copper bearing need be cooled down to in order to fit inside the hole?  If clearence is included, note it in your answer.</p>
 </div>
 <div class="section" id="solution">
 <h3>Solution:<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h3>
-<p>Create a function called <code class="docutils literal notranslate"><span class="pre">cl()</span></code>. If 0.02 mm of clearence is assumed, then running <code class="docutils literal notranslate"><span class="pre">cl(0.02)</span></code> will calculate the temperature the copper bearing needs to be cooled to in order to fit in the 80.00 mm hole with 0.02 mm of clearence.</p>
+<p>Create a function called <code class="docutils literal notranslate"><span class="pre">cl()</span></code>. If 0.02 mm of clearence is assumed, then running <code class="docutils literal notranslate"><span class="pre">cl(0.02)</span></code> will calculate the temperature the copper bearing needs to be cooled to in order to fit in the 80.00 mm hole with 0.02 mm of clearence. The function definition is below. The fuction accepts an input argument for clearance. The default clearance is 0.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cl</span><span class="p">(</span><span class="n">clnc</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
@@ -447,11 +461,11 @@
     <span class="n">T1</span> <span class="o">=</span> <span class="n">T2</span> <span class="o">-</span> <span class="p">(</span> <span class="p">(</span><span class="n">dL</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="n">L0</span><span class="p">))</span>
     <span class="n">T1</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">T1</span><span class="p">)</span>
-    
 </pre></div>
 </div>
 </div>
 </div>
+<p>We can call our function to answer the problem</p>
 <p>Assuming no clearance, the copper bearing needs to be cooled to:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -507,6 +521,10 @@
 <h3>Assumptions:<a class="headerlink" href="#assumptions" title="Permalink to this headline">¶</a></h3>
 <p>Assume the bearing stays at room temperature. If assuming a clearance, note the clearance amount as part of your solution on your answer sheet below the answer.</p>
 <p>Assume the coefficient of thermal expansion of aluminum is 24 × 10-6 °C<sup>-1</sup> and the coefficient of thermal expasion of copper is 17 × 10-6 °C<sup>-1</sup>)</p>
+</div>
+<div class="section" id="id3">
+<h3>Solution<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>We’ll write a similar function to the function we created in Problem 1. Except for our Problem 2 function, we’ll solve for the higher temperature <code class="docutils literal notranslate"><span class="pre">T2</span></code>. The function definition is below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cl</span><span class="p">(</span><span class="n">clnc</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
