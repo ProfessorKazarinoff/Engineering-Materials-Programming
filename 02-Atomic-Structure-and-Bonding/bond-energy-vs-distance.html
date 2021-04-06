@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2.1. Bond Energy vs. Distance &#8212; Engineering Materials Programming</title>
+    <title>2.2. Bond Energy vs. Distance &#8212; Engineering Materials Programming</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -52,10 +52,12 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.2. CTE in a bar chart with error bars" href="bar_charts_with_error_bars.html" />
-    <link rel="prev" title="2. Atomic Structure and Bonding" href="introduction-atomic-structure-and-bonding.html" />
+    <link rel="next" title="2.3. CTE in a bar chart with error bars" href="bar_charts_with_error_bars.html" />
+    <link rel="prev" title="2.1. CTE Calculation" href="CTE_calc.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -137,19 +139,19 @@
    2. Atomic Structure and Bonding
   </a>
   <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="CTE_calc.html">
+     2.1. CTE Calculation
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2.1. Bond Energy vs. Distance
+     2.2. Bond Energy vs. Distance
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="bar_charts_with_error_bars.html">
-     2.2. CTE in a bar chart with error bars
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="CTE_calc.html">
-     2.3. CTE Calculation
+     2.3. CTE in a bar chart with error bars
     </a>
    </li>
   </ul>
@@ -360,6 +362,76 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#describe-bond-energy-in-terms-of-attractive-and-repulsive-terms">
+   Describe bond energy in terms of attractive and repulsive terms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-numpy-and-matplotlib">
+   Import NumPy and Matplotlib
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-numpy-array-of-r-values">
+   Create a NumPy array of r-values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-arrays-for-the-attractive-energy-term-the-repulsive-energy-term-and-the-total-energy">
+   Create arrays for the attractive energy term, the repulsive energy term and the total energy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-a-line-plot">
+   Build a line plot
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apply-x-axis-and-y-axis-limits">
+   Apply x-axis and y-axis limits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#axis-labels-and-title">
+   Axis labels and title
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-a-legend">
+   Add a legend
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#save-the-plot-as-an-image-file">
+   Save the plot as an image file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#differentiate-the-energy-vs-distance-curve-to-create-a-force-vs-distance-curve">
+   Differentiate the Energy vs. Distance curve to create a Force vs. Distance curve
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-figure-with-two-plots-on-it-one-plot-for-the-engergy-curve-and-one-plot-for-the-force-curve">
+   Create a figure with two plots on it, one plot for the Engergy curve and one plot for the force curve
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-the-equalibrium-bond-energy-and-the-equalibrium-bond-distance">
+   Calculate the equalibrium bond energy and the equalibrium bond distance
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
         </div>
     </div>
 </div>
@@ -369,7 +441,32 @@
               <div>
                 
   <div class="section" id="bond-energy-vs-distance">
-<h1><span class="section-number">2.1. </span>Bond Energy vs. Distance<a class="headerlink" href="#bond-energy-vs-distance" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">2.2. </span>Bond Energy vs. Distance<a class="headerlink" href="#bond-energy-vs-distance" title="Permalink to this headline">¶</a></h1>
+<p>Atoms in solid materials like steel and aluminum are held together with chemical bonds. Atoms of solid materials are more stable when they are chemically bonded together, and it takes energy to separate atoms which are joined together by a chemical bond. The bonding energy associated with a chemical bond describes the amount of energy needed to separate two atoms from their equilibrium positions to a substantial distance apart. In this section we’ll build a line plot with Python and Matplotlib that describes the bond energy compared to the separation distance of a Na+ Cl- ion pair.</p>
+<div class="section" id="describe-bond-energy-in-terms-of-attractive-and-repulsive-terms">
+<h2>Describe bond energy in terms of attractive and repulsive terms<a class="headerlink" href="#describe-bond-energy-in-terms-of-attractive-and-repulsive-terms" title="Permalink to this headline">¶</a></h2>
+<p>For an Na<sup>+</sup> Cl<sup>-</sup> pair, attractive and repulsive energies E<sub>a</sub> and E<sub>r</sub> depend on the distance <span class="math notranslate nohighlight">\(r\)</span> between the  Na<sup>+</sup>and Cl<sup>-</sup> ions.</p>
+<p>The active energy E<sub>a</sub> and the repulsive energy energy E<sub>r</sub> of an Na<sup>+</sup> Cl<sup>-</sup> pair depends on the inter-atomic distance, <span class="math notranslate nohighlight">\(r\)</span> according to the following equations:</p>
+<div class="math notranslate nohighlight">
+\[E_a = \frac{- 1.436}{r} \]</div>
+<div class="math notranslate nohighlight">
+\[ E_r = \frac{7.32 \times 10^{-6}}{r^8} \]</div>
+<p>The total bond energy, E<sub>n</sub> is the sum of the attractive energy term E<sub>a</sub> and the repulsive energy term E<sub>r</sub>:</p>
+<div class="math notranslate nohighlight">
+\[ E_n = E_a + E_r \]</div>
+<p>On a single plot, we can graph E<sub>a</sub>, E<sub>r</sub> and E<sub>n</sub> vs. <span class="math notranslate nohighlight">\(r\)</span> using Python and Matplotlib. Our plot will conform to the following parameters:</p>
+<ul class="simple">
+<li><p>The range of <span class="math notranslate nohighlight">\(r\)</span> values should be between 0.01 and 1.00 in increments of 0.01</p></li>
+<li><p>The x-axis limits should be between <span class="math notranslate nohighlight">\(r\)</span> = 0 and <span class="math notranslate nohighlight">\(r\)</span> = 1.00</p></li>
+<li><p>The y-axis limits should be between E = -10 and E = 10</p></li>
+</ul>
+<p>We will also include a plot title and axis labels with units. Each of the three lines on the plot will also be incorporated in a legend.</p>
+<p>After the plot is constructed, we will determine the equalibrium bond distance 2r<sup>*</sup> and the equalibrium bond energy E<sub>0</sub></p>
+</div>
+<div class="section" id="import-numpy-and-matplotlib">
+<h2>Import NumPy and Matplotlib<a class="headerlink" href="#import-numpy-and-matplotlib" title="Permalink to this headline">¶</a></h2>
+<p>The first step to build our plot is to import NumPy and Matplotlib. We’ll use NumPy to build an array that contains the distance values <span class="math notranslate nohighlight">\(r\)</span> and the energies E<sub>a</sub>, E<sub>r</sub> and E<sub>n</sub>. We’ll use Matplotlib to build the plot.</p>
+<p>The necessary import commands are below. This section assumes you are using a <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/latest/">Jupyter notebook</a> to write and run your Python code. To see how open a Jupyter notebook, see <a class="reference external" href="https://pythonforundergradengineers.com/opening-a-jupyter-notebook-on-windows.html">this blog post</a>. If you are using a Jupyter notebook, include the line <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code>. If you build your code in a .py-file, make sure to leave this line out as <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code> is not valid Python code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># imports</span>
@@ -381,6 +478,14 @@
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="create-a-numpy-array-of-r-values">
+<h2>Create a NumPy array of r-values<a class="headerlink" href="#create-a-numpy-array-of-r-values" title="Permalink to this headline">¶</a></h2>
+<p>Next, we will create a NumPy array of <span class="math notranslate nohighlight">\(r\)</span> values that starts at <code class="docutils literal notranslate"><span class="pre">0.01</span></code>, ends at <code class="docutils literal notranslate"><span class="pre">1.00</span></code> and increments by <code class="docutils literal notranslate"><span class="pre">0.01</span></code>. We’ll create the array using NumPy’s <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> function. The <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> function accepts three input arguments shown below.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>np.arange(start,stop,step)
+</pre></div>
+</div>
+<p>Note that Python counting starts at zero and ends at n-1. So if we want the last value in the array to be <code class="docutils literal notranslate"><span class="pre">1.00</span></code>, we need to set our stop value as <code class="docutils literal notranslate"><span class="pre">1.01</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create an array of inter-atomic distances, r</span>
@@ -389,6 +494,13 @@
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="create-arrays-for-the-attractive-energy-term-the-repulsive-energy-term-and-the-total-energy">
+<h2>Create arrays for the attractive energy term, the repulsive energy term and the total energy<a class="headerlink" href="#create-arrays-for-the-attractive-energy-term-the-repulsive-energy-term-and-the-total-energy" title="Permalink to this headline">¶</a></h2>
+<p>Next we’ll create arrays for the attractive energy term E<sub>a</sub>, the repulsive energy term E<sub>r</sub> and the total energy E<sub>n</sub>. We’ll use the equations shown above in the problem description and our array <code class="docutils literal notranslate"><span class="pre">r</span></code> to build these three arrays.</p>
+<blockquote>
+<div><p>Note that exponents are denoted in Python with the double asterisk symbol <code class="docutils literal notranslate"><span class="pre">**</span></code>, not the carrot symbol <code class="docutils literal notranslate"><span class="pre">^</span></code>.</p>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate the energy terms</span>
@@ -399,6 +511,80 @@
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="build-a-line-plot">
+<h2>Build a line plot<a class="headerlink" href="#build-a-line-plot" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have the four arrays, we can build a line plot with Matplotlib. Each line on the plot is created using a pair of arrays. The first line uses the pair <code class="docutils literal notranslate"><span class="pre">r,</span> <span class="pre">Ea</span></code>, the second line on the plot uses the pair <code class="docutils literal notranslate"><span class="pre">r,</span> <span class="pre">Er</span></code>, and the third line on the plot is described by the pair <code class="docutils literal notranslate"><span class="pre">r,</span> <span class="pre">En</span></code>. Matplotlib’s <code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> method accepts pairs of arrays (or pairs of lists) as shown below.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>plt.plot(x1,y1,x2,y2,x3,y3....)
+</pre></div>
+</div>
+<p>After the <code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> line, the command <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> shows the plot. These two lines have to be in the proper order.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">Ea</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">Er</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">En</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bond-energy-vs-distance_14_0.png" src="../_images/bond-energy-vs-distance_14_0.png" />
+</div>
+</div>
+<p>We see a plot, but the plot looks like it only has one line on it. What’s going on? We can only see one line because our y-axis has a very large range, between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">1e10</span></code>. If we limit the y-axis range, we’ll be able to see all three line on the plot.</p>
+</div>
+<div class="section" id="apply-x-axis-and-y-axis-limits">
+<h2>Apply x-axis and y-axis limits<a class="headerlink" href="#apply-x-axis-and-y-axis-limits" title="Permalink to this headline">¶</a></h2>
+<p>Next, we’ll use Matplotlib’s <code class="docutils literal notranslate"><span class="pre">plt.xlim()</span></code> and <code class="docutils literal notranslate"><span class="pre">plt.ylim()</span></code> commands to apply axis limits to our plot. A list or an array needs to be passed to these two commands. The format is below.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>plt.xlim([lower_limit, upper_limit])
+
+plt.ylim([lower_limit, upper_limit])
+</pre></div>
+</div>
+<p>We’ll limit our x-axis to start at <code class="docutils literal notranslate"><span class="pre">0.00</span></code> and end at <code class="docutils literal notranslate"><span class="pre">1.00</span></code>. Our y-axis will be limited to between <code class="docutils literal notranslate"><span class="pre">-10</span></code> and <code class="docutils literal notranslate"><span class="pre">10</span></code>. The <code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> line needs to be before we customize the axis limits. The <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> line is included after we set the axis limits.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">Ea</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">Er</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">En</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.00</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bond-energy-vs-distance_18_0.png" src="../_images/bond-energy-vs-distance_18_0.png" />
+</div>
+</div>
+<p>Great! We see a plot with three lines. We can also see the y-axis starts at <code class="docutils literal notranslate"><span class="pre">-10</span></code> and ends at <code class="docutils literal notranslate"><span class="pre">10</span></code>. Next we’ll add axis labels and a title to our plot.</p>
+</div>
+<div class="section" id="axis-labels-and-title">
+<h2>Axis labels and title<a class="headerlink" href="#axis-labels-and-title" title="Permalink to this headline">¶</a></h2>
+<p>We can add axis labels to our plot with <code class="docutils literal notranslate"><span class="pre">plt.xlabel()</span></code> and <code class="docutils literal notranslate"><span class="pre">plt.ylabel()</span></code>. We need to pass a string enclosed in quotation marks <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code> as input arguments to these two methods. <code class="docutils literal notranslate"><span class="pre">plt.title()</span></code> adds a title to our plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">Ea</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">Er</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">En</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Attractive, Replusive and Total energy of an Na+ Cl- ion pair&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;r (nm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Bond Energy (eV)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bond-energy-vs-distance_22_0.png" src="../_images/bond-energy-vs-distance_22_0.png" />
+</div>
+</div>
+<p>We see a plot with three lines that includes axis labels and a title. The final detail we’ll to add to our plot is a legend.</p>
+</div>
+<div class="section" id="add-a-legend">
+<h2>Add a legend<a class="headerlink" href="#add-a-legend" title="Permalink to this headline">¶</a></h2>
+<p>We can add a legend to our plot with the <code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code> command. A list of strings needs to be passed to <code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code> in the form below. Note the parenthesis, square brackets, and quotation marks.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>plt.legend([&#39;Entry 1&#39;, &#39;Entry 2&#39;, &#39;Entry 3&#39;])
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code> line needs to be between the <code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> line and the <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> line just like our other plot customizations.</p>
+<p>We can also put a grid on our plot if we would like. This can make it easier for others to see the values of the equalibrium bond distance and the equalibrium bond energy. The command to add grid lines is <code class="docutils literal notranslate"><span class="pre">plt.grid()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the three energy terms</span>
@@ -407,14 +593,11 @@
 <span class="c1"># customize the plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;inter-atomic distance (nm)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;bond energy (eV)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Inter-atomic Distance (nm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Bond Energy (eV)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Attractive, Repulsive and Total Energy of an Na+ Cl- Ion Pair&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Ea - attractive&#39;</span><span class="p">,</span><span class="s1">&#39;Er - repulsive&#39;</span><span class="p">,</span><span class="s1">&#39;En - total&#39;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-
-<span class="c1"># save the plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Energy_vs_Distance_Plot.png&#39;</span><span class="p">)</span>
 
 <span class="c1"># show the plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -422,12 +605,54 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bond-energy-vs-distance_4_0.png" src="../_images/bond-energy-vs-distance_4_0.png" />
+<img alt="../_images/bond-energy-vs-distance_26_0.png" src="../_images/bond-energy-vs-distance_26_0.png" />
 </div>
 </div>
+<p>We see a plot with three lines, axis labels, a title, and a legend with three entries. There is one last step. In case we want to include the plot in a report or presentation, it would be nice to save the plot as an image file.</p>
+</div>
+<div class="section" id="save-the-plot-as-an-image-file">
+<h2>Save the plot as an image file<a class="headerlink" href="#save-the-plot-as-an-image-file" title="Permalink to this headline">¶</a></h2>
+<p>If we want to include the plot in a Word document or a PowerPoint presentation, we can just right-click on the plot and select <strong>copy image</strong> or <strong>save image as</strong>. We can also save our plot programmatically with the <code class="docutils literal notranslate"><span class="pre">plt.savefig()</span></code> command. The <code class="docutils literal notranslate"><span class="pre">plt.savefig()</span></code> command takes a couple arguments including the image file name and the image resolution. Matplotlib infers the filetype based on the filename. The general format is below.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>plt.savefig(&#39;filename.ext&#39;, dpi=resolution)
+</pre></div>
+</div>
+<p>We’ll save our plot as <code class="docutils literal notranslate"><span class="pre">energy_vs_distance_plot.png</span></code> with a resolution of <code class="docutils literal notranslate"><span class="pre">72</span></code> dpi (dots per inch). You could use a higher resolution in a printed document, such as<code class="docutils literal notranslate"><span class="pre">200</span></code> dpi, but for a webpage <code class="docutils literal notranslate"><span class="pre">72</span></code> dpi is fine. The <code class="docutils literal notranslate"><span class="pre">plt.savefig()</span></code> line needs to be after the <code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> line and all the lines of customization, but before the <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> line.</p>
+<p>The code below builds the plot and saves the plot as a separate image file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># differentiate the Engergy vs. distance curve to create a force vs. distance curve</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the three energy terms</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">Ea</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">Er</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">En</span><span class="p">)</span>
+
+<span class="c1"># customize the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Inter-atomic Distance (nm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Bond Energy (eV)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Attractive, Repulsive and Total Energy of an Na+ Cl- Ion Pair&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Ea - attractive&#39;</span><span class="p">,</span><span class="s1">&#39;Er - repulsive&#39;</span><span class="p">,</span><span class="s1">&#39;En - total&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="c1"># save the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;energy_vs_distance_plot.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">72</span><span class="p">)</span>
+
+<span class="c1"># show the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bond-energy-vs-distance_30_0.png" src="../_images/bond-energy-vs-distance_30_0.png" />
+</div>
+</div>
+<p>Now you should be able to see the file <code class="docutils literal notranslate"><span class="pre">energy_vs_distance_plot.png</span></code> in the Jupyter notebook file browser as well as in the Windows File Browser. The <code class="docutils literal notranslate"><span class="pre">energy_vs_distance_plot.png</span></code> file will be in the same directory as the Jupyter notebook that contains the code that creates the plot.</p>
+</div>
+<div class="section" id="differentiate-the-energy-vs-distance-curve-to-create-a-force-vs-distance-curve">
+<h2>Differentiate the Energy vs. Distance curve to create a Force vs. Distance curve<a class="headerlink" href="#differentiate-the-energy-vs-distance-curve-to-create-a-force-vs-distance-curve" title="Permalink to this headline">¶</a></h2>
+<p>The Force vs. Distance curve is the derivative of the Energy vs. Distance curve. Another way of saying this is that the Energy vs. Distance curve is the integral of the Force vs. Distance curve. This is because a force applied along a displacement is equal to energy. We could find the derivative with pencil and paper using calculus, but another way to differentiate is to use computer programming. NumPy’s <code class="docutils literal notranslate"><span class="pre">np.diff()</span></code> function finds the derivative of a curve.</p>
+<p>Note that we are creating a new set of <code class="docutils literal notranslate"><span class="pre">r</span></code> values to correspond to the force values <code class="docutils literal notranslate"><span class="pre">F</span></code>. This is because NumPy’s <code class="docutils literal notranslate"><span class="pre">np.diff()</span></code> function doesn’t output an array of the same length as was supplied to the function as an input argument. We use NumPy’s <code class="docutils literal notranslate"><span class="pre">np.linspace()</span></code> function to make sure that we have the same number of distance values in <code class="docutils literal notranslate"><span class="pre">r_F</span></code> as we do force values in <code class="docutils literal notranslate"><span class="pre">F</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># differentiate the Energy vs. distance curve to create a force vs. distance curve</span>
 <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">En</span><span class="p">)</span>   <span class="c1"># Bond force in eV/nm</span>
 <span class="n">F</span> <span class="o">=</span> <span class="mf">1.60217</span><span class="o">*</span><span class="n">F</span>     <span class="c1"># Bond force in nN</span>
 <span class="n">r_F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">F</span><span class="p">))</span>
@@ -435,12 +660,23 @@
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="create-a-figure-with-two-plots-on-it-one-plot-for-the-engergy-curve-and-one-plot-for-the-force-curve">
+<h2>Create a figure with two plots on it, one plot for the Engergy curve and one plot for the force curve<a class="headerlink" href="#create-a-figure-with-two-plots-on-it-one-plot-for-the-engergy-curve-and-one-plot-for-the-force-curve" title="Permalink to this headline">¶</a></h2>
+<p>Next we’ll create a figure with two plots in it. One plot will show our Energy vs. Distance curve (the curve we made above). The second plot will show the Force vs. Distance curve (the values we just calculated above by differentiating the Energy values).</p>
+<p>We are using Matplotlib’s object oriented interface in the code below. There are also a couple lines to make the x-axis (the distance axis) cross the y-axis at zero, rather than cross the y-axis at the bottom of the plot. The code lines to accomplish this are below.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ax1.spines[&#39;top&#39;].set_color(&#39;none&#39;)
+ax1.spines[&#39;right&#39;].set_color(&#39;none&#39;)
+ax1.spines[&#39;bottom&#39;].set_position((&#39;data&#39;, 0.0))
+</pre></div>
+</div>
+<p>We’ll save the figure that has two subplots on it with the file name <code class="docutils literal notranslate"><span class="pre">Energy_and_Force_plot.png</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a figure with two plots on it, one plot for the Engergy curve and one plot for the force curve</span>
 
 <span class="c1"># create the figure and axis objects</span>
-<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
 
 <span class="c1"># create the energy vs distance curve</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">En</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
@@ -467,15 +703,20 @@
 <span class="n">ax2</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_position</span><span class="p">((</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
 
 <span class="c1"># save and show the plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Energy_and_Force_plot.png&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Energy_and_Force_plot.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">72</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bond-energy-vs-distance_6_0.png" src="../_images/bond-energy-vs-distance_6_0.png" />
+<img alt="../_images/bond-energy-vs-distance_37_0.png" src="../_images/bond-energy-vs-distance_37_0.png" />
 </div>
 </div>
+</div>
+<div class="section" id="calculate-the-equalibrium-bond-energy-and-the-equalibrium-bond-distance">
+<h2>Calculate the equalibrium bond energy and the equalibrium bond distance<a class="headerlink" href="#calculate-the-equalibrium-bond-energy-and-the-equalibrium-bond-distance" title="Permalink to this headline">¶</a></h2>
+<p>The last thing we will do in this section is find the equalibrium bond energy, E<sub>0</sub>, and the equalibrium bond distance, 2r*.</p>
+<p>The equalibrium bond energy is the minimum energy (the minimum y-value) on the Energy vs. Distance curve. We can see from our plot the energy minium is a little less than <code class="docutils literal notranslate"><span class="pre">-5.0</span> <span class="pre">eV</span></code>. NumPy’s <code class="docutils literal notranslate"><span class="pre">np.min()</span></code> function can be used to find the smallest value in an array. After we find the minium value, we can print it out using a Python f-string</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calcuate the equalibrium bond energy and the equalibrium bond distance</span>
@@ -490,6 +731,7 @@
 </div>
 </div>
 </div>
+<p>The equalibrium bond distance is the distance (the x-value) were the ions are at their energy minimum. This means we are looking for the distance value were the energy is at it’s minimu. We can use a boolean mask to find the location of the minimum bond enegy <code class="docutils literal notranslate"><span class="pre">En==eq_bond_E</span></code> and then index out of our array <code class="docutils literal notranslate"><span class="pre">r</span></code> using this mask. After we find the equalibrium bond distance, we can print it out using a Python f-string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eq_bond_d</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">En</span><span class="o">==</span><span class="n">eq_bond_E</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
@@ -500,6 +742,7 @@
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Equalibrium Bond Distance: 0.24 nm
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -530,8 +773,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="introduction-atomic-structure-and-bonding.html" title="previous page"><span class="section-number">2. </span>Atomic Structure and Bonding</a>
-    <a class='right-next' id="next-link" href="bar_charts_with_error_bars.html" title="next page"><span class="section-number">2.2. </span>CTE in a bar chart with error bars</a>
+    <a class='left-prev' id="prev-link" href="CTE_calc.html" title="previous page"><span class="section-number">2.1. </span>CTE Calculation</a>
+    <a class='right-next' id="next-link" href="bar_charts_with_error_bars.html" title="next page"><span class="section-number">2.3. </span>CTE in a bar chart with error bars</a>
 
         </div>
         
