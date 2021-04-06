@@ -1,4 +1,4 @@
-# Installing Anaconda
+## Installing Anaconda
 
 In this section, we will run through how to install the [Anaconda distribution](https://www.anaconda.com/what-is-anaconda/) of Python on Windows 10. I think the Anaconda distribution of Python is the the best option for undergraduate engineers who want to use Python. Anaconda is free (although the download is large which can take time) and can be installed on school or work computers where you don't have administrator access or the ability to install new programs.
 
@@ -14,9 +14,6 @@ In this section, we will run through how to install the [Anaconda distribution](
 
 5. Open the **Anaconda Prompt** and run some Python code
 
-<br>
-
-
 #### 1. Visit the Anaconda downloads page
 
 Go to the following link: [Anaconda.com/distribution](https://www.anaconda.com/distribution/)
@@ -25,17 +22,11 @@ The Anaconda Downloads Page will look something like this:
 
 ![anaconda download page](images/anaconda_download_page.png)
 
-
-<br>
-
 #### 2. Select the Windows
 
 Select Windows where the three operating systems are listed.
 
 ![anaconda select Windows](images/anaconda_select_windows.png)
-
-
-<br>
 
 #### 3. Download
 
@@ -51,7 +42,6 @@ The download is quite large (over 500 MB) so it may take a while for the downloa
 
 ![anaconda downloading](images/anaconda_downloading.png)
 
-<br>
 
 #### 4. Open and run the installer
 
@@ -74,8 +64,6 @@ At the Advanced Installation Options screen, I recommend:
  * Keep "Register Anaconda as my default Python" 3.7 checked
 
 ![anaconda path variable](images/anaconda_path2.png)
-
-<br>
 
 #### 5. Open the Anaconda Prompt from the Windows start menu
 
@@ -102,8 +90,6 @@ Now you can type Python commands. Try typing ```import this```. You should see t
 To close the Python interpreter, type ```exit()``` at the interpreter prompt ```>>>```.  Note the double parenthesis at the end of the command. The ```()``` is needed to stop the Python interpreter and get back out to the Anaconda Prompt.
 
 To close the Anaconda Prompt, you can either close the window with the mouse, or type ```exit```.
-
-<br>
  
 #### Congratulations! You installed the Anaconda distribution on your Windows computer!
 
