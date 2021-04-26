@@ -26,6 +26,7 @@
   - file: 05-Defects/defects-intro.md
     sections:
       - file: 05-Defects/vacancy-concentration.ipynb
+      - file: 05-Defects/estimating-vacancy-concentration.ipynb
   - file: 06-Diffusion/diffusion-intro.md
     sections:
       - file: 06-Diffusion/diffusion_calculation.ipynb
