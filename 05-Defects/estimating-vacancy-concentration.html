@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7. Mechanical Properties &#8212; Engineering Materials Programming</title>
+    <title>Estimating Vacancy Concentration &#8212; Engineering Materials Programming</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -54,8 +54,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.1. Stress-Strain Curves" href="stress-strain-curves.html" />
-    <link rel="prev" title="6.1. Diffusion Calculation" href="../06-Diffusion/diffusion_calculation.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -97,7 +95,7 @@
   Chapters
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../01-Introduction/ch01-intro.html">
    1. Introduction
@@ -185,12 +183,12 @@
   </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../05-Defects/defects-intro.html">
+  <a class="reference internal" href="defects-intro.html">
    5. Defects
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../05-Defects/vacancy-concentration.html">
+    <a class="reference internal" href="vacancy-concentration.html">
      5.1. Number of Vacancies
     </a>
    </li>
@@ -212,23 +210,23 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../07-Mechanical-Properties/mechanical-properties-intro.html">
    7. Mechanical Properties
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="stress-strain-curves.html">
+    <a class="reference internal" href="../07-Mechanical-Properties/stress-strain-curves.html">
      7.1. Stress-Strain Curves
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="stress_strain_curve_with_inset_elastic_region.html">
+    <a class="reference internal" href="../07-Mechanical-Properties/stress_strain_curve_with_inset_elastic_region.html">
      7.2. Inset of Elastic Region
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="bar_plot_with_error_bars.html">
+    <a class="reference internal" href="../07-Mechanical-Properties/bar_plot_with_error_bars.html">
      7.3. Visuallizing Measurement Error
     </a>
    </li>
@@ -302,9 +300,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/07-Mechanical-Properties/mechanical-properties-intro.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/05-Defects/estimating-vacancy-concentration.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -322,7 +320,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F07-Mechanical-Properties/mechanical-properties-intro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F05-Defects/estimating-vacancy-concentration.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -338,11 +336,53 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ProfessorKazarinoff/Engineering-Materials-Programming/main?urlpath=tree/Engineering-Materials-Programming-Book/05-Defects/estimating-vacancy-concentration.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#given">
+   Given:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#find">
+   Find:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solution">
+   Solution:
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
         </div>
     </div>
 </div>
@@ -351,19 +391,88 @@
         
               <div>
                 
-  <div class="section" id="mechanical-properties">
-<h1><span class="section-number">7. </span>Mechanical Properties<a class="headerlink" href="#mechanical-properties" title="Permalink to this headline">¶</a></h1>
-<p>The examples in this chapter revolve around the mechanical properties of materials. These properties include:</p>
-<ul class="simple">
-<li><p>tensile strength</p></li>
-<li><p>yield strength</p></li>
-<li><p>elastic modulus</p></li>
-<li><p>ductility</p></li>
-<li><p>toughness</p></li>
-<li><p>hardness</p></li>
-</ul>
-<p>Building stres-strain curves using data from a mechanical test frame will be a major part of examples in this chapter.</p>
-<div class="toctree-wrapper compound">
+  <div class="section" id="estimating-vacancy-concentration">
+<h1>Estimating Vacancy Concentration<a class="headerlink" href="#estimating-vacancy-concentration" title="Permalink to this headline">¶</a></h1>
+<p>The following is a calculation of the number of vacancy defects in a material.</p>
+<div class="section" id="given">
+<h2>Given:<a class="headerlink" href="#given" title="Permalink to this headline">¶</a></h2>
+<p>1 m^3 of Cu at 1000 *C.</p>
+<p>p = 8.4 g/cm3</p>
+<p>Qv = 86.7 kJ/mol</p>
+<p>A = 63.5 g/mol</p>
+<p>Na = 6.02 X 10^23 atoms/mol</p>
+<p>R = 8.31 J/mol K</p>
+</div>
+<div class="section" id="find">
+<h2>Find:<a class="headerlink" href="#find" title="Permalink to this headline">¶</a></h2>
+<p>Find the equalibrium number of vacancies in 1 m^3 of Cu at 1000 *C</p>
+</div>
+<div class="section" id="solution">
+<h2>Solution:<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p>Use the vacancy concentration equation</p>
+<p>v_n/n = e^(-Qv/RT)</p>
+<p>Solve for the number of vacancies v_n</p>
+<p>v_n = ne^(-Qv/RT)</p>
+<p>We have: Qv, R and T, so what need to calculate is n, the number of potential defect sites.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">exp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the number of atoms of copper using the volume of copper, molar mass of copper the density and avagadros number</span>
+
+<span class="n">v_Cu_m3</span> <span class="o">=</span> <span class="mi">1</span>    <span class="c1"># volumer of Cu in meters^3</span>
+<span class="n">v_Cu_cm3</span> <span class="o">=</span> <span class="n">v_Cu_m3</span><span class="o">*</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">3</span><span class="o">/</span><span class="mi">1</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># volume of Cu in cm^3</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">8.4</span> <span class="c1"># g/cm3    density of Cu</span>
+<span class="n">m_Cu_g</span> <span class="o">=</span> <span class="n">v_Cu_cm3</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span>  <span class="c1"># mass of Cu in g</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mf">63.5</span> <span class="c1"># g/mol   molar mass of Cu from the periodic table</span>
+<span class="n">mol_Cu</span> <span class="o">=</span> <span class="n">m_Cu_g</span><span class="o">/</span><span class="n">A</span>   <span class="c1"># mol of Cu</span>
+<span class="n">Na</span> <span class="o">=</span> <span class="mf">6.02</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="mi">23</span> <span class="c1"># atoms/mol    Avagadros Number</span>
+<span class="n">atoms_Cu</span> <span class="o">=</span> <span class="n">mol_Cu</span> <span class="o">*</span> <span class="n">Na</span>  <span class="c1"># number of atoms Cu</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">atoms_Cu</span> <span class="c1"># number of potential defect sites is the number of Cu atoms</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the number of vacancies, v_n using number of atoms, Qv, R, T</span>
+<span class="c1"># v_n = ne^(-Qv/RT)</span>
+<span class="n">Qv_kJpermol</span> <span class="o">=</span>  <span class="mf">86.7</span> <span class="c1"># kJ/mol   Activation Energy</span>
+<span class="n">Qv</span> <span class="o">=</span> <span class="n">Qv_kJpermol</span><span class="o">*</span><span class="mi">1000</span>  <span class="c1"># J/mol Activation Energy</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">8.31</span> <span class="c1"># J/mol K    Universal Gas Constant</span>
+<span class="n">T_C</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># *C      Temperature</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">T_C</span><span class="o">+</span><span class="mi">273</span> <span class="c1"># K      Temperature</span>
+
+
+
+<span class="n">n_v</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Qv</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">T</span><span class="p">))</span>  <span class="c1"># number of vacancies</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n_v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.1964692178195925e+25
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The number of vacancies in 1 m^3 of Cu at 1000*C is: </span><span class="si">{</span><span class="n">n_v</span><span class="si">:</span><span class="s1">.1e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The number of vacancies in 1 m^3 of Cu at 1000*C is: 2.2e+25
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -380,7 +489,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./07-Mechanical-Properties"
+            path: "./05-Defects"
         },
         predefinedOutput: true
     }
@@ -392,8 +501,6 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../06-Diffusion/diffusion_calculation.html" title="previous page"><span class="section-number">6.1. </span>Diffusion Calculation</a>
-    <a class='right-next' id="next-link" href="stress-strain-curves.html" title="next page"><span class="section-number">7.1. </span>Stress-Strain Curves</a>
 
         </div>
         
