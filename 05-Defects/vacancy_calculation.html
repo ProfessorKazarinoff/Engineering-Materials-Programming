@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5.2. Estimating Vacancy Concentration &#8212; Materials Science and Engineering Programming</title>
+    <title>5.1. Vacancy Defect Calculation &#8212; Materials Science and Engineering Programming</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -52,10 +52,12 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="6. Diffusion" href="../06-Diffusion/diffusion-intro.html" />
-    <link rel="prev" title="5.1. Number of Vacancies" href="vacancy-concentration.html" />
+    <link rel="prev" title="5. Defects" href="defects-intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -189,14 +191,9 @@
    5. Defects
   </a>
   <ul class="current collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="vacancy-concentration.html">
-     5.1. Number of Vacancies
-    </a>
-   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     5.2. Estimating Vacancy Concentration
+     5.1. Vacancy Defect Calculation
     </a>
    </li>
   </ul>
@@ -307,7 +304,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/05-Defects/estimating-vacancy-concentration.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/05-Defects/vacancy_calculation.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -327,7 +324,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F05-Defects/estimating-vacancy-concentration.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F05-Defects/vacancy_calculation.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -348,7 +345,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/ProfessorKazarinoff/Engineering-Materials-Programming/main?urlpath=tree/Engineering-Materials-Programming-Book/05-Defects/estimating-vacancy-concentration.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ProfessorKazarinoff/Engineering-Materials-Programming/main?urlpath=tree/Engineering-Materials-Programming-Book/05-Defects/vacancy_calculation.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -385,6 +382,41 @@
   <a class="reference internal nav-link" href="#solution">
    Solution:
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#imports">
+     Imports
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#find-the-number-of-copper-atoms-in-1-m-sup-3-sup-of-copper">
+     Find the number of copper atoms in 1 m
+     <sup>
+      3
+     </sup>
+     of copper
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#find-the-number-of-vacancy-defects-in-1-m-sup-3-sup-of-copper">
+     Find the number of vacancy defects in 1 m
+     <sup>
+      3
+     </sup>
+     of copper
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#round-to-the-proper-number-of-significant-figures-and-print-out-the-final-answer">
+     Round to the proper number of significant figures and print out the final answer
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
  </li>
 </ul>
 
@@ -398,29 +430,45 @@
         
               <div>
                 
-  <div class="section" id="estimating-vacancy-concentration">
-<h1><span class="section-number">5.2. </span>Estimating Vacancy Concentration<a class="headerlink" href="#estimating-vacancy-concentration" title="Permalink to this headline">¶</a></h1>
-<p>The following is a calculation of the number of vacancy defects in a material.</p>
+  <div class="section" id="vacancy-defect-calculation">
+<h1><span class="section-number">5.1. </span>Vacancy Defect Calculation<a class="headerlink" href="#vacancy-defect-calculation" title="Permalink to this headline">¶</a></h1>
+<p>The following is a calculation of the number of vacancy defects in a material. All crystalline and poly-crystalline materials at temperatures above absolute zero contain vacancy defects. We can calculate the number of vacancies present in a material using the vacancy concentration equation below:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{n_v}{n} = e^{\frac{-Q_v}{RT}}
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(n_v\)</span> is the number of vacancies, <span class="math notranslate nohighlight">\(n\)</span> is the number of potential vacancy sites, <span class="math notranslate nohighlight">\(e\)</span> is Euler’s Number (the mathematical constant <span class="math notranslate nohighlight">\(e\)</span>), <span class="math notranslate nohighlight">\(Q_v\)</span> is the activation energy of vacancy formation, <span class="math notranslate nohighlight">\(R\)</span> is the universal gas constant and <span class="math notranslate nohighlight">\(T\)</span> is the temperature (in Kelvin).</p>
+<p>The problem we are going to solve using the vacancy concentration equation is shown below.</p>
 <div class="section" id="given">
 <h2>Given:<a class="headerlink" href="#given" title="Permalink to this headline">¶</a></h2>
-<p>1 m^3 of Cu at 1000 *C.</p>
-<p>p = 8.4 g/cm3</p>
-<p>Qv = 86.7 kJ/mol</p>
-<p>A = 63.5 g/mol</p>
-<p>Na = 6.02 X 10^23 atoms/mol</p>
-<p>R = 8.31 J/mol K</p>
+<p>A sample of 1 m<sup>3</sup> of Cu (copper) is at 1000 °C</p>
+<p>Density <span class="math notranslate nohighlight">\(\rho\)</span> = 8.4 g/cm<sup>3</sup></p>
+<p>Activation energy of vacancy formation <span class="math notranslate nohighlight">\(Q_v\)</span> = 86.7 kJ/mol</p>
+<p>Molar mass of Cu <span class="math notranslate nohighlight">\(A\)</span> = 63.5 g/mol</p>
+<p>Avagodro’s Number <span class="math notranslate nohighlight">\(N_a\)</span> = 6.02 × 10<sup>23</sup> atoms/mol</p>
+<p>Universal Gas Constant <span class="math notranslate nohighlight">\(R\)</span> = 8.31 J/mol K</p>
 </div>
 <div class="section" id="find">
 <h2>Find:<a class="headerlink" href="#find" title="Permalink to this headline">¶</a></h2>
-<p>Find the equalibrium number of vacancies in 1 m^3 of Cu at 1000 *C</p>
+<p>Find the equalibrium number of vacancies in 1 m<sup>3</sup> of Cu at 1000 °C.</p>
 </div>
 <div class="section" id="solution">
 <h2>Solution:<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
-<p>Use the vacancy concentration equation</p>
-<p>v_n/n = e^(-Qv/RT)</p>
-<p>Solve for the number of vacancies v_n</p>
-<p>v_n = ne^(-Qv/RT)</p>
-<p>We have: Qv, R and T, so what need to calculate is n, the number of potential defect sites.</p>
+<p>Let’s begin our solution by looking at the vacancy concentration equation.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{n_v}{n} = e^{\frac{-Q_v}{RT}}
+\]</div>
+<p>We can use the vacancy concentration equation to solve for the number of vacancies <span class="math notranslate nohighlight">\(n_v\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+n_v = ne^{\frac{-Q_v}{RT}}
+\]</div>
+<p>We have values for: <span class="math notranslate nohighlight">\(Q_v\)</span>, <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(T\)</span>. But we still need to calculate <span class="math notranslate nohighlight">\(n\)</span>, the number of potential defect sites. After we calculate <span class="math notranslate nohighlight">\(n\)</span>, we can use the equation above to calculate <span class="math notranslate nohighlight">\(n_v\)</span>. We’ll start our first bit of Python code by including imports.</p>
+<div class="section" id="imports">
+<h3>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h3>
+<p>We are going to have to use Python’s <code class="docutils literal notranslate"><span class="pre">exp</span></code> function, which raises <span class="math notranslate nohighlight">\(e\)</span> to a power, to solve this problem. The <code class="docutils literal notranslate"><span class="pre">exp</span></code> function is part of Python’s <code class="docutils literal notranslate"><span class="pre">math</span></code> module and is included in the Python Standard Library.</p>
+<p>In Python programs, the common convention is to list imports at the top of the script. The line below imports the <code class="docutils literal notranslate"><span class="pre">exp</span></code> function from the <code class="docutils literal notranslate"><span class="pre">math</span></code> module.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">exp</span>
@@ -428,36 +476,66 @@
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="find-the-number-of-copper-atoms-in-1-m-sup-3-sup-of-copper">
+<h3>Find the number of copper atoms in 1 m<sup>3</sup> of copper<a class="headerlink" href="#find-the-number-of-copper-atoms-in-1-m-sup-3-sup-of-copper" title="Permalink to this headline">¶</a></h3>
+<p>In order to find the number of copper atoms in 1 m<sup>3</sup> of copper, we need to make an assumption. Let’s assume that <span class="math notranslate nohighlight">\(n\)</span>, the number of potential defect sites, is approximately equal to the number of copper atoms in the sample total.</p>
+<p>This assumption could turn out to be problematic. Copper at room temperature does contain defects, so the number of atoms isn’t exactly the same as the number of potential defect sites. However, our given parameters only have 2 or 3significant figures. If the number of copper atoms and the number of potential defect sites is equivalent within 2 or 3 significant figures, our assumption will hold for this problem.</p>
+<p>In order to find <span class="math notranslate nohighlight">\(n\)</span> the number of copper atoms in 1 m<sup>3</sup> of copper we need to convert 1 m<sup>3</sup> of copper into the number of cm<sup>3</sup> of copper using the conversion factor 1 m = 100 cm.</p>
+<p>Next, we can calculate the number of grams of copper using the density of copper, <span class="math notranslate nohighlight">\(\rho\)</span>, given in the problem.</p>
+<p>After that, we can use the molar mass of copper, <span class="math notranslate nohighlight">\(A\)</span>, given in the problem, to calculate the number of moles of copper.</p>
+<p>Finally, we can calculate the number of atoms of copper <span class="math notranslate nohighlight">\(n\)</span>, using Avagadro’s Number, <span class="math notranslate nohighlight">\(Na\)</span>.</p>
+<p>The calculation is completed below in Python.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the number of atoms of copper using the volume of copper, molar mass of copper the density and avagadros number</span>
 
-<span class="n">v_Cu_m3</span> <span class="o">=</span> <span class="mi">1</span>    <span class="c1"># volumer of Cu in meters^3</span>
+<span class="n">v_Cu_m3</span> <span class="o">=</span> <span class="mi">1</span>    <span class="c1"># volume of Cu in m^3</span>
 <span class="n">v_Cu_cm3</span> <span class="o">=</span> <span class="n">v_Cu_m3</span><span class="o">*</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">3</span><span class="o">/</span><span class="mi">1</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># volume of Cu in cm^3</span>
-<span class="n">p</span> <span class="o">=</span> <span class="mf">8.4</span> <span class="c1"># g/cm3    density of Cu</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">8.4</span> <span class="c1"># density of Cu in g/cm3</span>
 <span class="n">m_Cu_g</span> <span class="o">=</span> <span class="n">v_Cu_cm3</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span>  <span class="c1"># mass of Cu in g</span>
 <span class="n">A</span> <span class="o">=</span> <span class="mf">63.5</span> <span class="c1"># g/mol   molar mass of Cu from the periodic table</span>
 <span class="n">mol_Cu</span> <span class="o">=</span> <span class="n">m_Cu_g</span><span class="o">/</span><span class="n">A</span>   <span class="c1"># mol of Cu</span>
-<span class="n">Na</span> <span class="o">=</span> <span class="mf">6.02</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="mi">23</span> <span class="c1"># atoms/mol    Avagadros Number</span>
+<span class="n">Na</span> <span class="o">=</span> <span class="mf">6.02</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="mi">23</span> <span class="c1"># Avagadros Number, atoms/mol    </span>
 <span class="n">atoms_Cu</span> <span class="o">=</span> <span class="n">mol_Cu</span> <span class="o">*</span> <span class="n">Na</span>  <span class="c1"># number of atoms Cu</span>
 <span class="n">n</span> <span class="o">=</span> <span class="n">atoms_Cu</span> <span class="c1"># number of potential defect sites is the number of Cu atoms</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.963464566929133e+28
 </pre></div>
 </div>
 </div>
 </div>
+<p>This means the number of potential defect sites in 1 m<sup>3</sup> of copper is <code class="docutils literal notranslate"><span class="pre">7.963464566929133e+28</span></code>. That’s a lot of potential sites for defects.</p>
+</div>
+<div class="section" id="find-the-number-of-vacancy-defects-in-1-m-sup-3-sup-of-copper">
+<h3>Find the number of vacancy defects in 1 m<sup>3</sup> of copper<a class="headerlink" href="#find-the-number-of-vacancy-defects-in-1-m-sup-3-sup-of-copper" title="Permalink to this headline">¶</a></h3>
+<p>Now we have all of the values we need to calculate the number of vacancy defects in 1 m<sup>3</sup> of copper using the equation below:</p>
+<div class="math notranslate nohighlight">
+\[
+n_v = ne^{\frac{-Q_v}{RT}}
+\]</div>
+<p>We just need to be careful with units. In the <em>Given</em> portion of this problem, <span class="math notranslate nohighlight">\(Q_v\)</span> the activation energy of vacancy formation, has units of kJ/mol. The Universal Gas constant <span class="math notranslate nohighlight">\(R\)</span>, given in the problem has units of J/mol K. And the temperature <span class="math notranslate nohighlight">\(T\)</span> given in the problem is in units of °C. In order for the expression below (which is the exponent of the equation above) to end up unitless:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{-Q_v}{RT}
+\]</div>
+<p>We need to convert <span class="math notranslate nohighlight">\(Q_v\)</span> into units of J/mol K and convert <span class="math notranslate nohighlight">\(T\)</span> into units of Kelvin. Then we can plug the values into the vacancy concentration equation and make our final calculation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the number of vacancies, v_n using number of atoms, Qv, R, T</span>
-<span class="c1"># v_n = ne^(-Qv/RT)</span>
-<span class="n">Qv_kJpermol</span> <span class="o">=</span>  <span class="mf">86.7</span> <span class="c1"># kJ/mol   Activation Energy</span>
-<span class="n">Qv</span> <span class="o">=</span> <span class="n">Qv_kJpermol</span><span class="o">*</span><span class="mi">1000</span>  <span class="c1"># J/mol Activation Energy</span>
-<span class="n">R</span> <span class="o">=</span> <span class="mf">8.31</span> <span class="c1"># J/mol K    Universal Gas Constant</span>
-<span class="n">T_C</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># *C      Temperature</span>
-<span class="n">T</span> <span class="o">=</span> <span class="n">T_C</span><span class="o">+</span><span class="mi">273</span> <span class="c1"># K      Temperature</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find the number of vacancies, n_v using number of atoms n, Qv, R, and T</span>
+<span class="c1"># n_v = ne^(-Qv/RT)</span>
 
+<span class="n">Qv_kJpermol</span> <span class="o">=</span>  <span class="mf">86.7</span>  <span class="c1"># activation energy of vacancy formation in kJ/mol   </span>
+<span class="n">Qv</span> <span class="o">=</span> <span class="n">Qv_kJpermol</span><span class="o">*</span><span class="mi">1000</span>  <span class="c1"># activation energy of vacancy formation in J/mol</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">8.31</span>  <span class="c1"># Universal Gas Constant in J/mol K</span>
+<span class="n">T_C</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Temperature in *C</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">T_C</span><span class="o">+</span><span class="mi">273</span>  <span class="c1"># Temperature in K</span>
 
-
-<span class="n">n_v</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Qv</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">T</span><span class="p">))</span>  <span class="c1"># number of vacancies</span>
+<span class="n">n_v</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Qv</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">T</span><span class="p">))</span>  <span class="c1"># number of vacancies, unitless</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">n_v</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -468,6 +546,23 @@
 </div>
 </div>
 </div>
+<p>Great! The number of vacancies in 1 m<sup>3</sup> of copper is <code class="docutils literal notranslate"><span class="pre">2.1964692178195925e+25</span></code>. That’s a pretty big number, but it is three orders of magnitude less than the number of potential defect sites. We are almost done. All we need to do now is round our answer to the proper number of significant figures and print it out.</p>
+</div>
+<div class="section" id="round-to-the-proper-number-of-significant-figures-and-print-out-the-final-answer">
+<h3>Round to the proper number of significant figures and print out the final answer<a class="headerlink" href="#round-to-the-proper-number-of-significant-figures-and-print-out-the-final-answer" title="Permalink to this headline">¶</a></h3>
+<p>The last thing we need to do is round the final answer to the proper number of significant figures (sig figs). If we look back at the given values in our problem, we can determine the number of significant figures in each known parameter:</p>
+<p>Temperature <span class="math notranslate nohighlight">\(T\)</span> = 1000 °C - 1,2,3 or 4 sig figs</p>
+<p>Density <span class="math notranslate nohighlight">\(\rho\)</span> = 8.4 g/cm<sup>3</sup> - 2 sig figs</p>
+<p>Activation energy of vacancy formation <span class="math notranslate nohighlight">\(Q_v\)</span> = 86.7 kJ/mol - 3 sig figs</p>
+<p>Molar mass of Cu <span class="math notranslate nohighlight">\(A\)</span> = 63.5 g/mol - 3 sig figs</p>
+<p>Avagodro’s Number <span class="math notranslate nohighlight">\(N_a\)</span> = 6.02 × 10<sup>23</sup> atoms/mol - 3 sig figs</p>
+<p>Universal Gas Constant <span class="math notranslate nohighlight">\(R\)</span> = 8.31 J/mol K - 3 sig figs</p>
+<p>The minimum number of significant figures is in the Density <span class="math notranslate nohighlight">\(\rho\)</span> = 8.4 g/cm<sup>3</sup> - 2 sig figs. Therefore, we will round our final answer to 2 significant figures.</p>
+<p>We can print out our final answer using a Python f-string. Note how the character <code class="docutils literal notranslate"><span class="pre">f'</span> <span class="pre">'</span></code> is added before the quotation marks. A little trick in the code below is in the expression:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">n_v</span><span class="p">:</span><span class="o">.</span><span class="mi">1</span><span class="n">e</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Since the expression is inside a set of curly braces of an f-string, the value of the variable <code class="docutils literal notranslate"><span class="pre">n_v</span></code> will be printed out. The <code class="docutils literal notranslate"><span class="pre">:.1e</span></code> after the variable is a bit of string formating. It specifies one number after the decimal point (<code class="docutils literal notranslate"><span class="pre">.1</span></code>) and scientific notation <code class="docutils literal notranslate"><span class="pre">e</span></code>. The result is our final answer printed to 2 significant figures.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The number of vacancies in 1 m^3 of Cu at 1000*C is: </span><span class="si">{</span><span class="n">n_v</span><span class="si">:</span><span class="s1">.1e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -480,6 +575,12 @@
 </div>
 </div>
 </div>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>In this problem, we calculated the equilibrium number of vacancies in 1 m<sup>3</sup> of copper at 1000 °C.</p>
+<p>We completed the problem by first calculating the number of atoms in 1 m<sup>3</sup> of copper using density and molar mass. Then we assumed the number of atoms in 1 m<sup>3</sup> is approximately equal to the number of potential atomic vacancy sites in 1 m<sup>3</sup>. Finally, we used the number of potential defect sites to calculate the number of vacancies in 1 m<sup>3</sup> of copper using the vacancy concentration equation.</p>
 </div>
 </div>
 
@@ -508,7 +609,7 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="vacancy-concentration.html" title="previous page"><span class="section-number">5.1. </span>Number of Vacancies</a>
+    <a class='left-prev' id="prev-link" href="defects-intro.html" title="previous page"><span class="section-number">5. </span>Defects</a>
     <a class='right-next' id="next-link" href="../06-Diffusion/diffusion-intro.html" title="next page"><span class="section-number">6. </span>Diffusion</a>
 
         </div>
