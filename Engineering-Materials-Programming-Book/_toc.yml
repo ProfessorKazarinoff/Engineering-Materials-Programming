@@ -31,9 +31,11 @@
       - file: 06-Diffusion/diffusion_calculation.ipynb
   - file: 07-Mechanical-Properties/mechanical-properties-intro.md
     sections:
-      - file: 07-Mechanical-Properties/stress-strain-curves
+      - file: 07-Mechanical-Properties/bar_plot_with_error_bars.ipynb
+      - file: 07-Mechanical-Properties/plotting-stress-strain-curves.ipynb
       - file: 07-Mechanical-Properties/stress_strain_curve_with_inset_elastic_region.ipynb
-      - file: 07-Mechanical-Properties/bar_plot_with_error_bars
+      - file: 07-Mechanical-Properties/mechanical-properties-from-stress-strain-curves.ipynb
+      - file: 07-Mechanical-Properties/calculate-yield-strength-programmatically.ipynb
   - file: 08-Cold-Working/cold-work-intro.md
     sections:
       - file: 08-Cold-Working/cold_work_problem.ipynb
