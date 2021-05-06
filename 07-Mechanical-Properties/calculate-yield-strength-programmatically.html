@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7.1. Stress-Strain Curves &#8212; Materials Science and Engineering Programming</title>
+    <title>7.5. Calculate Yield Strength Programmatically &#8212; Materials Science and Engineering Programming</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -56,8 +56,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.2. Inset of Elastic Region" href="stress_strain_curve_with_inset_elastic_region.html" />
-    <link rel="prev" title="7. Mechanical Properties" href="mechanical-properties-intro.html" />
+    <link rel="next" title="8. Cold Working" href="../08-Cold-Working/cold-work-intro.html" />
+    <link rel="prev" title="7.4. Mechanical Properties from Stress-Strain Curves" href="mechanical-properties-from-stress-strain-curves.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -219,19 +219,29 @@
    7. Mechanical Properties
   </a>
   <ul class="current collapse-ul">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     7.1. Stress-Strain Curves
+   <li class="toctree-l2">
+    <a class="reference internal" href="bar_plot_with_error_bars.html">
+     7.1. Visuallizing Measurement Error
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="plotting-stress-strain-curves.html">
+     7.2. Plotting Stress Strain Curves
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="stress_strain_curve_with_inset_elastic_region.html">
-     7.2. Inset of Elastic Region
+     7.3. Inset of Elastic Region
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="bar_plot_with_error_bars.html">
-     7.3. Visuallizing Measurement Error
+    <a class="reference internal" href="mechanical-properties-from-stress-strain-curves.html">
+     7.4. Mechanical Properties from Stress-Strain Curves
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.5. Calculate Yield Strength Programmatically
     </a>
    </li>
   </ul>
@@ -304,7 +314,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/07-Mechanical-Properties/stress-strain-curves.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/07-Mechanical-Properties/calculate-yield-strength-programmatically.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -324,7 +334,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F07-Mechanical-Properties/stress-strain-curves.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F07-Mechanical-Properties/calculate-yield-strength-programmatically.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -345,7 +355,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/ProfessorKazarinoff/Engineering-Materials-Programming/main?urlpath=tree/Engineering-Materials-Programming-Book/07-Mechanical-Properties/stress-strain-curves.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ProfessorKazarinoff/Engineering-Materials-Programming/main?urlpath=tree/Engineering-Materials-Programming-Book/07-Mechanical-Properties/calculate-yield-strength-programmatically.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -369,8 +379,33 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bonus-calculate-yield-strength-programatically">
-   Bonus: Calculate yield strength programatically
+  <a class="reference internal nav-link" href="#plot-the-full-stress-strain-curve">
+   Plot the full stress strain curve
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#caclulate-elastic-modulus">
+   Caclulate elastic modulus
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cacluate-yield-strength">
+   Cacluate Yield Strength
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-yield-strength-programatically">
+   Calculate yield strength programatically
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#write-a-function-to-calculate-the-intersection-of-two-lines">
+   Write a function to calculate the intersection of two lines
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#caclulate-yield-strength-using-the-intersection-function">
+   Caclulate yield strength using the intersection function
   </a>
  </li>
 </ul>
@@ -385,8 +420,8 @@
         
               <div>
                 
-  <div class="section" id="stress-strain-curves">
-<h1><span class="section-number">7.1. </span>Stress-Strain Curves<a class="headerlink" href="#stress-strain-curves" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="calculate-yield-strength-programmatically">
+<h1><span class="section-number">7.5. </span>Calculate Yield Strength Programmatically<a class="headerlink" href="#calculate-yield-strength-programmatically" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># imports</span>
@@ -410,8 +445,12 @@
 Al60601_raw_data.xls
 Steel1018_raw_data.xls
 bar_plot_with_error_bars.ipynb
+calculate-yield-strength-programmatically.ipynb
+<span class=" -Color -Color-Bold -Color-Bold-Blue">images</span>/
+mechanical-properties-from-stress-strain-curves.ipynb
 mechanical-properties-intro.md
-stress-strain-curves.ipynb
+plotting-stress-strain-curves.ipynb
+stress-strain_curve.png
 stress_strain_curve_with_inset.png
 stress_strain_curve_with_inset_elastic_region.ipynb
 </pre></div>
@@ -655,6 +694,8 @@ stress_strain_curve_with_inset_elastic_region.ipynb
 </div>
 </div>
 </div>
+<div class="section" id="plot-the-full-stress-strain-curve">
+<h2>Plot the full stress strain curve<a class="headerlink" href="#plot-the-full-stress-strain-curve" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -664,30 +705,38 @@ stress_strain_curve_with_inset_elastic_region.ipynb
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Stress (ksi)&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Stress-Strain Curve of Al6061 and Steel1018 in Tension&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Al6061&#39;</span><span class="p">,</span><span class="s1">&#39;Steel1018&#39;</span><span class="p">])</span>
-<span class="c1">#plt.savefig(&#39;stress-strain_curve.png&#39;, dpi=300)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/stress-strain-curves_6_0.png" src="../_images/stress-strain-curves_6_0.png" />
+<img alt="../_images/calculate-yield-strength-programmatically_7_0.png" src="../_images/calculate-yield-strength-programmatically_7_0.png" />
 </div>
 </div>
+</div>
+<div class="section" id="caclulate-elastic-modulus">
+<h2>Caclulate elastic modulus<a class="headerlink" href="#caclulate-elastic-modulus" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the tensile strength</span>
-<span class="n">ts_al</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">stress_al</span><span class="p">)</span>
-<span class="n">ts_steel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">stress_steel</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The tensile strength of Al6061 is: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">ts_al</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1"> ksi&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The tensile strength of Steel1018 is: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">ts_steel</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1"> ksi&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_al</span><span class="p">,</span> <span class="n">stress_al</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel</span><span class="p">,</span> <span class="n">stress_steel</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Inset of elastic region&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Strain (in/in)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Stress (ksi)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Al6061&#39;</span><span class="p">,</span><span class="s1">&#39;Steel1018&#39;</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">70</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The tensile strength of Al6061 is: 47.3 ksi
-The tensile strength of Steel1018 is: 95.5 ksi
-</pre></div>
-</div>
+<img alt="../_images/calculate-yield-strength-programmatically_9_0.png" src="../_images/calculate-yield-strength-programmatically_9_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -697,8 +746,10 @@ The tensile strength of Steel1018 is: 95.5 ksi
 <span class="n">linear_stress_al_mask</span> <span class="o">=</span> <span class="n">stress_al</span> <span class="o">&lt;</span> <span class="mi">35</span>
 <span class="n">linear_stress_al</span> <span class="o">=</span> <span class="n">stress_al</span><span class="p">[</span><span class="n">linear_stress_al_mask</span><span class="p">]</span>
 <span class="n">linear_strain_al</span> <span class="o">=</span> <span class="n">strain_al</span><span class="p">[</span><span class="n">linear_stress_al_mask</span><span class="p">]</span>
+
 <span class="n">linear_regression_output</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">linear_strain_al</span><span class="p">,</span> <span class="n">linear_stress_al</span><span class="p">)</span>
 <span class="n">E_al</span> <span class="o">=</span> <span class="n">linear_regression_output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The elastic modulus of Al6061 is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">E_al</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1"> ksi&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -716,8 +767,10 @@ The tensile strength of Steel1018 is: 95.5 ksi
 <span class="n">linear_stress_steel_mask</span> <span class="o">=</span> <span class="n">stress_steel</span> <span class="o">&lt;</span> <span class="mi">55</span>
 <span class="n">linear_stress_steel</span> <span class="o">=</span> <span class="n">stress_steel</span><span class="p">[</span><span class="n">linear_stress_steel_mask</span><span class="p">]</span>
 <span class="n">linear_strain_steel</span> <span class="o">=</span> <span class="n">strain_steel</span><span class="p">[</span><span class="n">linear_stress_steel_mask</span><span class="p">]</span>
+
 <span class="n">linear_regression_output_steel</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">linear_strain_steel</span><span class="p">,</span> <span class="n">linear_stress_steel</span><span class="p">)</span>
 <span class="n">E_steel</span> <span class="o">=</span> <span class="n">linear_regression_output_steel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The elastic modulus of Steel1018 is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">E_steel</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1"> ksi&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -728,53 +781,9 @@ The tensile strength of Steel1018 is: 95.5 ksi
 </div>
 </div>
 </div>
-<p>The ductility of a metal is calculated from a stress strain curve by drawing a line down from the fracture point on the curve, parallel to the linear elastic region. Where that line crosses the strain axis is the ductility.</p>
-<p>Point-Slope Formula for a line:</p>
-<div class="math notranslate nohighlight">
-\[ y - y_1 = m(x-x_1) \]</div>
-<p>Where <span class="math notranslate nohighlight">\(m=\)</span> slope in the linear elastic region (elastic modulus), <span class="math notranslate nohighlight">\(x_1=\)</span> last strain point on the stress strain curve, <span class="math notranslate nohighlight">\(y_1 =\)</span> last stress point on the stress strain curve.</p>
-<p>Solve the equation above for <span class="math notranslate nohighlight">\(x\)</span>, when <span class="math notranslate nohighlight">\(y=0\)</span> in terms of <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span> and <span class="math notranslate nohighlight">\(m\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[ x = \frac{-y_1}{m}+x_1 \]</div>
-<p>Substitue in ductility, elastic modulus <span class="math notranslate nohighlight">\(E\)</span>, and the last stress and strain points.</p>
-<div class="math notranslate nohighlight">
-\[ \%EL = \frac{-stress_{last}}{E}+strain_{last} \]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the ductility for Al6061</span>
-<span class="n">stress_al_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">stress_al</span><span class="p">)</span>
-<span class="n">stress_al_last</span> <span class="o">=</span> <span class="n">stress_al_array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">strain_al_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">strain_al</span><span class="p">)</span>
-<span class="n">strain_al_last</span> <span class="o">=</span> <span class="n">strain_al_array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">EL_al</span> <span class="o">=</span> <span class="o">-</span><span class="n">stress_al_last</span><span class="o">/</span><span class="n">E_al</span> <span class="o">+</span> <span class="n">strain_al_last</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The ductility of Al6061 is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">EL_al</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
-</pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The ductility of Al6061 is 20.4%
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the ductility of Steel1018</span>
-<span class="n">stress_steel_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">stress_steel</span><span class="p">)</span>
-<span class="n">stress_steel_last</span> <span class="o">=</span> <span class="n">stress_steel_array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">strain_steel_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">strain_steel</span><span class="p">)</span>
-<span class="n">strain_steel_last</span> <span class="o">=</span> <span class="n">strain_steel_array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">EL_steel</span> <span class="o">=</span> <span class="o">-</span><span class="n">stress_steel_last</span><span class="o">/</span><span class="n">E_steel</span> <span class="o">+</span> <span class="n">strain_steel_last</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The ductility of Steel1018 is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">EL_steel</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The ductility of Steel1018 is 25.0%
-</pre></div>
-</div>
-</div>
-</div>
+<div class="section" id="cacluate-yield-strength">
+<h2>Cacluate Yield Strength<a class="headerlink" href="#cacluate-yield-strength" title="Permalink to this headline">¶</a></h2>
 <p>The yield strength of a metal is calculated from a stress strain curve by drawing a line parallel to the elastic modulus that goes through the point strain=0.002. Where that line crosses the stress strain curve, that amount of stress is the yield strength</p>
 <p>Point-Slope Formula for a line:</p>
 <div class="math notranslate nohighlight">
@@ -786,14 +795,20 @@ The tensile strength of Steel1018 is: 95.5 ksi
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate the yield strength of Al6061</span>
-<span class="n">stress_offset_al</span> <span class="o">=</span> <span class="n">E_al</span><span class="o">*</span><span class="p">(</span><span class="n">strain_al_array</span><span class="o">-</span><span class="mf">0.002</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_al</span><span class="p">,</span><span class="n">stress_al</span><span class="p">,</span><span class="n">strain_al</span><span class="p">,</span><span class="n">stress_offset_al</span><span class="p">)</span>
+<span class="n">stress_offset_al</span> <span class="o">=</span> <span class="n">E_al</span><span class="o">*</span><span class="p">(</span><span class="n">strain_al</span><span class="o">-</span><span class="mf">0.002</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_al</span><span class="p">,</span><span class="n">stress_al</span><span class="p">,</span><span class="n">strain_al</span><span class="p">,</span><span class="n">stress_offset_al</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">70</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">])</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/stress-strain-curves_14_0.png" src="../_images/stress-strain-curves_14_0.png" />
+<img alt="../_images/calculate-yield-strength-programmatically_14_0.png" src="../_images/calculate-yield-strength-programmatically_14_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -812,14 +827,20 @@ The tensile strength of Steel1018 is: 95.5 ksi
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the yield strength of Steel1018</span>
-<span class="n">stress_offset_steel</span> <span class="o">=</span> <span class="n">E_steel</span><span class="o">*</span><span class="p">(</span><span class="n">strain_steel_array</span><span class="o">-</span><span class="mf">0.002</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel</span><span class="p">,</span><span class="n">stress_steel</span><span class="p">,</span><span class="n">strain_steel</span><span class="p">,</span><span class="n">stress_offset_steel</span><span class="p">)</span>
+<span class="n">stress_offset_steel</span> <span class="o">=</span> <span class="n">E_steel</span><span class="o">*</span><span class="p">(</span><span class="n">strain_steel</span><span class="o">-</span><span class="mf">0.002</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel</span><span class="p">,</span><span class="n">stress_steel</span><span class="p">,</span><span class="n">strain_steel</span><span class="p">,</span><span class="n">stress_offset_steel</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">70</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">])</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/stress-strain-curves_16_0.png" src="../_images/stress-strain-curves_16_0.png" />
+<img alt="../_images/calculate-yield-strength-programmatically_16_0.png" src="../_images/calculate-yield-strength-programmatically_16_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -835,24 +856,31 @@ The tensile strength of Steel1018 is: 95.5 ksi
 </div>
 </div>
 </div>
-<div class="section" id="bonus-calculate-yield-strength-programatically">
-<h2>Bonus: Calculate yield strength programatically<a class="headerlink" href="#bonus-calculate-yield-strength-programatically" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="calculate-yield-strength-programatically">
+<h2>Calculate yield strength programatically<a class="headerlink" href="#calculate-yield-strength-programatically" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">stress_al_array</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">stress_offset_al</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">stress_al</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">stress_offset_al</span><span class="p">)</span>
 <span class="n">yield_stress_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">f</span> <span class="o">-</span> <span class="n">g</span><span class="p">)))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">yield_strength_al</span> <span class="o">=</span> <span class="n">stress_al_array</span><span class="p">[</span><span class="n">yield_stress_index</span><span class="p">]</span>
+<span class="n">yield_strength_al</span> <span class="o">=</span> <span class="n">stress_al</span><span class="p">[</span><span class="n">yield_stress_index</span><span class="p">]</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_al_array</span><span class="p">,</span><span class="n">stress_al_array</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_al_array</span><span class="p">,</span> <span class="n">stress_offset_al</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span> <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_al_array</span><span class="p">[</span><span class="n">yield_stress_index</span><span class="p">],</span><span class="n">yield_strength_al</span><span class="p">,</span><span class="s1">&#39;go&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_al</span><span class="p">,</span><span class="n">stress_al</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_al</span><span class="p">,</span> <span class="n">stress_offset_al</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_al</span><span class="p">[</span><span class="n">yield_stress_index</span><span class="p">],</span><span class="n">yield_strength_al</span><span class="p">,</span><span class="s1">&#39;go&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">])</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/stress-strain-curves_19_0.png" src="../_images/stress-strain-curves_19_0.png" />
+<img alt="../_images/calculate-yield-strength-programmatically_19_0.png" src="../_images/calculate-yield-strength-programmatically_19_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -871,26 +899,45 @@ The tensile strength of Steel1018 is: 95.5 ksi
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the yield strength of steel programatically</span>
 
-<span class="n">f</span> <span class="o">=</span> <span class="n">stress_steel_array</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">stress_offset_steel</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">stress_steel</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">stress_offset_steel</span><span class="p">)</span>
 
 <span class="n">yield_strength_steel_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">f</span> <span class="o">-</span> <span class="n">g</span><span class="p">)))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">yield_strength_steel</span> <span class="o">=</span> <span class="n">stress_steel_array</span><span class="p">[</span><span class="n">yield_strength_steel_index</span><span class="p">]</span>
+<span class="n">yield_strength_steel</span> <span class="o">=</span> <span class="n">stress_steel</span><span class="p">[</span><span class="n">yield_strength_steel_index</span><span class="p">]</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel_array</span><span class="p">,</span><span class="n">stress_steel_array</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel_array</span><span class="p">,</span><span class="n">stress_offset_steel</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel_array</span><span class="p">[</span><span class="n">yield_strength_steel_index</span><span class="p">],</span><span class="n">yield_strength_steel</span><span class="p">,</span><span class="s1">&#39;go&#39;</span><span class="p">)</span>
-<span class="n">yield_strength_steel</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel</span><span class="p">,</span><span class="n">stress_steel</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel</span><span class="p">,</span><span class="n">stress_offset_steel</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel</span><span class="p">[</span><span class="n">yield_strength_steel_index</span><span class="p">],</span><span class="n">yield_strength_steel</span><span class="p">,</span><span class="s1">&#39;go&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">70</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">])</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>57.57449033272721
+<img alt="../_images/calculate-yield-strength-programmatically_21_0.png" src="../_images/calculate-yield-strength-programmatically_21_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The yield strength of Steel1018 found programatically is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">yield_strength_steel</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1"> ksi&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="../_images/stress-strain-curves_21_1.png" src="../_images/stress-strain-curves_21_1.png" />
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The yield strength of Steel1018 found programatically is 57.6 ksi
+</pre></div>
 </div>
 </div>
+</div>
+</div>
+<div class="section" id="write-a-function-to-calculate-the-intersection-of-two-lines">
+<h2>Write a function to calculate the intersection of two lines<a class="headerlink" href="#write-a-function-to-calculate-the-intersection-of-two-lines" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write a function to calculate the intersection of two lines defined by 4 points</span>
@@ -914,6 +961,19 @@ The tensile strength of Steel1018 is: 95.5 ksi
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strain_steel_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">strain_steel</span><span class="p">)</span>
+<span class="n">stress_steel_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">stress_steel</span><span class="p">)</span>
+<span class="n">strain_al_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">strain_al</span><span class="p">)</span>
+<span class="n">stress_al_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">stress_al</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="caclulate-yield-strength-using-the-intersection-function">
+<h2>Caclulate yield strength using the intersection function<a class="headerlink" href="#caclulate-yield-strength-using-the-intersection-function" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="n">yield_strength_steel_index</span>
 <span class="n">second</span> <span class="o">=</span> <span class="n">first</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="c1"># A points from the stress strain curve</span>
@@ -929,6 +989,7 @@ The tensile strength of Steel1018 is: 95.5 ksi
 
 <span class="c1"># run our function that finds the intersection point</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">intersection_point</span><span class="p">(</span><span class="n">Ax1</span><span class="p">,</span><span class="n">Ay1</span><span class="p">,</span><span class="n">Ax2</span><span class="p">,</span><span class="n">Ay2</span><span class="p">,</span><span class="n">Bx1</span><span class="p">,</span><span class="n">By1</span><span class="p">,</span><span class="n">Bx2</span><span class="p">,</span><span class="n">By2</span><span class="p">)</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -941,15 +1002,22 @@ The tensile strength of Steel1018 is: 95.5 ksi
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel_array</span><span class="p">,</span><span class="n">stress_steel_array</span><span class="p">,</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel_array</span><span class="p">,</span><span class="n">stress_offset_steel</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;go&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel_array</span><span class="p">,</span><span class="n">stress_steel_array</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strain_steel_array</span><span class="p">,</span><span class="n">stress_offset_steel</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;go&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">70</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">])</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/stress-strain-curves_24_0.png" src="../_images/stress-strain-curves_24_0.png" />
+<img alt="../_images/calculate-yield-strength-programmatically_28_0.png" src="../_images/calculate-yield-strength-programmatically_28_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -992,8 +1060,8 @@ The tensile strength of Steel1018 is: 95.5 ksi
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="mechanical-properties-intro.html" title="previous page"><span class="section-number">7. </span>Mechanical Properties</a>
-    <a class='right-next' id="next-link" href="stress_strain_curve_with_inset_elastic_region.html" title="next page"><span class="section-number">7.2. </span>Inset of Elastic Region</a>
+    <a class='left-prev' id="prev-link" href="mechanical-properties-from-stress-strain-curves.html" title="previous page"><span class="section-number">7.4. </span>Mechanical Properties from Stress-Strain Curves</a>
+    <a class='right-next' id="next-link" href="../08-Cold-Working/cold-work-intro.html" title="next page"><span class="section-number">8. </span>Cold Working</a>
 
         </div>
         
