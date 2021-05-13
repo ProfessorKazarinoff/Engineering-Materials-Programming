@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>8.1. Cold Work Problem &#8212; Materials Science and Engineering Programming</title>
+    <title>Cold Work Calculation &#8212; Materials Science and Engineering Programming</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -52,12 +52,8 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="About the Author" href="../99-Appendix/about_the_author.html" />
-    <link rel="prev" title="8. Cold Working" href="cold-work-intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -99,7 +95,7 @@
   Chapters
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../01-Introduction/ch01-intro.html">
    1. Introduction
@@ -248,13 +244,13 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="cold-work-intro.html">
    8. Cold Working
   </a>
-  <ul class="current collapse-ul">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="cold_work_problem.html">
      8.1. Cold Work Problem
     </a>
    </li>
@@ -314,7 +310,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/08-Cold-Working/cold_work_problem.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/08-Cold-Working/cold_work_calculation.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -334,7 +330,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F08-Cold-Working/cold_work_problem.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ProfessorKazarinoff/Engineering-Materials-Programming//issues/new?title=Issue%20on%20page%20%2F08-Cold-Working/cold_work_calculation.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -355,7 +351,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/ProfessorKazarinoff/Engineering-Materials-Programming/main?urlpath=tree/Engineering-Materials-Programming-Book/08-Cold-Working/cold_work_problem.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ProfessorKazarinoff/Engineering-Materials-Programming/main?urlpath=tree/Engineering-Materials-Programming-Book/08-Cold-Working/cold_work_calculation.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -380,88 +376,57 @@
         
               <div>
                 
-  <div class="section" id="cold-work-problem">
-<h1><span class="section-number">8.1. </span>Cold Work Problem<a class="headerlink" href="#cold-work-problem" title="Permalink to this headline">¶</a></h1>
-<p>Cold working is the process of plastically deforming a material at room temperature in order to increase its strength. Most metal alloys such as steel, aluminum and brass will increase in yield strength and tensile strength when cold worked.</p>
-<p>Cold working increases strength of polycrystalline metal alloys by increasing the dislocation density within the grains of the material. This dislocation density decreases subsequent dislocation motion, and therefore increases strength.</p>
-<p>We are going to solve a coldwork problem using a Python package called SymPy. SymPy can be installed at the Anaconda Prompt using the command below:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&gt; conda install sympy
-</pre></div>
-</div>
-<p>We can use sympy to define the variables and equation which is used in coldwork calculations. The equation we are going to model is below:</p>
-<div class="math notranslate nohighlight">
-\[ \%CW = \frac{A_i - A_f}{A_i} \times 100\% \]</div>
-<p>Where <span class="math notranslate nohighlight">\(A_i\)</span> is the initial cross-sectional area and <span class="math notranslate nohighlight">\(A_f\)</span> is the final cross sectional area.</p>
+  <div class="section" id="cold-work-calculation">
+<h1>Cold Work Calculation<a class="headerlink" href="#cold-work-calculation" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">Eq</span><span class="p">,</span> <span class="n">solve</span><span class="p">,</span> <span class="n">__version__</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SymPy version: </span><span class="si">{</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Python Version: </span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;NumPy Version: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SymPy version: 1.7.1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python Version: 3.7.10 (default, Feb 16 2021, 12:01:19) 
+[GCC 9.3.0]
+NumPy Version: 1.20.1
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ai</span><span class="p">,</span> <span class="n">Af</span><span class="p">,</span> <span class="n">CW</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;Ai Af CW&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">percent_cw</span><span class="p">(</span><span class="n">Ai</span><span class="p">,</span><span class="n">Af</span><span class="p">):</span>
+    <span class="n">cw_percent</span> <span class="o">=</span> <span class="p">((</span><span class="n">Ai</span> <span class="o">-</span> <span class="n">Af</span><span class="p">)</span><span class="o">/</span><span class="n">Ai</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="k">return</span> <span class="n">cw_percent</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">di</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;di df&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cir_a</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">d</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eq1</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span> <span class="p">(</span><span class="n">Ai</span> <span class="o">-</span> <span class="n">Af</span><span class="p">)</span><span class="o">/</span><span class="n">Ai</span> <span class="o">-</span> <span class="n">CW</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">eq1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">percent_cw_d</span><span class="p">(</span><span class="n">di</span><span class="p">,</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">Ai</span> <span class="o">=</span> <span class="n">cir_a</span><span class="p">(</span><span class="n">di</span><span class="p">)</span>
+    <span class="n">Af</span> <span class="o">=</span> <span class="n">cir_a</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">cw_percent</span> <span class="o">=</span> <span class="n">percent_cw</span><span class="p">(</span><span class="n">Ai</span><span class="p">,</span><span class="n">Af</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cw_percent</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Eq(-CW + (-Af + Ai)/Ai, 0)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exr</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">eq1</span><span class="p">,</span><span class="n">Ai</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">exr</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-Af/(CW - 1)]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eq2</span> <span class="o">=</span> <span class="n">eq1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">Af</span><span class="p">,</span> <span class="p">(</span><span class="n">df</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">eq3</span> <span class="o">=</span> <span class="n">eq2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">Ai</span><span class="p">,</span> <span class="p">(</span><span class="n">di</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">eq3</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[\displaystyle - CW + \frac{4 \left(- \frac{df^{2}}{4} + \frac{di^{2}}{4}\right)}{di^{2}} = 0\]</div>
 </div>
 </div>
 </div>
@@ -491,8 +456,6 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="cold-work-intro.html" title="previous page"><span class="section-number">8. </span>Cold Working</a>
-    <a class='right-next' id="next-link" href="../99-Appendix/about_the_author.html" title="next page">About the Author</a>
 
         </div>
         
