@@ -1,6 +1,6 @@
 name: deploy-book
 
-# Run this when the main branch changes
+# Run this when there is a push to the main branch
 on:
   push:
     branches:
