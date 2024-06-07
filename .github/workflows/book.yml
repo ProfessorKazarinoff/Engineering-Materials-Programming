@@ -39,5 +39,7 @@ jobs:
 
     # Deply the book's HTML to GitHub Pages
     - name: Deploy to GitHub Pages
+      environment:
+        name: github-pages
       id: depolyment
       uses: actions/deploy-pages@v2
