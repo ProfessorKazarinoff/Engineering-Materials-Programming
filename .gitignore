@@ -279,3 +279,6 @@ _build/
 venv/
 Engineering-Materials-Programming-Book/_build/
 main/
+
+# because this changes each time the book is compiled to HTML
+Engineering-Materials-Programming-Book/02-Atomic-Structure-and-Bonding/Energy_vs_Distance_Plot.png
