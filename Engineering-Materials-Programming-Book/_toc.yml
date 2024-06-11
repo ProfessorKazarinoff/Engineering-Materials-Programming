@@ -19,6 +19,7 @@ parts:
   - file: 03-Crystal-Structure/crystal-structure-intro.ipynb
     sections:
     - file: 03-Crystal-Structure/unit-cells.md
+    - file: 03-Crystal-Structure/packing-factor.ipynb
   - file: 04-Polymers/polymer-intro.md
     sections:
     - file: 04-Polymers/polymer-density-problem.ipynb
